@@ -1,0 +1,22 @@
+
+.bef_nav{
+	height: 35px;
+}
+.bef_nav_right{
+	float: right;
+	line-height: 35px;
+}
+.bef_nav_right a{
+	color: gray;
+}
+.bef_nav_right a:hover{
+	color: red;
+}
+/*.spa{
+	font-size: 22px;
+	color:orange;
+	font-family: "微软雅黑";
+}*/
+.distance{
+	margin: 7px 0px;
+}

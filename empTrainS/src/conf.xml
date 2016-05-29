@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!-- 引用db.properties配置文件 -->
+     <properties resource="db.properties"/>
+     <!-- 配置实体类的别名，配置实体类别名的目的是为了在引用实体类时可以使用实体类的别名来代替实体类，达到简写的目的 -->
+    <typeAliases>
+        <package name="com.plan.bean"/>
+    </typeAliases>
+     <!-- 
+         development : 开发模式
+         work : 工作模式
+      -->
+     <environments default="development">
+         <environment id="development">
+             <transactionManager type="JDBC" />
+             <!-- 配置数据库连接信息 -->
+             <dataSource type="POOLED">
+                 <!-- value属性值引用db.properties配置文件中配置的值 -->
+                 <property name="driver" value="${driver}" />
+                 <property name="url" value="${url}" />
+                 <property name="username" value="${name}" />
+                 <property name="password" value="${password}" />
+             </dataSource>
+         </environment>
+    </environments>
+    
+    <mappers>
+		<mapper resource="com/thinkPro/mapping/trainPlanInfoMapper.xml"/>    
+		<mapper resource="com/thinkPro/mapping/trainPlanItemMapper.xml"/>  
+    </mappers>
+</configuration>

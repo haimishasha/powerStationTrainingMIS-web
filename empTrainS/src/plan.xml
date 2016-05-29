@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="p3" extends="struts-default">
+		<action name="doSearch" class="com.plan.action.PlanAction" method="doSearch">
+			<result>/test.jsp</result>
+		</action>
+		<action name="UpdateAction" class="com.plan.action.UpdateAction" method="doupdate">
+			<result>/update.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SearchUnit" class="com.unit.action.SearchUnit" method="SearchUnit">
+			<result>/Unit.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="UpdateUnitAction" class="com.unit.action.UpdateUnitAction" method="updateUnit">
+			<result>/Unit.jsp</result>
+		</action>
+		<action name="AddUnitAction" class="com.unit.action.AddUnitAction" method="addUnit">
+			<result>/Unit.jsp</result>
+		</action>
+		<action name="DeleteUnitAction" class="com.unit.action.DeleteUnitAction" method="deleteUnit">
+			<result>/Unit.jsp</result>
+		</action>
+	</package>
+</struts>

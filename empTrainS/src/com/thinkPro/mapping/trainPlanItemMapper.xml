@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thinkPro.mapping.trainPlanItemMapper">
+
+	<!-- 根据培训明细ID查询培训计划明细 -->
+ 	<select id="getTrainPlanItemByItemId" parameterType="String" resultType="TrainPlanItem">
+ 		select * from train_plan_item where TRAIN_ITEM_ID=#{TRAIN_ITEM_ID}
+ 	</select>
+ 	
+ 	<!-- 根据培训明细ID查询培训计划明细 -->
+ 	<select id="getTrainPlanItemByInfoId" parameterType="String" resultType="TrainPlanItem">
+ 		select * from train_plan_item where tRAIN_PLAN_ID=#{tRAIN_PLAN_ID}
+ 	</select>
+ 	
+ 	<!-- 根据培训计划信息ID查询培训计划明细ID -->
+ 	<select id="getPlanItemIdByInfoId" parameterType="String" resultType="String">
+ 		select TRAIN_ITEM_ID from train_plan_item where tRAIN_PLAN_ID = #{tRAIN_PLAN_ID}
+ 	</select>
+ 	
+	<!-- 创建培训计划明细(Insert) -->
+	<insert id="addTrainPlanItem" parameterType="TrainPlanItem">
+		insert
+		train_plan_item(TRAIN_ITEM_ID,tRAIN_PLAN_ID,ZY_NAME,TRAIN_CONTENT,TRAIN_PURPOSE,CLASS_COUNT,TEACHER)
+		values(#{TRAIN_ITEM_ID},#{tRAIN_PLAN_ID},#{ZY_NAME},#{TRAIN_CONTENT},#{TRAIN_PURPOSE},#{CLASS_COUNT},#{TEACHER})
+	</insert>
+	
+	
+	<!-- 修改培训计划(Update) -->
+	<update id="updateTrainPlanItem" parameterType="TrainPlanItem">
+		update train_plan_item set
+		TRAIN_CONTENT=#{TRAIN_CONTENT}
+		TRAIN_PURPOSE=#{TRAIN_PURPOSE}
+		CLASS_COUNT=#{CLASS_COUNT}
+		TEACHER=#{TEACHER}
+		ZY_NAME=#{ZY_NAME} where TRAIN_ITEM_ID=#{TRAIN_ITEM_ID}
+	</update>
+	
+	<!-- 删除培训计划明细(Delete) -->
+	<delete id="deleteTrainPlanItem" parameterType="String">
+		delete from train_plan_item where TRAIN_ITEM_ID=#{TRAIN_ITEM_ID}
+	</delete>
+</mapper>

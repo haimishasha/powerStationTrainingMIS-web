@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.2.2.min.js" ></script>
+		<script>
+
+		</script>
+	</head>
+	
+	
+	<body>
+		<form>
+		<div class="" id="add">
+			JAVA!
+						
+			<div class="container">
+				
+				<table style="border: solid 1px red;" id="test_table" class="table table-bordered" style="width: 100%;">
+								<tr>
+									<th>Header</th>
+									<th>Header</th>
+									<th>Header</th>
+									<th>Header</th>
+									<th>Header</th>
+								</tr>
+								<tr id="test_tr">
+									<td>
+										<select name="">
+											<option value="">1</option>
+											<option value="">1</option>
+											<option value="">1</option>
+										</select>
+									</td>
+									<td>
+										<textarea name="" rows="" cols=""></textarea>
+									</td>
+									<td>
+										<textarea name="" rows="" cols=""></textarea>
+									</td>
+									<td>
+										<input type="text" />
+									</td>
+									<td>
+										<input type="text" />
+									</td>
+								</tr>
+							</table>
+			</div>
+			
+		</div>
+		</form>
+		
+		<button id="btn">ADD</button>
+		<button id="btn1">shanchu</button>
+		
+		<script type="text/javascript">
+//			var otest = document.getElementById("add");
+//			var newnode = document.createElement("tr")
+//			newnode.innerHTML = "this is table";
+//			otest.appendChild(newnode);
+//			$("#test_tr").clone().prependTo("#test_table");
+			
+		$("#btn").click(function() {
+				$("#test_tr").clone(true).appendTo("#test_table");
+			});
+			
+			
+			$("#btn1").click(function(){		
+				$("#test_tr").remove();	
+			});
+
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
