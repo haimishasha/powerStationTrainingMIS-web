@@ -28,7 +28,8 @@
 		window.location ="${pageContext.request.contextPath}/Update_Train_Plan";
 	}
 	function Delete() {
-		window.location ="${pageContext.request.contextPath}/Delete_Train_Plan";
+		var trainPlanId = $("input[name='choose']:checked").val();
+		window.location ="${pageContext.request.contextPath}/doDelete?trainPlanId="+trainPlanId;
 	}
 	
 </script>
@@ -213,7 +214,7 @@
 							<table border="" cellspacing="" cellpadding="" style="width:800px;height:auto;">
 
 							<tr>
-								<td>序号</td>
+								<td>请选择</td>
 								<td>培训计划年度</td>
 								<td>培训专业</td>
 								<td>是否结束</td>
@@ -221,7 +222,7 @@
 							</tr>
 							<c:forEach var="t" items="${trainPlans}">
 							<tr>
-							<td>${t.TRAIN_PLAN_ID}</td>
+								<td><input type="radio" name="choose" value="${t.TRAIN_PLAN_ID}" checked="checked"></td>
 								<td>${t.TRAIN_PLAN_YEAR}</td>
 								<td>${t.ZY_NAME}</td>
 								<td>${t.IS_FINISH}</td>
