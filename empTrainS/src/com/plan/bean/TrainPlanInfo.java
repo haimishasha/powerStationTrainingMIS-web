@@ -53,9 +53,10 @@ public class TrainPlanInfo implements Serializable{
 	public void setEND_TIME(Date eND_TIME) {
 		END_TIME = eND_TIME;
 	}
-//	@Override
-//	public String toString() {
-//		return "信息：" + " 年度" + TRAIN_PLAN_YEAR + " 名称" + TRAIN_PLAN_NAME;
-//	}
+	@Override
+	public String toString() {
+		return "TrainPlanInfo" + " + " + TRAIN_PLAN_ID + " + " + TRAIN_PLAN_NAME 
+				+ " + " + START_TIME + " + " + END_TIME + " + " + TRAIN_PLAN_NAME;
+	}
 
 }

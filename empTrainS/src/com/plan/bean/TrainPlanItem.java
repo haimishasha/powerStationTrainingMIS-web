@@ -53,8 +53,10 @@ public class TrainPlanItem implements Serializable{
 	public void setZY_NAME(String zY_NAME) {
 		ZY_NAME = zY_NAME;
 	}
-//	@Override
-//	public String toString() {
-//		return "目的" + TRAIN_CONTENT + " 内容" + TRAIN_PURPOSE;
-//	}
+	@Override
+	public String toString() {
+		return TRAIN_ITEM_ID + " : " + tRAIN_PLAN_ID + " : " + TRAIN_CONTENT + " : "
+				 + TRAIN_PURPOSE + " : " + CLASS_COUNT + " : " + TEACHER + " : " +
+				 ZY_NAME;
+	}
 }

@@ -25,11 +25,13 @@
 			<result>/Unit.jsp</result>
 		</action>
 		<action name="doDelete" class="com.plan.action.DeleteAction" method="doDelete">
-			<result>/test.jsp</result>
-			<result name="error">/test.jsp</result>
+			<result>/Plan/add.jsp</result>
+			<result name="error">/Plan/add.jsp</result>
 		</action>
+	</package>
+	<package name="p4" extends="json-default">
 		<action name="doAdd" class="com.plan.action.AddAction" method="doAdd">
 			<result>/Plan/add.jsp</result>
-		</action>
+		</action>	
 	</package>
 </struts>

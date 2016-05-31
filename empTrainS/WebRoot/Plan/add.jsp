@@ -24,11 +24,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
-  
-  <body>
-  <div class="bef_nav">
-			<div class="container">			
-				
+  <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.2.2.min.js"></script>
+  <script>
+			$(document).ready(function(){
+				$("#bt1").click(function(){
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="bef_nav">
+			<div class="container">
+
 				<div class="bef_nav_right">
 					<span style="margin-right: 20px;">欢迎 : 管理员</span>
 					<a href="#">修改密码</a>
@@ -58,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li><a href="#">添加</a></li>
 								<li><a href="#">修改</a></li>
 								<li><a href="#">删除</a></li>
-								<li><a href="#">查询</a></li>
+								<li><a href="index.html">查询</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -102,245 +110,129 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</ol>
 				</div>
 
-				<div class="content_body">
-					<form action="" method="post" style="border:1px solid">
-						<div class="sele_block">
-							<div class="row">
-								<div class="col-lg-6 col-md-6 col-xs-12 distance">
-									<div class="input-group">
-										<span class="input-group-addon">培训计划年度：</span>
-										<select class="form-control" name="TRAIN_PLAN_YEAR">
-										<option>2016</option>
-										<option>2015</option>
-										<option>2014</option>
-										<option>2013</option>
-										<option>2012</option>
-									</select>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-xs-12 distance">
-									<div class="input-group">
-										<span class="input-group-addon">培训专业：</span>
-										<select class="form-control" name="ZY_NAME">
-										<option>电气</option>
-										<option>汽机</option>
-										<option>锅炉</option>
-										<option>化水</option>
-										<option>燃运</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-xs-12 distance">
-									<div class="input-group">
-										<span class="input-group-addon">培训计划类型：</span>
-										<select class="form-control" name="TRAIN_PLAN_TYPE">
-										<option>新员工入厂培训</option>
-										<option>中层管理人员培训</option>
-										<option>班组长培训</option>
-									</select>
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-xs-12 distance">
-									<div class="input-group">
-										<span class="input-group-addon">完成情况：</span>
-										<select class="form-control" name="IS_FINISH">
-										<option>未培训</option>
-										<option>培训中</option>
-										<option>已培训</option>
-									</select>
-									</div>
-								</div>
-								<button type="submit" class="btn btn-default" style="float: right; margin-top: 7px; margin-right: 30px;">  查  询  </button>
-							</div>
-							<hr style="border:solid 1px;" />
+				<div>
+					<form id="infoForm" action="${pageContext.request.contextPath}/doAdd" method="post">
+					<div class="row">
+						<div class="col-lg-6 distance distance">
+						<div class="input-group">
+							<span class="input-group-addon">年 度</span>
+							<input type="text" class="form-control" name="TRAIN_PLAN_YEAR" id="TRAIN_PLAN_YEAR"/>
 						</div>
-					</form>
-
-					<div class="showform">
-						<div class="showform_title">
-							<nav class="navbar navbar-default" style="background-color: white;border: none;">
-								<div class="container-fluid">
-									<!-- Brand and toggle get grouped for better mobile display -->
-									<div class="navbar-header">
-										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
-       										<span class="glyphicon glyphicon-pencil"></span>       									
-     									</button>
-     									<p class="navbar-text">共 : <span style="color: red;">10条</span> 信息</p>
-										
-									</div>
-
-									<!-- Collect the nav links, forms, and other content for toggling -->
-									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-										<ul class="nav navbar-nav navbar-left hidden-xs">
-											<button type="button" class="btn btn-default navbar-btn">导 出</button>
-											<button type="button" class="btn btn-default navbar-btn">打 印</button>
-										</ul>										
-										<ul class="nav navbar-nav navbar-right">
-											<button type="button" class="btn btn-default navbar-btn">创 建</button>
-											<button type="button" class="btn btn-default navbar-btn">修 改</button>
-											<button type="button" class="btn btn-default navbar-btn">删 除</button>
-										</ul>
-									</div>
-									<!-- /.navbar-collapse -->
-								</div>
-								<!-- /.container-fluid -->
-							</nav>
 						</div>
-						<iframe src="" style="border:1px solid red">
-							dafafaf
-							<div class="table table-responsive">
-								<table border="" cellspacing="" cellpadding="">
-									<tr>
-									<th>序号</th>
-									<th>年度</th>
-									<th>培训计划名称</th>
-									<th>培训类型</th>
-									<th>培训专业</th>
-									<th>培训时间</th>
-									<th>培训人数</th>
-									<th>完成情况</th>
-									</tr>
-									
-								</table>		
+						
+						<div class="col-lg-6 distance distance">
+							<div class="input-group">
+								<span class="input-group-addon">名 称</span>
+								<input type="text" class="form-control" name="TRAIN_PLAN_NAME" />
 							</div>
-							
-						</iframe>
-						<!--<div class="show_table table-responsive">
-							<table class="table table-hover">
-								<tr>
-									<th>序号</th>
-									<th>年度</th>
-									<th>培训计划名称</th>
-									<th>培训类型</th>
-									<th>培训专业</th>
-									<th>培训时间</th>
-									<th>培训人数</th>
-									<th>完成情况</th>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-								<tr>
-									<td>10</td>
-									<td>2015</td>
-									<td>新员工入厂培训</td>
-									<td>新员工入厂培训</td>
-									<td>电气 汽机 锅炉</td>
-									<td>1月10日-1月20日</td>
-									<td>100</td>
-									<td>未完成</td>
-								</tr>
-							</table>
-						</div>-->
-
-						<nav style="text-align: center;">
-							<ul class="pagination">
-								<li>
-									<a href="#" aria-label="Previous">
-										<span aria-hidden="true">&laquo;</span>
-									</a>
-								</li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li>
-									<a href="#" aria-label="Next">
-										<span aria-hidden="true">&raquo;</span>
-									</a>
-								</li>
-							</ul>
-						</nav>
+						</div>
+						
+						<div class="col-lg-6 distance distance">
+							<div class="input-group">
+								<span class="input-group-addon">开始时间</span>
+								<input type="text" class="form-control" name="START_TIME" />
+							</div>
+						</div>
+						
+						<div class="col-lg-6 distance distance">
+							<div class="input-group">
+								<span class="input-group-addon">结束时间</span>
+								<input type="text" class="form-control" name="END_TIME" />
+							</div>
+						</div>
+					
 					</div>
-
+					<!-- </form>	 -->			
+					
+					<div class="distance">
+						<!-- <form> -->
+						
+							<div class="table table-responsive">
+								<table id="test_table" class="table table-bordered table_mag" style="width: 100%;">
+									<tr>
+										<th>专业</th>
+										<th>培训目的</th>
+										<th>培训内容</th>
+										<th>课时</th>
+										<th>授课人</th>
+									</tr>
+									<tr id="test_tr">
+										<td>
+											<select name="trainPlanItems[0].ZY_NAME" id="ZY_NAME">
+												<option selected="selected">电气</option>
+												<option >汽机</option>
+												<option >锅炉</option>
+												<option >化水</option>
+												<option >燃运</option>
+											</select>
+										</td>
+										<td>
+											<textarea name="trainPlanItems[0].TRAIN_PURPOSE" rows="" cols="" id="TRAIN_PURPOSE"></textarea>
+										</td>
+										<td>
+											<textarea name="trainPlanItems[0].TRAIN_CONTENT" rows="" cols="" id="TRAIN_CONTENT"></textarea>
+										</td>
+										<td>
+											<input type="text"  name="trainPlanItems[0].CLASS_COUNT" id="CLASS_COUNT"/>
+										</td>
+										<td>
+											<input type="text" name="trainPlanItems[0].TEACHER" id="TEACHER"/>
+										</td>
+									</tr>
+								</table>
+							</div>
+						
+					</div>
+															
+					<!-- <button id="" class="btn_class" onclick="testtable1()">ADD</button>
+					<button id="" class="btn_class" onclick="testtable()">删 除</button>	 -->
+					<input type="button" class="btn_class" onclick="testtable1()" value="ADD">
+					<input type="button" class="btn_class" onclick="testtable()" value="删除">
+					<input type="submit" value="保 存"  id="save" class="btn_class" />
+						</form>
 				</div>
+							
 			</div>
 		</div>
 		<!--<div class="container">
 			<ol class="breadcrumb"><li><a href="#">电厂职工管理</a></li><li><a href="#">培训计划管理</a></li><li class="active">修改</li></ol>
 		</div>-->
-		<hr style="border:solid 1px; margin-top: -10px; margin-bottom:10px ;" />
+		<hr style="border:solid 1px; margin-top: 10px; margin-bottom:10px ;" />
 		<footer style="text-align: center;margin-bottom: 30px;">
 			<p>版权信息</p>
 			<p>版权信息一般还有两行</p>
 		</footer>
-  </body>
+		<script type="text/javascript">
+			function testtable1(){
+			    var table = document.getElementById("test_table");
+			    var tab = document.getElementById("test") ;
+			      //表格行数
+			    var rows1 = table.rows.length ;
+			      //表格列数
+			    var cells = table.rows.item(0).cells.length ;
+				//alert("行数"+rows1+"列数"+cells);
+				if(rows1 < 6){					
+					$("#test_tr").clone(true).appendTo("#test_table");
+				}
+				else{
+					alert("没有更多的专业了！！！");
+				}
+			}
+//			$("#btn").click(function() {
+//				$("#test_tr").clone(true).appendTo("#test_table");
+//			});
+			function testtable(){
+			    var table = document.getElementById("test_table");
+			    var tab = document.getElementById("test") ;
+			      //表格行数
+			    var rows1 = table.rows.length ;
+			      //表格列数
+			    var cells = table.rows.item(0).cells.length ;
+				//alert("行数"+rows1+"列数"+cells);
+				if(rows1 > 2){
+					table.deleteRow(rows1-1);
+				}
+			}
+		</script>
+	</body>
 </html>
