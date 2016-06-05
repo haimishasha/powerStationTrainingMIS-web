@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>电厂职工管理系统</title>
+		<script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/main2.css" />
+		<style>
+			.selected{
+				color:black;
+				background:gray;
+			}
+		</style>
+		<script>
+			$(function(){
+				$('#tabody tr').click(function(){
+					var hasSelected=$(this).hasClass('selected');
+					$(this)[hasSelected?"removeClass":"addClass"]('selected')
+						.find(':checkbox').prop('checked',!hasSelected);
+				})
+				
+			})
+			$('#tabody tr:has(:checked)').addClass('selected');
+		</script>
+	</head>
+
+	<body>
+		<div class="bef_nav">
+			<div class="container">			
+				
+				<div class="bef_nav_right">
+					<span style="margin-right: 20px;">欢迎 : 管理员</span>
+					<a href="#">修改密码</a>
+					<a href="#">退出系统</a>
+				</div>
+			</div>
+		</div>
+
+		<nav class="nav navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      				 	<span class="sr-only">Toggle navigation</span>
+       				 	<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="#">LOGO</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">首页</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训计划管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="ADD.html">添加</a></li>
+								<li><a href="#">修改</a></li>
+								<li><a href="#">删除</a></li>
+								<li><a href="#">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训成绩管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">录入</a></li>
+								<li><a href="#">修改</a></li>
+								<li><a href="#">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">查询</a></li>
+								<li><a href="#">统计</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">部门管理</a></li>
+								<li><a href="#">指纹库管理</a></li>
+								<li><a href="#">用户管理</a></li>
+							</ul>
+						</li>
+						<li><a href="#">学员管理</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+
+		<div class="Mycontent">
+			<div class="container">
+				<div class="content_title">
+					<!--<hr />-->
+					<ol class="breadcrumb">
+						<li><a href="#">电厂</a></li>
+						<li><a href="#">学员管理</a></li>
+						<li class="active">部门管理</li>
+					</ol>
+				</div>							
+				
+				<form action="" method="post" style="border: 1px solid #EEEEEE;">
+					<fieldset style="margin: 20px;">
+						<legend><span>查询条件</span></legend>
+						班组: <input type="text" name="class_group"/>
+						<span>部门编号: </span><input type="text" name="dapartment_id"/>
+						<input type="submit" value="查 询" class="fr" id="sele_sub"/>
+					</fieldset>						
+				</form><!--select_form end-->
+				
+				<div class="dapartment_main">					
+					
+					<div class="dapartment_left" ">
+						<fieldset>
+							<legend><span>部门</span></legend>
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								<h3>太原第二热电厂</h3>
+								
+								<div class="panel panel-default" id="create_one">
+									<div class="panel-heading" role="tab" id="headingOne">
+										<h4 class="panel-title">
+					        			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					         			发电一部
+					       				</a>
+					      				</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">	
+										<div class="panel-body">
+											001 001
+										</div>
+									</div>
+								</div>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingTwo">
+										<h4 class="panel-title">
+									    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									    	发电二部    
+								        </a>
+					      				</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">			
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<!--添加 修改 部门信息-->
+					<div class="dapartment_right ">
+						<div class="btn-group" role="group" aria-label="...">
+							
+							<button type="button" class="btn btn-default" id="dapartment_add"  data-toggle="modal" data-target="#dapartment_add_modal">添 加</button>
+							<button type="button" class="btn btn-default" id="dapartment_change" data-toggle="modal" data-target="#dapartment_change_modal">修 改</button>
+							<!--添加，修改弹出框-->
+							<!--添加弹出框-->
+							<div class="modal fade" id="dapartment_add_modal">
+							 	<div class="modal-dialog">
+								    <div class="modal-content">
+								    	<div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">添加部门信息</h4>
+								        </div>
+								        <div class="modal-body">
+								        	<form action="">
+												<div class="table-responsive">
+												    <table class="table" style="border:1px solid grey">
+														<tr>
+															<td>上级部门</td>
+															<td style="text-align:center disabled">
+																<span id="dap_add_name">发电部门一部</span>
+															</td>
+														</tr>
+														<tr>
+															<td style="text-align:center disabled">上级部门编号</td>
+															<td>
+																<span>001</span>
+															</td>
+														</tr>
+														<tr>
+															<td>部门名称</td>
+															<td><input type="text" id="dapartment_name"></td>
+														</tr>
+														<tr>
+															<td>部门编号</td>
+															<td><input type="text" id="dapartment_id"></td>
+					
+														</tr>
+														<tr>
+					
+															<td>部门简称</td>
+															<td><input type="text"></td>
+					
+														</tr>
+														<tr>
+															<td>备注</td>
+															<td>
+															<textarea name="" id="" cols="22" rows=" 8" style="resize:none"></textarea></td>
+														</tr>						    
+												    </table>
+												</div>
+											</form>
+								        </div>
+							        	
+								        <div class="modal-footer">							        
+									        <button type="button" class="btn btn-primary" id="dapartm_add_save">Save changes</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        </div>
+								    </div><!-- /.modal-content -->
+								</div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+							
+							<!--修改弹出框-->
+					        <div class="modal fade" id="dapartment_change_modal">
+							    <div class="modal-dialog">
+							    	<div class="modal-content">
+								        <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">Modal title</h4>
+								        </div>
+								        <div class="modal-body">
+								        	<p>One fine body&hellip;</p>
+								        </div>
+								        <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+								        </div>
+								    </div><!-- /.modal-content -->
+							    </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+							
+							<button type="button" class="btn btn-default">删 除</button>
+						</div>
+						<div>
+							<div class="fl">
+								<label class="btn">共 : <span>10条</span>信息</label>								
+							</div>
+							<div class="fr">
+								<button class="btn btn-default">导 出</button>
+								<button class="btn btn-default">打 印</button>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<from>
+							<table class="dap_table">
+								<thead>
+									<tr>
+										<th>序号</th>
+										<th>部门名称</th>
+										<th>部门编号</th>
+										<th>部门简称</th>
+										<th>联系方式</th>
+										<th>备注</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody id="tabody">
+									<tr> 
+										<td>1</td>
+										<td>发电一部</td>
+										<td>001001</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><input type="checkbox" name="choice" value=""/></td>
+									</tr>
+									<tr> 
+										<td>1</td>
+										<td>发电一部</td>
+										<td>001001</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><input type="checkbox" name="choice" value=""/></td>
+									</tr>
+									<tr> 
+										<td>1</td>
+										<td>发电一部</td>
+										<td>001001</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><input type="checkbox" name="choice" value=""/></td>
+									</tr>
+									
+								</tbody>
+							</table>
+							
+						</from>
+						
+						<nav>
+							分页?!
+						</nav>
+					</div>
+				</div><!--dapartment_main end-->
+				
+				
+			</div>
+		</div>
+		<!--这条线是个隐患 要如何修改呢-->
+		<hr style="border:solid 1px; margin-top: -10px; margin-bottom:10px ;" />
+		<footer style="text-align: center;margin-bottom: 30px;">
+			<p>版权信息</p>
+			<p>版权信息一般还有两行</p>
+		</footer>
+		
+		
+		
+		<script>
+//		$("#accordion a").click(function(){
+//			$('#dapartm_add_save').click(function(){
+//				var $dap_name = $(this).val();
+//				$("#dap_add_name").replaceAll($dap_name);
+//				
+//				var $dap_id = $('#dapartment_id').val();
+//				alert($dap_id+"编号添加");
+//				var $html = "<div class='panel-body'></div>"
+//				$($html).appendTo("#collapseOne").html($dap_id); // 将boostrap的panel——body元素添加到 指定的折叠框 id为当前输入编号的id
+//			})
+//		}
+			$('#dapartm_add_save').click(function(){
+				var $dap_id = $('#dapartment_id').val();
+				alert($dap_id+"编号添加");
+				var $html = "<div class='panel-body'></div>"
+				$($html).appendTo("#collapseOne").html($dap_id); // 将boostrap的panel——body元素添加到 指定的折叠框 id为当前输入编号的id
+			})
+		</script>
+	</body>
+
+</html>

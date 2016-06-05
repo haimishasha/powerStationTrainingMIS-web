@@ -29,5 +29,6 @@
     <mappers>
 		<mapper resource="com/thinkPro/mapping/trainPlanInfoMapper.xml"/>    
 		<mapper resource="com/thinkPro/mapping/trainPlanItemMapper.xml"/>  
+		<mapper resource="com/thinkPro/mapping/UnitMapper.xml"/>  
     </mappers>
 </configuration>

@@ -1,15 +1,20 @@
 package com.thinkPro.db;
 
+import java.util.List;
+import java.util.Map;
+
 import com.plan.bean.TrainPlan;
 
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		TrainPlanCRUD test = new TrainPlanCRUD();
-		//System.out.println(test.getItemIdByInfoId("tp00003"));
-		TrainPlan plan = new TrainPlan();
-		System.out.println(test.getInfoByIf(plan));
+//		UnitCRUD unitCRUD = new UnitCRUD();
+//		 List<Map<String,String>>  a = unitCRUD.getUnitId();
+//		 System.out.println(a);
+		
+		UnitCRUD unitCRUD = new UnitCRUD();
+		 List<Map<String,String>> a = unitCRUD.getUnitTree();
+		 System.out.println(a);
 	}
 
 }

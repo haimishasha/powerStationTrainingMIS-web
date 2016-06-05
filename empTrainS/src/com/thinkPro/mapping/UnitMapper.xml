@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkPro.mapping.UnitMapper">
+
+	<insert id="insertUnit" parameterType="Unit">
+		INSERT INTO
+		unit(unit_Id,up_Unit_Id,unit_Name,header,remark)
+		VALUES(#{unit_Id},#{up_Unit_Id},#{unit_Name},#{header},#{remark})
+	</insert>
+
+	<update id="updateUnit" parameterType="Unit">
+		update unit
+		<set>
+			<if test="up_Unit_Id!=null">
+				up_Unit_Id=#{up_Unit_Id},
+			</if>
+			<if test="unit_Name!=null">
+				unit_Name=#{unit_Name},
+			</if>
+			<if test="remark!=null">
+				remark=#{remark},
+			</if>
+		</set>
+		where unit_Id=#{unit_Id}
+	</update>
+
+	<delete id="deleteUnit" parameterType="String">
+		delete from unit where
+		unit_Id=#{unit_Id}
+	</delete>
+
+
+	<!-- 根据unit_Id查询部门信息 -->
+
+	<select id="getUnitByUnitId" parameterType="String" resultType="Unit">
+		select
+		unit_Id,up_Unit_Id,unit_Name,address,telephone,contact_Person,email,header,create_Date,remark
+		from unit where unit_Id=#{unit_Id}
+	</select>
+
+	<!-- 根据up_Unit_Id查询部门信息 -->
+
+	<select id="getUnitByUpUnitId" parameterType="String"
+		resultType="Unit">
+		select unit_Id, up_Unit_Id, unit_Name, address, telephone,
+		contact_Person, email, header, create_Date, remark from
+		unit where up_Unit_Id=#{up_Unit_Id}
+	</select>
+
+	<!-- 查询全部部门信息 -->
+	<select id="getAllUnits" resultType="Unit">
+		select unit_Id, up_Unit_Id,
+		unit_Name, address, telephone,
+		contact_Person, email, header,
+		create_Date, remark from unit;
+	</select>
+
+	<!-- 查询部门树信息 -->
+	<select id="getUnitTree" resultType="Map">
+		select unit_Id, up_Unit_Id,
+		unit_Name from unit;
+	</select>
+
+
+	<select id="getUnitId" resultType="Map">
+	SELECT unit_Id,unit_Name,t.up_Unit_Id,t1.maxnum maxnum FROM unit t LEFT JOIN (SELECT up_Unit_Id,count(unit_Id),CONCAT("00", max(unit_Id) + 1) maxnum FROM unit GROUP BY
+	up_Unit_Id) t1 ON t.unit_Id = t1.up_Unit_Id;
+	</select>
+
+</mapper>

@@ -3,7 +3,7 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="p3" extends="struts-default">
+	<package name="p3" extends="json-default">
 		<action name="doSearch" class="com.plan.action.PlanAction" method="doSearch">
 			<result>/test.jsp</result>
 		</action>
@@ -12,26 +12,27 @@
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="SearchUnit" class="com.unit.action.SearchUnit" method="SearchUnit">
-			<result>/Unit.jsp</result>
-			<result name="error">/error.jsp</result>
+			<result type="json">
+    			<param name="root">result</param>  
+    		</result>
 		</action>
 		<action name="UpdateUnitAction" class="com.unit.action.UpdateUnitAction" method="updateUnit">
 			<result>/Unit.jsp</result>
 		</action>
 		<action name="AddUnitAction" class="com.unit.action.AddUnitAction" method="addUnit">
-			<result>/Unit.jsp</result>
+			<result type="json">
+    				<param name="root">addResult</param>  
+			</result>
 		</action>
 		<action name="DeleteUnitAction" class="com.unit.action.DeleteUnitAction" method="deleteUnit">
-			<result>/Unit.jsp</result>
+			<result type="json">
+    				<param name="root">treeList2</param>  
+			</result>
 		</action>
-		<action name="doDelete" class="com.plan.action.DeleteAction" method="doDelete">
-			<result>/Plan/add.jsp</result>
-			<result name="error">/Plan/add.jsp</result>
+		<action name="SearchTreeAction" class="com.unit.action.SearchTreeAction" method="searchTree">
+			<result type="json">
+    				<param name="root">treeList2</param>  
+    			</result>
 		</action>
-	</package>
-	<package name="p4" extends="json-default">
-		<action name="doAdd" class="com.plan.action.AddAction" method="doAdd">
-			<result>/Plan/add.jsp</result>
-		</action>	
 	</package>
 </struts>
