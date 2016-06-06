@@ -9,7 +9,7 @@ import net.sf.json.JSONArray;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.plan.util.uuid;
+import com.plan.util.UUIDUtil;
 import com.thinkPro.db.UnitCRUD;
 import com.unit.bean.Unit;
 

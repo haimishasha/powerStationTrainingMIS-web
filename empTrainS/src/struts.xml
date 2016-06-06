@@ -5,4 +5,6 @@
 <struts>
 	<constant name="devMode" value="true"></constant>
 	<include file="plan.xml"></include>
+	<include file="staffInfoManage.xml"></include>
+	<include file="staffManage.xml"></include>
 </struts>    

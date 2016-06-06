@@ -10,7 +10,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.plan.bean.TrainPlan;
 import com.plan.bean.TrainPlanInfo;
 import com.plan.bean.TrainPlanItem;
-import com.plan.util.uuid;
+import com.plan.util.UUIDUtil;
 import com.thinkPro.db.TrainPlanCRUD;
 
 public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInfo>{
@@ -55,7 +55,7 @@ public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInf
 		String[] cc = trainPlanItems.get(0).getCLASS_COUNT().split(", ");
 		String[] t = trainPlanItems.get(0).getTEACHER().split(", ");
 		
-		String trainPlanId = uuid.getUUid();
+		String trainPlanId = UUIDUtil.getUUid();
 		trainPlanInfo.setTRAIN_PLAN_ID(trainPlanId);
 		
 //		System.out.println(trainPlanInfo);
@@ -64,7 +64,7 @@ public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInf
 //			System.out.println(z[i] + ":" + p[i] + ":" + c[i] + ":" + cc[i] + ":" + t[i]);
 			TrainPlanItem trainPlanItem = new TrainPlanItem();
 			trainPlanItem.settRAIN_PLAN_ID(trainPlanId);
-			trainPlanItem.setTRAIN_ITEM_ID(uuid.getUUid());
+			trainPlanItem.setTRAIN_ITEM_ID(UUIDUtil.getUUid());
 			trainPlanItem.setZY_NAME(z[i]);
 			trainPlanItem.setTRAIN_PURPOSE(p[i]);
 			trainPlanItem.setTRAIN_CONTENT(c[i]);
