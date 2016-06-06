@@ -36,25 +36,7 @@ $.ajax({ data:{"planId":1,"itemsId":"1,2"},
   
   <body>
     这里是修改界面
-  <input type="button" onclick="update()" value="保存"/>
-  <% 
-   String a[]= request.getParameter("trainPlanids").split(",");
   
-    
-		  for(int i=0;i<a.length;i++){
-		  System.out.println("trainPlan id="+a[i]);
-		   
-		  }
-  
-    if(a.length==1){
-    //在这进行创建一个trainplan
-    
-    }else{
-    
-    
-    
-    }
-
 
 %>
  
