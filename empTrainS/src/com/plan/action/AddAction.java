@@ -3,21 +3,19 @@ package com.plan.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.json.JSONArray;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.plan.bean.TrainPlan;
 import com.plan.bean.TrainPlanInfo;
 import com.plan.bean.TrainPlanItem;
 import com.plan.util.UUIDUtil;
 import com.thinkPro.db.TrainPlanCRUD;
 
-public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInfo>{
+public class AddAction extends ActionSupport implements
+		ModelDriven<TrainPlanInfo> {
 	TrainPlanInfo trainPlanInfo = new TrainPlanInfo();
-	List<TrainPlanItem> trainPlanItems ;
+	List<TrainPlanItem> trainPlanItems;
 	List<TrainPlanItem> trainPlanItems2 = new ArrayList<TrainPlanItem>();
-	
+
 	public List<TrainPlanItem> getTrainPlanItems() {
 		return trainPlanItems;
 	}
@@ -35,7 +33,7 @@ public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInf
 	}
 
 	private String result;
-	
+
 	public String getResult() {
 		return result;
 	}
@@ -44,24 +42,24 @@ public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInf
 		this.result = result;
 	}
 
+	public String doAdd() {
 
-	public String doAdd(){
-		
-//		System.out.println("后台到我了");
-		
+		// System.out.println("后台到我了");
+
 		String[] z = trainPlanItems.get(0).getZY_NAME().split(", ");
 		String[] p = trainPlanItems.get(0).getTRAIN_PURPOSE().split(", ");
 		String[] c = trainPlanItems.get(0).getTRAIN_CONTENT().split(", ");
 		String[] cc = trainPlanItems.get(0).getCLASS_COUNT().split(", ");
 		String[] t = trainPlanItems.get(0).getTEACHER().split(", ");
-		
+
 		String trainPlanId = UUIDUtil.getUUid();
 		trainPlanInfo.setTRAIN_PLAN_ID(trainPlanId);
-		
-//		System.out.println(trainPlanInfo);
-		
+
+		// System.out.println(trainPlanInfo);
+
 		for (int i = 0; i < t.length; i++) {
-//			System.out.println(z[i] + ":" + p[i] + ":" + c[i] + ":" + cc[i] + ":" + t[i]);
+			// System.out.println(z[i] + ":" + p[i] + ":" + c[i] + ":" + cc[i] +
+			// ":" + t[i]);
 			TrainPlanItem trainPlanItem = new TrainPlanItem();
 			trainPlanItem.settRAIN_PLAN_ID(trainPlanId);
 			trainPlanItem.setTRAIN_ITEM_ID(UUIDUtil.getUUid());
@@ -71,13 +69,13 @@ public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInf
 			trainPlanItem.setCLASS_COUNT(cc[i]);
 			trainPlanItem.setTEACHER(t[i]);
 			trainPlanItems2.add(trainPlanItem);
-			
+
 		}
-		
+
 		if (new TrainPlanCRUD().addTrainPlan(trainPlanInfo, trainPlanItems2)) {
 			return SUCCESS;
 		}
-		
+
 		return ERROR;
 	}
 
@@ -85,6 +83,5 @@ public class AddAction extends ActionSupport implements ModelDriven<TrainPlanInf
 	public TrainPlanInfo getModel() {
 		return trainPlanInfo;
 	}
-
 
 }
