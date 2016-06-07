@@ -43,58 +43,62 @@
 	$(document)
 			.ready(
 					function() {
-						$
-								.ajax({
-									type : "post",
-									target : "#treeDemo",
-									dataType : "json",
-									url : "${pageContext.request.contextPath}/SearchTreeAction",
-									success : function(treeList2) {
-										var treeList3 = eval("(" + treeList2
-												+ ")");
-										/* alert(treeList3); */
-										var setting = {
-											data : {
-												simpleData : {
-													enable : true,
-													idKey : "unit_Id",
-													pIdKey : "up_Unit_Id",
-													rootPId : "0",
+						getTree();
+						function getTree() {
+							$
+									.ajax({
+										type : "post",
+										target : "#treeDemo",
+										dataType : "json",
+										url : "${pageContext.request.contextPath}/SearchTreeAction",
+										success : function(treeList2) {
+											var treeList3 = eval("("
+													+ treeList2 + ")");
+											/* alert(treeList3); */
+											var setting = {
+												data : {
+													simpleData : {
+														enable : true,
+														idKey : "unit_Id",
+														pIdKey : "up_Unit_Id",
+														rootPId : "0",
+													},
+													key : {
+														name : "unit_Name",
+													}
 												},
-												key : {
-													name : "unit_Name",
+												callback : {
+													onClick : onClick
 												}
-											},
-											callback : {
-												onClick : onClick
+											};
+											var zNodes = treeList3;
+
+											/* 
+											 * 添加 树节点的 点击事件；
+											 */
+											var log, className = "dark";
+											function onClick(event, treeId,
+													treeNode, clickFlag) {
+												var id = treeNode.unit_Id;
+												var name = treeNode.unit_Name;
+												document.getElementById("bt1").value = id;
+												document.getElementById("bt2").value = name;
+												searchUnit();
 											}
-										};
-										var zNodes = treeList3;
 
-										/* 
-										 * 添加 树节点的 点击事件；
-										 */
-										var log, className = "dark";
-										function onClick(event, treeId,
-												treeNode, clickFlag) {
-											var id = treeNode.unit_Id;
-											var name = treeNode.unit_Name;
-											document.getElementById("bt1").value = id;
-											document.getElementById("bt2").value = name;
-											searchUnit();
+											/* $(document).ready(function(){ */
+											$.fn.zTree.init($("#treeDemo"),
+													setting, zNodes);
+											/* }); */
+
 										}
-
-										/* $(document).ready(function(){ */
-										$.fn.zTree.init($("#treeDemo"),
-												setting, zNodes);
-										/* }); */
-
-									}
-								});
+									});
+						}
 						function doReload() {
-							alert("lalalalal");
+							alert("-----------异步加载-----------");
 							var zTree = $.fn.zTree.getZTreeObj("treeDemo");
 							zTree.reAsyncChildNodes(null, "refresh");
+							alert("----------异步加载完毕-----------");
 						}
 
 						/* 实现查询部门并添加到表格中 */
@@ -149,49 +153,67 @@
 							});
 						});
 
+						/* 添加按钮的监听时间 */
+						$('#dapartment_add').click(function() {
+							/* 修改上级部门的值 */
+							var a = document.getElementById("dap_add_name");
+							a.innerHTML = $('#bt2').val();
+							var b = document.getElementById("dap_add_id");
+							b.innerHTML = $('#bt1').val();
+						});
+
+						/* 实现保存部门的js代码 */
+						$('#dapartm_add_save')
+								.click(
+										function() {
+											/* var $dap_id = $('#dapartment_id').val();
+											alert($dap_id+"编号添加");
+											var $html = "<div class='panel-body'></div>";
+											$($html).appendTo("#collapseOne").html($dap_id); */// 将boostrap的panel——body元素添加到 指定的折叠框 id为当前输入编号的id
+											var params = {
+												unit_Id : $('#dapartment_id')
+														.val(),
+												up_Unit_Id : $('#bt1').val(),
+												unit_Name : $(
+														'#dapartment_name')
+														.val(),
+												telephone : $(
+														'#dapartment_phone')
+														.val(),
+												header : $('#dapartment_jc')
+														.val(),
+												remark : $('#dapartment_remark')
+														.val(),
+											};
+											$
+													.ajax({
+														type : "post",
+														dataType : "json",
+														url : "AddUnitAction",
+														data : params,
+														success : function(
+																addResult) {
+															alert("保存成功");
+															$(".modal").modal(
+																	"hide");
+															var treeObj = $.fn.zTree
+																	.getZTreeObj("treeDemo");
+															var nodes = treeObj
+																	.getNodes();
+															for (var i = 0; i < nodes.length; i++) {
+																treeObj
+																		.removeNode(nodes[i]);
+															}
+															getTree();
+														},
+														error : function(
+																addResult) {
+															alert("保存失败，部门编号 ");
+														}
+													});
+
+										});
 					});
-</script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		/* 添加按钮的监听时间 */
-		$('#dapartment_add').click(function() {
-			/* 修改上级部门的值 */
-			var a = document.getElementById("dap_add_name");
-			a.innerHTML = $('#bt2').val();
-			var b = document.getElementById("dap_add_id");
-			b.innerHTML = $('#bt1').val();
-		});
-
-		/* 实现保存部门的js代码 */
-		$('#dapartm_add_save').click(function() {
-			/* var $dap_id = $('#dapartment_id').val();
-			alert($dap_id+"编号添加");
-			var $html = "<div class='panel-body'></div>";
-			$($html).appendTo("#collapseOne").html($dap_id); */// 将boostrap的panel——body元素添加到 指定的折叠框 id为当前输入编号的id
-			$.ajax({
-				type : "post",
-				dataType : "json",
-				url : "AddUnitAction",
-				data : {
-					unit_Id : $('#dapartment_id').val(),
-					up_Unit_Id : $('#bt1').val(),
-					unit_Name : $('#dapartment_name').val(),
-					telephone : $('#dapartment_phone').val(),
-					header : $('#dapartment_jc').val(),
-					remark : $('#dapartment_remark').val(),
-				},
-				success : function(addResult) {
-					alert("保存成功");
-				},
-				error : function(addResult) {
-					alert("保存失败，部门编号 ");
-				}
-			});
-
-		});
-	});
 </script>
 <body>
 	<div class="bef_nav">
