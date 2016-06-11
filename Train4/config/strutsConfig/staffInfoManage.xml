@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="json" extends="json-default">
+		<action name="SearchStaff" class="com.thinkPro.train.action.staffInfoManage.SearchStaff" method="searchStaff">
+			<result type="json">
+    				<param name="root">result</param>  
+    			</result>
+		</action>
+		<action name="getAllStaff" class="com.thinkPro.train.action.staffInfoManage.SearchStaff" method="getAllStaff">
+			<result type="json">
+    				<param name="root">result</param>  
+    			</result>
+		</action>
+		<action name="UpdateStaff" class="com.thinkPro.train.action.staffInfoManage.UpdateStaff" method="updateStaff">
+			<result type="json">
+    				<param name="root">result</param>  
+    			</result>
+		</action>
+		<action name="AddStaff" class="com.thinkPro.train.action.staffInfoManage.AddStaff" method="addStaff">
+			<result type="json">
+    				<param name="root">addResult</param>  
+    			</result>
+		</action>
+		<action name="DeleteStaff" class="com.thinkPro.train.action.staffInfoManage.DeleteStaff" method="deleteStaff">
+			<result type="json">
+    				<param name="root">deleteResult</param>  
+    			</result>
+		</action>
+	</package>
+</struts>

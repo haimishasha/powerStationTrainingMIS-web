@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="staffManage" extends="struts-default">
+		<action name="ChooseStaff" class="com.thinkPro.train.action.staffManage.ChooseStaff" method="chooseStaff">
+			<result>/staffManage.jsp</result>
+		</action>
+		<action name="SaveStaffArray" class="com.thinkPro.train.action.staffManage.SaveStaffArray" method="saveStaffArray">
+			<result>/staffManage.jsp</result>
+		</action>
+		<action name="DeleteStaffArray" class="com.thinkPro.train.action.staffManage.DeleteStaffArray" method="deleteSaffArray">
+			<result>/staffManage.jsp</result>
+		</action>
+		
+	</package>
+</struts>

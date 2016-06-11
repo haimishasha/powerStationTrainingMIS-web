@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<package name="com.thinkPro.train.bean.plan"/>
+		<package name="com.thinkPro.train.bean.unit"/>
+		<package name="com.thinkPro.train.bean.staff"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mybatisMapper/StaffMapper.xml"/>
+		<mapper resource="mybatisMapper/TrainPlanInfoMapper.xml"/>
+		<mapper resource="mybatisMapper/TrainPlanItemMapper.xml"/>
+		<mapper resource="mybatisMapper/UnitMapper.xml"/>
+	</mappers>
+</configuration>
