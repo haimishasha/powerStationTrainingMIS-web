@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkPro.train.db.mapper.StaffMapper">
+ 
+ 	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+	<resultMap type="Staff" id="staffMap">
+		<result property="staffName" column="name" />
+		<result property="birthPlace" column="native" />
+		<result property="jobTitle" column="title" />
+	</resultMap>
+	
+ 	<!-- 根据员工ID查询员工信息 -->
+	<select id="getStaffById" parameterType="String" resultMap="staffMap">
+		select
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,unit where staffId=#{staffId} and staff.unitId=unit.unitId;
+	</select>
+
+	<!-- 根据部门ID查询员工信息 -->
+	<select id="getStaffListByUnitId" parameterType="String" resultMap="staffMap">
+		select
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,unit where staff.unitId=#{unitId} and staff.unitId=unit.unitId;
+	</select>
+	
+	<!-- 查询全部员工信息 -->
+	<select id="getAllStaff" resultMap="staffMap">
+		select
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,unit where staff.unitId=unit.unitId;
+	</select>
+	
+	<!-- 根据部门ID查询员工最大ID -->
+	<select id="getStaffNextId" parameterType="String" resultType="String">
+		SELECT CONCAT("00", max(staffId) + 1) staffId FROM staff,unit WHERE staff.unitId=unit.unitId;
+	</select>
+
+	<!-- 创建员工信息(Insert) -->
+	<insert id="addStaff" parameterType="Staff">
+		insert
+		staff(name,cardId,staffId,birthday,native,job,unitId,title,telephone,joinTime,sex)
+		values(#{staffName},#{cardId},#{staffId},#{birthday},#{birthPlace},#{job},#{unitId},#{jobTitle},#{telephone},#{joinTime},#{sex})
+	</insert>
+
+
+	<!-- 修改员工信息(Update) -->
+	<update id="updateStaff" parameterType="Staff">
+		update staff set
+		name=#{name}
+		cardId=#{cardId}
+		birthday=#{birthday}
+		native=#{native}
+		job=#{job}
+		unitId=#{unitId}
+		title=#{title}
+		telephone=#{telephone}
+		joinTime=#{joinTime}
+		sex=#{sex} where staffId=#{staffId}
+	</update>
+
+	<!-- 删除员工信息(Delete) -->
+	<delete id="deleteStaffByID" parameterType="String">
+		delete from staff
+		where staffId=#{staffId}
+	</delete>
+
+	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+		
+</mapper>

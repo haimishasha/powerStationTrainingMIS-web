@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="p3" extends="json-default">
+		
+		 <action name="UpdateAction" class="com.thinkPro.train.action.plan.UpdateAction" method="doUpdate">
+			<result>/Plan/update.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="SearchAction" class="com.thinkPro.train.action.plan.SearchAction" method="doSearch">
+			<result>/Plan/searchPlan.jsp</result>
+		</action>
+		<action name="doDelete" class="com.thinkPro.train.action.plan.DeleteAction" method="doDelete">
+			<result>/Plan/searchPlan.jsp</result>
+		</action>	
+		<action name="doAdd" class="com.thinkPro.train.action.plan.AddAction" method="doAdd">
+			<result>/Plan/addPlan.jsp</result>
+		</action>	
+		<action name="SearchUnit" class="com.thinkPro.train.action.unit.SearchUnit" method="SearchUnit">
+			<result type="json">
+    			<param name="root">result</param>  
+    		</result>
+		</action>
+		<action name="UpdateUnitAction" class="com.thinkPro.train.action.unit.UpdateUnitAction" method="updateUnit">
+			<result>/Unit.jsp</result>
+		</action>
+		<action name="AddUnitAction" class="com.thinkPro.train.action.unit.AddUnitAction" method="addUnit">
+			<result type="json">
+    				<param name="root">addResult</param>  
+			</result>
+		</action>
+		<action name="DeleteUnitAction" class="com.thinkPro.train.action.unit.DeleteUnitAction" method="deleteUnit">
+			<result type="json">
+    				<param name="root">treeList2</param>  
+			</result>
+		</action>
+		<action name="SearchTreeAction" class="com.thinkPro.train.action.unit.SearchTreeAction" method="searchTree">
+			<result type="json">
+    				<param name="root">treeList2</param>  
+    			</result>
+		</action>
+	</package>
+</struts>
