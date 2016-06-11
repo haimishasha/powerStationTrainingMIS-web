@@ -71,7 +71,7 @@ public class TestUnit {
 	
 	@Test
 	public void testGetUnitId(){
-		List<Map<String,String>> unitId = util.getUnitId();
+		List<Map<String,String>> unitId = util.getUnitTreeAndNextId();
 		System.out.println(unitId);
 	}
 }

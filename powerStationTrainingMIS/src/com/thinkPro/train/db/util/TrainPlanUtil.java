@@ -8,15 +8,21 @@ import com.thinkPro.train.bean.plan.TrainPlanItem;
 import com.thinkPro.train.db.base.TrainPlanInfoBase;
 import com.thinkPro.train.db.base.TrainPlanItemBase;
 
-
-
+/**
+ * 
+ * 培训计划数据库操作高层接口
+ *
+ */
 public class TrainPlanUtil {
 
 	private TrainPlanInfoBase infoBase;
+	
 	private TrainPlanItemBase itemBase;
 	
 	public TrainPlanUtil() {
+		
 		infoBase = new TrainPlanInfoBase();
+		
 		itemBase = new TrainPlanItemBase();
 	}
 	
@@ -25,7 +31,9 @@ public class TrainPlanUtil {
 	 * @return 全部信息的链表
 	 */
 	public List<TrainPlan> getAllInfo(){
+		
 		List<TrainPlan> allInfos = infoBase.getAllInfo();
+		
 		return allInfos;
 	}
 	
@@ -35,7 +43,9 @@ public class TrainPlanUtil {
 	 * @return 链表
 	 */
 	public List<TrainPlan> getInfoByIf(TrainPlan trainplan){
+		
 		List<TrainPlan> allInfos = infoBase.getInfoByIf(trainplan);
+		
 		return allInfos;
 	}
 	
@@ -45,7 +55,9 @@ public class TrainPlanUtil {
 	 * @return 培训计划信息
 	 */
 	public TrainPlanInfo getTrainPlanInfoById(String planinfoId){
+		
 		TrainPlanInfo info = infoBase.getTrainPlanInfoById(planinfoId);
+		
 		return info;
 	}
 	
@@ -55,7 +67,9 @@ public class TrainPlanUtil {
 	 * @return 培训计划明细
 	 */
 	public TrainPlanItem getTrainPlanItemByItemId(String planitemId){
+		
 		TrainPlanItem item = itemBase.getTrainPlanItemByItemId(planitemId);
+		
 		return item;
 	}
 	
@@ -65,7 +79,9 @@ public class TrainPlanUtil {
 	 * @return 培训计划明细链表
 	 */
 	public List<TrainPlanItem> getTrainPlanItemByInfoId(String planinfoId){
+		
 		List<TrainPlanItem> items = itemBase.getTrainPlanItemByInfoId(planinfoId);
+		
 		return items;
 	}
 	
@@ -75,7 +91,9 @@ public class TrainPlanUtil {
 	 * @return 培训计划明显ID 链表
 	 */
 	public List<String> getItemIdByInfoId(String infoId){
+		
 		List<String> itemIds = itemBase.getItemIdByInfoId(infoId);
+		
 		return itemIds;
 	}
 	/**
@@ -85,31 +103,48 @@ public class TrainPlanUtil {
 	 * @return 插入成功  true 插入失败 false
 	 */
 	public boolean addTrainPlan(TrainPlanInfo planinfo,List<TrainPlanItem> planitems){
+		
 		boolean result = false;
+		
 		String nextTrainPlanInfoId = infoBase.AddTrainPlanInfo(planinfo);
+		
 		String nextTrainPlanItemId = null;
+		
 		if(!"".equals(nextTrainPlanInfoId)){
+			
 			result = true;
 		}
+		
 		if(result){
+			
 			nextTrainPlanItemId = itemBase.getNextPlanItemIdByInfoId(nextTrainPlanInfoId);
+			
 			if(nextTrainPlanItemId==null || "".equals(nextTrainPlanItemId)){
+				
 				nextTrainPlanItemId=nextTrainPlanInfoId+"01";
 			}
+			
 			for(TrainPlanItem item:planitems){
+				
 				item.setTrainItemId(nextTrainPlanItemId);
+				
 				item.setTrainPlanId(nextTrainPlanInfoId);
+				
 				if(itemBase.AddTrainPlanItem(item)){
 					
 					nextTrainPlanItemId="tp"+(nextTrainPlanItemId.substring(2)+1);
+					
 					result = true;
+				
 				}else{
+					
 					break;
 				}
 			}
+			
 		}else{
 			
-			
+			//如果培训计划有问题的话 首先下层需要回滚，本层需要抛出异常
 		}
 		
 		return result;
@@ -121,10 +156,14 @@ public class TrainPlanUtil {
 	 * @return 添加成功 true 添加失败 false
 	 */
 	public boolean addTrainPlanItem(TrainPlanItem planintem){
+		
 		boolean result = false;
+		
 		if(itemBase.AddTrainPlanItem(planintem)){
+			
 			result = true;
 		}
+		
 		return result;
 	}
 	
@@ -134,8 +173,11 @@ public class TrainPlanUtil {
 	 * @return 修改成功  true 修改失败 false
 	 */
 	public boolean updateTrainPlanInfo(TrainPlanInfo planinfo){
+		
 		boolean result = false;
+		
 		if(infoBase.UpdateTrainPlanInfo(planinfo)){
+			
 			result = true;
 		}
 		return result;
@@ -147,8 +189,11 @@ public class TrainPlanUtil {
 	 * @return 修改成功  true 修改失败 false
 	 */
 	public boolean updateTrainPlanItem(TrainPlanItem planitem){
+		
 		boolean result = false;
+		
 		if(itemBase.UpdateTrainPlanItem(planitem)){
+			
 			result = true;
 		}
 		return result;
@@ -160,8 +205,11 @@ public class TrainPlanUtil {
 	 * @return 删除成功  true 删除失败 false
 	 */
 	public boolean deleteTrainPlan(String trainPlanInfoId){
+		
 		boolean result  = false;
+		
 		if(infoBase.DeleteTrainPlanInfo(trainPlanInfoId)){
+			
 			result = true;
 		}
 		return result;
@@ -173,8 +221,11 @@ public class TrainPlanUtil {
 	 * @return 删除成功  true 删除失败 false
 	 */
 	public boolean deleteTrainItem(String trainPlanItemId){
+		
 		boolean result  = false;
+		
 		if(itemBase.DeleteTrainPlanItem(trainPlanItemId)){
+			
 			result = true;
 		}
 		return result;

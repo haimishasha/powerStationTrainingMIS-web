@@ -8,6 +8,7 @@
 		select * from train_plan
 	</select>
 	
+	
 	<!-- 根据条件进行查询和明细全部信息 -->
 	<select id="getInfoByIf" parameterType="TrainPlan" resultMap="AllInfoResultMap">
 		select * from train_plan
@@ -38,15 +39,18 @@
 		<result property="isFinish" column="isFinish"/>
 	</resultMap>
 	
-	<!-- 根据id查询培训计划信息 -->
+	
+	<!-- 根据Id查询培训计划信息 -->
 	<select id="getTrainPlanInfoById" parameterType="String" resultType="TrainPlanInfo">
 		select * from train_plan_info where trainPlanId=#{trainPlanId}
 	</select>
+	
 	
 	<!-- 查询下一个培训计划Id-->
 	<select id="getNextPlanId" resultType="String">
 		SELECT SUBSTR(max(trainPlanId),3)+1 from train_plan_info;
 	</select>
+	
 	
 	<!-- 创建培训计划(Insert) -->
 	<insert id="addTrainPlanInfo" parameterType="TrainPlanInfo">
@@ -54,6 +58,7 @@
 		train_plan_info(trainPlanId,trainPlanName,trainPlanType,trainPlanYear,startTime,endTime,isFinish)
 		values(#{trainPlanId},#{trainPlanName},#{trainPlanType},#{trainPlanYear},#{startTime},#{endTime},#{isFinish})
 	</insert>
+	
 	
 	<!-- 修改培训计划(Update) -->
 	<update id="updateTrainPlanInfo" parameterType="TrainPlanInfo">
@@ -65,6 +70,7 @@
 		endTime=#{endTime},
 		isFinish=#{isFinish} where trainPlanId=#{trainPlanId}
 	</update>
+	
 	
 	<!-- 删除培训计划(Delete) -->
 	<delete id="deleteTrainPlanInfo" parameterType="String">

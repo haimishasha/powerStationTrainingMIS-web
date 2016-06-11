@@ -4,17 +4,22 @@ import java.util.List;
 
 import com.thinkPro.train.bean.staff.Staff;
 import com.thinkPro.train.db.base.StaffBase;
-
+/**
+ * 
+ * 员工信息数据库操作高层接口
+ *
+ */
 public class StaffUtil {
 
 	private StaffBase staffOperate;
 	
 	public StaffUtil() {
+		
 		staffOperate = new StaffBase();
 	}
 	
 	/**
-	 * 根据员工Id返回员工
+	 * 根据员工Id返回员工信息
 	 * @param staffId
 	 * @return
 	 */
@@ -24,7 +29,7 @@ public class StaffUtil {
 	}
 	
 	/**
-	 * 根据部门Id返回员工列表
+	 * 根据部门Id返回员工信息列表
 	 * @param unitId
 	 * @return
 	 */
@@ -34,7 +39,7 @@ public class StaffUtil {
 	}
 	
 	/**
-	 * 返回所有员工
+	 * 返回所有员工信息
 	 * @return
 	 */
 	public List<Staff> getAllStaff(){
@@ -47,7 +52,7 @@ public class StaffUtil {
 	 * @param staff
 	 * @return
 	 */
-	public boolean addStaff(Staff staff){
+	public Staff addStaff(Staff staff){
 		
 		return staffOperate.addStaff(staff);
 	}
