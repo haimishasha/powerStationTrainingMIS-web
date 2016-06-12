@@ -27,21 +27,19 @@ public class UnitBase {
 		
 		boolean result = false;
 		
-		String unitId = unitMapper.getUnitNextId(unit.getUpUnitId());
-		
-		if(null == unitId || "".equals(unitId)){
-			
-			unitId = unit.getUpUnitId()+"001";
-		}
-		
-		unit.setUnitId(unitId);
+		//Unit newUnit = null;
 		
 		int temp = unitMapper.insertUnit(unit);
 		
 		if(temp>0){
 			
 			result = true;
+			
+			//newUnit = unitMapper.getNewUnit(unit.getUpUnitId());
+			
 		}
+		
+		//return newUnit;
 		
 		return result;
 	}
@@ -76,8 +74,4 @@ public class UnitBase {
 
 	}
 	
-	public List<Map<String,String>> getUnitTreeAndNextId() throws SQLException{
-		
-		return unitMapper.getUnitTreeAndNextId();
-	}
 }

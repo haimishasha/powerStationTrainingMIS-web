@@ -35,13 +35,13 @@
 		from staff,unit where staff.unitId=unit.unitId;
 	</select>
 
-
-	<!-- 根据部门Id查询员工下一个Id -->
-	<select id="getStaffNextId" parameterType="String" resultType="String">
-		SELECT CONCAT("00", max(staffId) + 1) staffId FROM staff,unit WHERE
-		staff.unitId=unit.unitId;
+	<!-- 根据部门Id查询最新插入的员工信息 -->
+	<select id="getNewStaff" parameterType="String" resultType="staffMap">
+		select
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,unit where staffId=(SELECT max(staffId) staffId FROM staff,unit WHERE
+		staff.unitId=unit.unitId) and staff.unitId=unit.unitId;
 	</select>
-
 
 	<!-- 创建员工信息(Insert) -->
 	<insert id="addStaff" parameterType="Staff">

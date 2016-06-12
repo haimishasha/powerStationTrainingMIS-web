@@ -28,10 +28,10 @@ public interface TrainPlanInfoMapper {
 	 */
 	public TrainPlanInfo getTrainPlanInfoById(String trainPlanId);
 	/**
-	 * 查询下一个培训计划Id
+	 * 查询最大的培训计划Id
 	 * @return
 	 */
-	public String getNextPlanId();
+	public String getMaxPlanId();
 	/**
 	 * 创建培训计划
 	 * @param trianPlanInfo

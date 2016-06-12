@@ -52,15 +52,7 @@ public class TrainPlanItemBase {
 		
 		return trainPlanItemMapper.getPlanItemIdByInfoId(infoId);
 	}
-	/**
-	 * 根据培训计划信息Id查询下一个培训计划明细Id
-	 * @param infoId
-	 * @return
-	 */
-	public String getNextPlanItemIdByInfoId(String infoId) throws SQLException{
-		
-		return trainPlanItemMapper.getNextPlanItemIdByInfoId(infoId);
-	}
+
 	/**
 	 * 创建培训计划明细
 	 * @param planitem

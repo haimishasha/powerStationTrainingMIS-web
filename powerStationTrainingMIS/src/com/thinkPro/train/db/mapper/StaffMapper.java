@@ -28,11 +28,11 @@ public interface StaffMapper {
 	 */
 	public List<Staff> getAllStaff();
 	/**
-	 * 根据部门Id查询员工下一个Id
+	 * 根据部门Id查询最新插入的员工信息 
 	 * @param unitId
 	 * @return
 	 */
-	public String getStaffNextId(String unitId);
+	public Staff getNewStaff(String unitId);
 	/**
 	 * 创建员工信息
 	 * @param staff

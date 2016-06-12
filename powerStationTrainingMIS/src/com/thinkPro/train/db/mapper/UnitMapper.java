@@ -21,8 +21,8 @@ public interface UnitMapper {
 	
 	public List<Map<String,String>> getUnitTree();
 	
-	public String getUnitNextId(String upUnitId);
+	public Unit getNewUnit(String upUnitId);
 	
-	public List<Map<String,String>> getUnitTreeAndNextId();
+	
 	
 }

@@ -87,12 +87,4 @@ public class UnitUtil {
 		return unitBase.getUnitTree();
 	}
 	
-	/**
-	 * 返回部门树 
-	 * @return 包括本级部门Id,部门名称,上级部门Id,本部门的下级部门的下一个Id
-	 */
-	public List<Map<String,String>> getUnitTreeAndNextId() throws SQLException{
-		
-		return unitBase.getUnitTreeAndNextId();
-	}
 }

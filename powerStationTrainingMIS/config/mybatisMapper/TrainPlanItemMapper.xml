@@ -21,12 +21,6 @@
  	</select>
  	
  	
- 	<!-- 根据培训计划信息Id查询下一个培训计划明细Id -->
- 	<select id="getNextPlanItemIdByInfoId" parameterType="String" resultType="String">
- 		select SUBSTR(max(trainItemId),3)+1 from train_plan_item where trainPlanId = #{trainPlanId}
- 	</select>
- 	
- 	
 	<!-- 创建培训计划明细(Insert) -->
 	<insert id="addTrainPlanItem" parameterType="TrainPlanItem">
 		insert

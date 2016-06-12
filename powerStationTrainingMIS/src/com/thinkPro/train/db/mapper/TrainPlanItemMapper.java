@@ -27,12 +27,7 @@ public interface TrainPlanItemMapper {
 	 * @return
 	 */
 	public List<String> getPlanItemIdByInfoId(String trainPlanInfoId);
-	/**
-	 * 根据培训计划信息Id查询下一个培训计划明细Id
-	 * @param trainPlanInfoId
-	 * @return
-	 */
-	public String getNextPlanItemIdByInfoId(String trainPlanInfoId);
+	
 	/**
 	 * 创建培训计划明细
 	 * @param trainPlanItem

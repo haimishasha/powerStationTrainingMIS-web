@@ -60,24 +60,14 @@ public class TrainPlanInfoBase {
 	 */
 	public String AddTrainPlanInfo(TrainPlanInfo trainPlanInfo) throws SQLException{
 		
-		String nextId = trainPlanInfoMapper.getNextPlanId();
+
+		String nextId = null;
 		
-		if(null==nextId || "".equals(nextId)){
-			
-			nextId = "tp10001";
-			
-		}else{
-			
-			nextId = "tp"+ nextId;
-		}
-		
-		trainPlanInfo.setTrainPlanId(nextId);
-			
 		int temp = trainPlanInfoMapper.addTrainPlanInfo(trainPlanInfo);
 		
-		if(temp <= -1){
+		if(temp > -1){
 			
-			nextId = "";
+			nextId = trainPlanInfoMapper.getMaxPlanId();
 		}
 		
 		return nextId;
