@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.util;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.thinkPro.train.bean.plan.TrainPlan;
@@ -30,11 +31,9 @@ public class TrainPlanUtil {
 	 * 查询全部信息，包括培训计划信息和培训明细
 	 * @return 全部信息的链表
 	 */
-	public List<TrainPlan> getAllInfo(){
+	public List<TrainPlan> getAllInfo() throws SQLException{
 		
-		List<TrainPlan> allInfos = infoBase.getAllInfo();
-		
-		return allInfos;
+		return infoBase.getAllInfo();
 	}
 	
 	/**
@@ -42,11 +41,9 @@ public class TrainPlanUtil {
 	 * @param trainplan
 	 * @return 链表
 	 */
-	public List<TrainPlan> getInfoByIf(TrainPlan trainplan){
+	public List<TrainPlan> getInfoByIf(TrainPlan trainplan) throws SQLException{
 		
-		List<TrainPlan> allInfos = infoBase.getInfoByIf(trainplan);
-		
-		return allInfos;
+		return infoBase.getInfoByIf(trainplan);
 	}
 	
 	/**
@@ -54,11 +51,9 @@ public class TrainPlanUtil {
 	 * @param planinfoId 培训计划信息ID
 	 * @return 培训计划信息
 	 */
-	public TrainPlanInfo getTrainPlanInfoById(String planinfoId){
+	public TrainPlanInfo getTrainPlanInfoById(String planinfoId) throws SQLException{
 		
-		TrainPlanInfo info = infoBase.getTrainPlanInfoById(planinfoId);
-		
-		return info;
+		return infoBase.getTrainPlanInfoById(planinfoId);
 	}
 	
 	/**
@@ -66,11 +61,9 @@ public class TrainPlanUtil {
 	 * @param planitemId 培训计划明细ID
 	 * @return 培训计划明细
 	 */
-	public TrainPlanItem getTrainPlanItemByItemId(String planitemId){
+	public TrainPlanItem getTrainPlanItemByItemId(String planitemId) throws SQLException{
 		
-		TrainPlanItem item = itemBase.getTrainPlanItemByItemId(planitemId);
-		
-		return item;
+		return itemBase.getTrainPlanItemByItemId(planitemId);
 	}
 	
 	/**
@@ -78,11 +71,10 @@ public class TrainPlanUtil {
 	 * @param planinfoId 培训计划信息ID
 	 * @return 培训计划明细链表
 	 */
-	public List<TrainPlanItem> getTrainPlanItemByInfoId(String planinfoId){
+	public List<TrainPlanItem> getTrainPlanItemByInfoId(String planinfoId) throws SQLException{
 		
-		List<TrainPlanItem> items = itemBase.getTrainPlanItemByInfoId(planinfoId);
-		
-		return items;
+		return itemBase.getTrainPlanItemByInfoId(planinfoId);
+
 	}
 	
 	/**
@@ -90,11 +82,9 @@ public class TrainPlanUtil {
 	 * @param infoId 培训计划信息ID
 	 * @return 培训计划明显ID 链表
 	 */
-	public List<String> getItemIdByInfoId(String infoId){
+	public List<String> getItemIdByInfoId(String infoId) throws SQLException{
 		
-		List<String> itemIds = itemBase.getItemIdByInfoId(infoId);
-		
-		return itemIds;
+		return itemBase.getItemIdByInfoId(infoId);
 	}
 	/**
 	 * 添加培训计划信息，同时添加培训计划明细
@@ -102,7 +92,7 @@ public class TrainPlanUtil {
 	 * @param planitems 培训计划明细
 	 * @return 插入成功  true 插入失败 false
 	 */
-	public boolean addTrainPlan(TrainPlanInfo planinfo,List<TrainPlanItem> planitems){
+	public boolean addTrainPlan(TrainPlanInfo planinfo,List<TrainPlanItem> planitems) throws SQLException{
 		
 		boolean result = false;
 		
@@ -155,16 +145,9 @@ public class TrainPlanUtil {
 	 * @param planintem 培训计划明细
 	 * @return 添加成功 true 添加失败 false
 	 */
-	public boolean addTrainPlanItem(TrainPlanItem planintem){
+	public boolean addTrainPlanItem(TrainPlanItem planintem) throws SQLException{
 		
-		boolean result = false;
-		
-		if(itemBase.AddTrainPlanItem(planintem)){
-			
-			result = true;
-		}
-		
-		return result;
+		return itemBase.AddTrainPlanItem(planintem)?true:false;		
 	}
 	
 	/**
@@ -172,15 +155,9 @@ public class TrainPlanUtil {
 	 * @param planinfo 培训计划信息
 	 * @return 修改成功  true 修改失败 false
 	 */
-	public boolean updateTrainPlanInfo(TrainPlanInfo planinfo){
+	public boolean updateTrainPlanInfo(TrainPlanInfo planinfo) throws SQLException{
 		
-		boolean result = false;
-		
-		if(infoBase.UpdateTrainPlanInfo(planinfo)){
-			
-			result = true;
-		}
-		return result;
+		return infoBase.UpdateTrainPlanInfo(planinfo)?true:false;
 	}
 	
 	/**
@@ -188,15 +165,9 @@ public class TrainPlanUtil {
 	 * @param planitem 培训计划明细
 	 * @return 修改成功  true 修改失败 false
 	 */
-	public boolean updateTrainPlanItem(TrainPlanItem planitem){
+	public boolean updateTrainPlanItem(TrainPlanItem planitem) throws SQLException{
 		
-		boolean result = false;
-		
-		if(itemBase.UpdateTrainPlanItem(planitem)){
-			
-			result = true;
-		}
-		return result;
+		return itemBase.UpdateTrainPlanItem(planitem)?true:false;
 	}
 	
 	/**
@@ -204,15 +175,9 @@ public class TrainPlanUtil {
 	 * @param trainPlanInfoId 培训计划信息ID
 	 * @return 删除成功  true 删除失败 false
 	 */
-	public boolean deleteTrainPlan(String trainPlanInfoId){
+	public boolean deleteTrainPlan(String trainPlanInfoId) throws SQLException{
 		
-		boolean result  = false;
-		
-		if(infoBase.DeleteTrainPlanInfo(trainPlanInfoId)){
-			
-			result = true;
-		}
-		return result;
+		return infoBase.DeleteTrainPlanInfo(trainPlanInfoId)?true:false;
 	}
 	
 	/**
@@ -220,14 +185,8 @@ public class TrainPlanUtil {
 	 * @param trainPlanItemId 培训计划明细ID
 	 * @return 删除成功  true 删除失败 false
 	 */
-	public boolean deleteTrainItem(String trainPlanItemId){
+	public boolean deleteTrainItem(String trainPlanItemId) throws SQLException{
 		
-		boolean result  = false;
-		
-		if(itemBase.DeleteTrainPlanItem(trainPlanItemId)){
-			
-			result = true;
-		}
-		return result;
+		return itemBase.DeleteTrainPlanItem(trainPlanItemId)?true:false;
 	}
 }

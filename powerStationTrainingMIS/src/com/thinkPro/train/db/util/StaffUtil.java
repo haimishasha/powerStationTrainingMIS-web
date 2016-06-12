@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.util;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.thinkPro.train.bean.staff.Staff;
@@ -23,7 +24,7 @@ public class StaffUtil {
 	 * @param staffId
 	 * @return
 	 */
-	public Staff getStaffById(String staffId){
+	public Staff getStaffById(String staffId) throws SQLException{
 		
 		return staffOperate.getStaffById(staffId);
 	}
@@ -33,7 +34,7 @@ public class StaffUtil {
 	 * @param unitId
 	 * @return
 	 */
-	public List<Staff> getStaffListByUnitId(String unitId){
+	public List<Staff> getStaffListByUnitId(String unitId) throws SQLException{
 		
 		return staffOperate.getStaffListByUnitId(unitId);
 	}
@@ -42,7 +43,7 @@ public class StaffUtil {
 	 * 返回所有员工信息
 	 * @return
 	 */
-	public List<Staff> getAllStaff(){
+	public List<Staff> getAllStaff() throws SQLException{
 		
 		return staffOperate.getAllStaff();
 	}
@@ -52,7 +53,7 @@ public class StaffUtil {
 	 * @param staff
 	 * @return
 	 */
-	public Staff addStaff(Staff staff){
+	public Staff addStaff(Staff staff) throws SQLException{
 		
 		return staffOperate.addStaff(staff);
 	}
@@ -62,7 +63,7 @@ public class StaffUtil {
 	 * @param staff
 	 * @return
 	 */
-	public boolean updateStaff(Staff staff){
+	public boolean updateStaff(Staff staff) throws SQLException{
 		
 		return staffOperate.updateStaff(staff);
 	}
@@ -72,7 +73,7 @@ public class StaffUtil {
 	 * @param staffId
 	 * @return
 	 */
-	public boolean deleteStaffByID(String staffId){
+	public boolean deleteStaffByID(String staffId) throws SQLException{
 		
 		return staffOperate.deleteStaffByID(staffId);
 	}
