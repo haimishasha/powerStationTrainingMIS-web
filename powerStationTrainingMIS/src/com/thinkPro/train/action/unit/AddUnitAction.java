@@ -1,5 +1,7 @@
 package com.thinkPro.train.action.unit;
 
+import java.sql.SQLException;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.thinkPro.train.bean.unit.Unit;
@@ -29,11 +31,16 @@ public class AddUnitAction extends ActionSupport implements ModelDriven<Unit>{
 	public String addUnit(){
 		//System.out.println("到我�?);
 		UnitUtil unitCRUD = new UnitUtil();
-		boolean a = unitCRUD.insert(unit);
-		this.addResult = a;
-		if (a) {
-			return SUCCESS;
-		} 
+		boolean a;
+		try {
+			a = unitCRUD.insert(unit);
+			this.addResult = a;
+			if (a) {
+				return SUCCESS;
+			} 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return ERROR;
 	}
 

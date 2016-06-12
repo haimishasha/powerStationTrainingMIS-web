@@ -1,5 +1,6 @@
 package com.thinkPro.train.action.staffInfoManage;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,11 @@ public class SearchStaff extends ActionSupport{
 		StaffUtil staffUtil=new StaffUtil();
 //		仅用于测�?
 		Staff staff = new Staff();
-		staffList= staffUtil.getStaffListByUnitId(unitId);
+		try {
+			staffList= staffUtil.getStaffListByUnitId(unitId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//staffList.add(staff);
 		
@@ -48,7 +53,11 @@ public class SearchStaff extends ActionSupport{
 		
 		StaffUtil staffUtil=new StaffUtil();
 		
-		this.result = staffUtil.getAllStaff();
+		try {
+			this.result = staffUtil.getAllStaff();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
 

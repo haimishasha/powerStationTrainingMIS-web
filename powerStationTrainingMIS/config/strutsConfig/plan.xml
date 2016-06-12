@@ -23,6 +23,11 @@
     			<param name="root">result</param>  
     		</result>
 		</action>
+		<action name="GetUpdateUnit" class="com.thinkPro.train.action.unit.UpdateUnitAction" method="getUpdateUnit">
+			<result type="json">
+    			<param name="root">result</param>  
+    		</result>
+		</action>
 		<action name="UpdateUnitAction" class="com.thinkPro.train.action.unit.UpdateUnitAction" method="updateUnit">
 			<result>/Unit.jsp</result>
 		</action>

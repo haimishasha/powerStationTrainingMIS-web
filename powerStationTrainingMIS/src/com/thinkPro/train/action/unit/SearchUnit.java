@@ -1,5 +1,6 @@
 package com.thinkPro.train.action.unit;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,10 +46,15 @@ public class SearchUnit extends ActionSupport {
 	public String SearchUnit(){
 		//System.out.println("到我�?);
 		UnitUtil unitCRUD = new UnitUtil();
-		List<Unit> a = unitCRUD.getUnitByUpUnitId(up_Unit_Id);
-		System.out.println("中文 测试用的" + a);
-		JSONArray jsonArray = JSONArray.fromObject(a);
-		this.result = jsonArray.toString();
+		List<Unit> a;
+		try {
+			a = unitCRUD.getUnitByUpUnitId(up_Unit_Id);
+			System.out.println("中文 测试用的" + a);
+			JSONArray jsonArray = JSONArray.fromObject(a);
+			this.result = jsonArray.toString();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
 	

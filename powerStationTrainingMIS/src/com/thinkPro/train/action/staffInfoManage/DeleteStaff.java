@@ -1,5 +1,7 @@
 package com.thinkPro.train.action.staffInfoManage;
 
+import java.sql.SQLException;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.thinkPro.train.bean.staff.Staff;
 import com.thinkPro.train.db.util.StaffUtil;
@@ -36,7 +38,11 @@ public class DeleteStaff extends ActionSupport{
 		System.out.println("删除成功");
 		System.out.println(staffId + "今儿我开了家 ");
 		StaffUtil staffUtil=new StaffUtil();
-		this.deleteResult = staffUtil.deleteStaffByID(staffId);
+		try {
+			this.deleteResult = staffUtil.deleteStaffByID(staffId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	}
 

@@ -1,5 +1,7 @@
 package com.thinkPro.train.action.staffInfoManage;
 
+import java.sql.SQLException;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.thinkPro.train.bean.staff.Staff;
@@ -25,7 +27,11 @@ public class AddStaff extends ActionSupport implements ModelDriven<Staff> {
 	
 	public String addStaff(){
 		StaffUtil staffUtil=new StaffUtil();
-		staffUtil.addStaff(staff);
+		try {
+			staffUtil.addStaff(staff);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	//数据库返回bean
 		//this.addResult = a;

@@ -1,5 +1,7 @@
 package com.thinkPro.train.action.unit;
 
+import java.sql.SQLException;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.thinkPro.train.db.util.UnitUtil;
@@ -24,7 +26,11 @@ public String getUnit_Id() {
 public String deleteUnit(){
 //	  System.out.println("删除");
 		UnitUtil unitCRUD = new UnitUtil();
-		 boolean  a = unitCRUD.delete(unit_Id);
+		 try {
+			boolean  a = unitCRUD.delete(unit_Id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return SUCCESS;
 	  
   }

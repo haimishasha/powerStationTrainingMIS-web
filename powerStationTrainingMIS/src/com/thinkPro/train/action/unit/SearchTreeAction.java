@@ -1,5 +1,6 @@
 package com.thinkPro.train.action.unit;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,11 @@ public class SearchTreeAction extends ActionSupport {
 	public String  searchTree(){
 	     UnitUtil unit = new UnitUtil();
 	     
-	     this.treeList =unit.getUnitTree();
+	     try {
+			this.treeList =unit.getUnitTree();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 			
 		JSONArray jsonArray = JSONArray.fromObject(treeList);
 		this.treeList2 = jsonArray.toString();
