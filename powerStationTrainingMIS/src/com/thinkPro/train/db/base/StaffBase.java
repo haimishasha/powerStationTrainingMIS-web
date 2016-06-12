@@ -1,6 +1,6 @@
 package com.thinkPro.train.db.base;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -31,7 +31,7 @@ public class StaffBase {
 	 * @param staff
 	 * @return
 	 */
-	public Staff addStaff(Staff staff){
+	public Staff addStaff(Staff staff) throws SQLException{
 			
 		String staffId = staffMapper.getStaffNextId(staff.getUnitId());
 		
@@ -51,16 +51,9 @@ public class StaffBase {
 	 * @param staff
 	 * @return
 	 */
-	public boolean updateStaff(Staff staff){
+	public boolean updateStaff(Staff staff) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = staffMapper.updateStaff(staff);
-		
-		if(temp>0){
-			
-			result = true;
-		}
+		boolean result = staffMapper.updateStaff(staff)>0?true:false;
 		return result;
 	}
 	/**
@@ -68,17 +61,9 @@ public class StaffBase {
 	 * @param staffId
 	 * @return
 	 */
-	public boolean deleteStaffByID(String staffId){
+	public boolean deleteStaffByID(String staffId) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = staffMapper.deleteStaffByID(staffId);
-		
-		if(temp>0){
-			
-			result = true;
-		}
-		
+		boolean result = staffMapper.deleteStaffByID(staffId)>0?true:false;
 		return result;
 	}
 	
@@ -87,38 +72,26 @@ public class StaffBase {
 	 * @param staffId
 	 * @return
 	 */
-	public Staff getStaffById(String staffId){
+	public Staff getStaffById (String staffId) throws SQLException{
 
-		Staff staff = staffMapper.getStaffById(staffId);	
-		
-		return staff;
-		
+		return staffMapper.getStaffById(staffId);			
 	}
 	/**
 	 * 根据部门Id查询员工信息
 	 * @param unitId
 	 * @return
 	 */
-	public List<Staff> getStaffListByUnitId(String unitId){
-		
-		List<Staff> staff = new ArrayList<Staff>();	
-		
-		staff = staffMapper.getStaffListByUnitId(unitId);	
-		
-		return staff;
-		
+	public List<Staff> getStaffListByUnitId(String unitId) throws SQLException{
+
+		return staffMapper.getStaffListByUnitId(unitId);		
 	}
 	/**
 	 * 查询全部员工信息
 	 * @return
 	 */
-	public List<Staff> getAllStaff(){
+	public List<Staff> getAllStaff() throws SQLException{
 		
-		List<Staff> staff = new ArrayList<Staff>();
-		
-		staff = staffMapper.getAllStaff();	
-		
-		return staff;
+		return staffMapper.getAllStaff();
 	}
 	
 }

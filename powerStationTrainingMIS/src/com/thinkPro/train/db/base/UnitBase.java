@@ -1,6 +1,6 @@
 package com.thinkPro.train.db.base;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class UnitBase {
 		unitMapper = (UnitMapper)applicationContext.getBean("unitMapper");
 	}
 	
-	public boolean insertUnit(Unit unit){
+	public boolean insertUnit(Unit unit) throws SQLException{
 		
 		boolean result = false;
 		
@@ -46,68 +46,38 @@ public class UnitBase {
 		return result;
 	}
 	
-	public boolean updateUnit(Unit unit){
+	public boolean updateUnit(Unit unit) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = unitMapper.updateUnit(unit);
-		
-		if(temp>0){
-			
-			result = true;
-		}
+		boolean result = unitMapper.updateUnit(unit)>0?true:false;
 		return result;
 	}
 	
-	public boolean deleteUnit(String unit_Id){
+	public boolean deleteUnit(String unit_Id) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = unitMapper.deleteUnit(unit_Id);
-		
-		if(temp>0){
-			
-			result = true;
-		}
-		
+		boolean result = unitMapper.deleteUnit(unit_Id)>0?true:false;
 		return result;
 	}
 	
-	public Unit getUnitByUnitId(String unit_Id){
+	public Unit getUnitByUnitId(String unit_Id) throws SQLException{
 
-		Unit unit = unitMapper.getUnitByUnitId(unit_Id);
-		
-		return unit;
+		return unitMapper.getUnitByUnitId(unit_Id);		
+	}
+	public List<Unit> getUnitByUpUnitId(String up_Unit_Id) throws SQLException{
+	
+		return unitMapper.getUnitByUpUnitId(up_Unit_Id);
 		
 	}
-	public List<Unit> getUnitByUpUnitId(String up_Unit_Id){
-		
-		List<Unit> units = new ArrayList<Unit>();
-		
-		units = unitMapper.getUnitByUpUnitId(up_Unit_Id);
-		
-		return units;
-		
+	public List<Unit> getAllUnits() throws SQLException{
+
+		return unitMapper.getAllUnits();
 	}
-	public List<Unit> getAllUnits(){
-		
-		List<Unit> units = new ArrayList<Unit>();
-		
-		units = unitMapper.getAllUnits();
-		
-		return units;
-	}
-	public List<Map<String,String>> getUnitTree(){
-		
-		List<Map<String,String>> unitTree = unitMapper.getUnitTree();
-		
-		return unitTree;
+	public List<Map<String,String>> getUnitTree() throws SQLException{	
+		return unitMapper.getUnitTree();
+
 	}
 	
-	public List<Map<String,String>> getUnitTreeAndNextId(){
+	public List<Map<String,String>> getUnitTreeAndNextId() throws SQLException{
 		
-		List<Map<String,String>> unitTree = unitMapper.getUnitTreeAndNextId();
-		
-		return unitTree;
+		return unitMapper.getUnitTreeAndNextId();
 	}
 }

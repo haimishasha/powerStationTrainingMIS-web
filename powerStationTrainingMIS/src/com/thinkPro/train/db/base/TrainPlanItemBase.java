@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.base;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -29,61 +30,45 @@ public class TrainPlanItemBase {
 	 * @param itemId
 	 * @return
 	 */
-	public TrainPlanItem getTrainPlanItemByItemId(String itemId){
+	public TrainPlanItem getTrainPlanItemByItemId(String itemId) throws SQLException{
 		
-		TrainPlanItem item = trainPlanItemMapper.getTrainPlanItemByItemId(itemId);
-		
-		return item;
+		return trainPlanItemMapper.getTrainPlanItemByItemId(itemId);
 	}
 	/**
 	 * 根据培训计划Id查询培训计划明细
 	 * @param infoId
 	 * @return
 	 */
-	public List<TrainPlanItem> getTrainPlanItemByInfoId(String infoId){
+	public List<TrainPlanItem> getTrainPlanItemByInfoId(String infoId) throws SQLException{
 		
-		List<TrainPlanItem> items = trainPlanItemMapper.getTrainPlanItemByInfoId(infoId);
-		
-		return items;
+		return trainPlanItemMapper.getTrainPlanItemByInfoId(infoId);
 	}
 	/**
 	 * 根据培训计划信息Id查询培训计划明细Id
 	 * @param infoId
 	 * @return
 	 */
-	public List<String> getItemIdByInfoId(String infoId){
+	public List<String> getItemIdByInfoId(String infoId) throws SQLException{
 		
-		List<String> itemIds = trainPlanItemMapper.getPlanItemIdByInfoId(infoId);
-		
-		return itemIds;
+		return trainPlanItemMapper.getPlanItemIdByInfoId(infoId);
 	}
 	/**
 	 * 根据培训计划信息Id查询下一个培训计划明细Id
 	 * @param infoId
 	 * @return
 	 */
-	public String getNextPlanItemIdByInfoId(String infoId){
+	public String getNextPlanItemIdByInfoId(String infoId) throws SQLException{
 		
-		String maxItemId = trainPlanItemMapper.getNextPlanItemIdByInfoId(infoId);
-		
-		return maxItemId;
+		return trainPlanItemMapper.getNextPlanItemIdByInfoId(infoId);
 	}
 	/**
 	 * 创建培训计划明细
 	 * @param planitem
 	 * @return
 	 */
-	public boolean AddTrainPlanItem(TrainPlanItem planitem) {
+	public boolean AddTrainPlanItem(TrainPlanItem planitem) throws SQLException {
 		
-		boolean result = false;
-		
-		int temp = trainPlanItemMapper.addTrainPlanItem(planitem);
-		
-		if(temp > -1){
-			
-			result = true;
-		}
-		
+		boolean result = trainPlanItemMapper.addTrainPlanItem(planitem)>-1?true:false;
 		return result;
 	}
 	/**
@@ -91,16 +76,9 @@ public class TrainPlanItemBase {
 	 * @param planitem
 	 * @return
 	 */
-	public boolean UpdateTrainPlanItem(TrainPlanItem planitem) {
+	public boolean UpdateTrainPlanItem(TrainPlanItem planitem) throws SQLException {
 		
-		boolean result = false;
-		
-		int temp = trainPlanItemMapper.updateTrainPlanItem(planitem);
-		
-		if(temp > -1){
-			
-			result = true;
-		}
+		boolean result = trainPlanItemMapper.updateTrainPlanItem(planitem)>-1?true:false;
 		return result;
 	}
 	/**
@@ -108,16 +86,9 @@ public class TrainPlanItemBase {
 	 * @param trainPlanItemId
 	 * @return
 	 */
-	public boolean DeleteTrainPlanItem(String trainPlanItemId){
+	public boolean DeleteTrainPlanItem(String trainPlanItemId) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = trainPlanItemMapper.deleteTrainPlanItem(trainPlanItemId);
-		
-		if(temp > -1){
-			
-			result = true;
-		}
+		boolean result = trainPlanItemMapper.deleteTrainPlanItem(trainPlanItemId)>-1?true:false;
 		return result;
 	}
 }

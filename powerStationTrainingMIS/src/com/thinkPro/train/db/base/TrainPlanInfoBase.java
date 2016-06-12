@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.base;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -30,38 +31,34 @@ public class TrainPlanInfoBase {
 	 * 查询培训计划和明细全部信息
 	 * @return
 	 */
-	public List<TrainPlan> getAllInfo(){
+	public List<TrainPlan> getAllInfo() throws SQLException{
 		
-		List<TrainPlan> allInfos = trainPlanInfoMapper.getAllInfo();
-		
-		return allInfos;
+		return trainPlanInfoMapper.getAllInfo();
 	}
 	/**
 	 * 根据条件进行查询和明细全部信息
 	 * @param trainPlan
 	 * @return
 	 */
-	public List<TrainPlan> getInfoByIf(TrainPlan trainPlan){
-		
-		List<TrainPlan> allInfos = trainPlanInfoMapper.getInfoByIf(trainPlan);
-		
-		return allInfos;
+	public List<TrainPlan> getInfoByIf(TrainPlan trainPlan) throws SQLException{
+
+		return trainPlanInfoMapper.getInfoByIf(trainPlan);
 	}
 	/**
 	 * 根据Id查询培训计划信息
 	 * @param trainPlanId
 	 * @return
 	 */
-	public TrainPlanInfo getTrainPlanInfoById(String trainPlanId){
-		TrainPlanInfo info = trainPlanInfoMapper.getTrainPlanInfoById(trainPlanId);
-		return info;
+	public TrainPlanInfo getTrainPlanInfoById(String trainPlanId) throws SQLException{
+
+		return trainPlanInfoMapper.getTrainPlanInfoById(trainPlanId);
 	}
 	/**
 	 * 创建培训计划
 	 * @param trainPlanInfo
 	 * @return
 	 */
-	public String AddTrainPlanInfo(TrainPlanInfo trainPlanInfo) {
+	public String AddTrainPlanInfo(TrainPlanInfo trainPlanInfo) throws SQLException{
 		
 		String nextId = trainPlanInfoMapper.getNextPlanId();
 		
@@ -90,17 +87,9 @@ public class TrainPlanInfoBase {
 	 * @param planinfo
 	 * @return
 	 */
-	public boolean UpdateTrainPlanInfo(TrainPlanInfo planinfo){
+	public boolean UpdateTrainPlanInfo(TrainPlanInfo planinfo) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = trainPlanInfoMapper.updateTrainPlanInfo(planinfo);
-		
-		if(temp > -1){
-			
-			result = true;
-		}
-		
+		boolean result = trainPlanInfoMapper.updateTrainPlanInfo(planinfo)>-1?true:false;
 		return result;
 	}
 	/**
@@ -108,16 +97,9 @@ public class TrainPlanInfoBase {
 	 * @param trainPlanInfoId
 	 * @return
 	 */
-	public boolean DeleteTrainPlanInfo(String trainPlanInfoId){
+	public boolean DeleteTrainPlanInfo(String trainPlanInfoId) throws SQLException{
 		
-		boolean result = false;
-		
-		int temp = trainPlanInfoMapper.deleteTrainPlanInfo(trainPlanInfoId);
-		
-		if(temp > -1){
-			
-			result = true;
-		}
+		boolean result = trainPlanInfoMapper.deleteTrainPlanInfo(trainPlanInfoId)>-1?true:false;
 		return result;
 	}
 }
