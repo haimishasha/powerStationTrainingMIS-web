@@ -12,9 +12,13 @@
 <title>添加计划</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/jquery.ui.datepicker.css">
+<link rel="stylesheet" href="css/Plan/addPlan.css">
 <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Plan/addPlan.js"></script>
+<script type="text/javascript" src="js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -76,7 +80,7 @@
 						<!-- <form> -->
 
 						<div class="table table-responsive">
-								<table id="test_table" class="table table-bordered table_mag"
+							<table id="test_table" class="table table-bordered table_mag"
 								style="width: 100%;">
 								<thead>
 									<tr>
@@ -89,19 +93,24 @@
 								</thead>
 								<tbody id="itemTbody">
 									<tr>
-										<td>
-											<select class="trainPlanItems" name="trainPlanItems[0].major" id="major">
+										<td><select class="trainPlanItems"
+											name="trainPlanItems[0].major" id="major">
 												<option value="0" selected="selected">电气</option>
 												<option value="1">汽机</option>
 												<option value="2">锅炉</option>
 												<option value="3">化水</option>
-												<option value="4">燃运</option>		
-											</select>
-										</td>
-										<td><textarea class="trainPlanItems" name="trainPlanItems[0].trainPurpose" rows="4" cols="24" style="resize: none;" id="trainPurpose"></textarea></td>
-										<td><textarea class="trainPlanItems" name="trainPlanItems[0].trainContent" rows="4" cols="24" style="resize: none;" id="trainContent"></textarea></td>
-										<td><input type="text" class="trainPlanItems" name="trainPlanItems[0].classCount" id="classCount" /></td>
-										<td><input type="text" class="trainPlanItems" name="trainPlanItems[0].teacher" id="teacher" /></td>
+												<option value="4">燃运</option>
+										</select></td>
+										<td><textarea class="trainPlanItems"
+												name="trainPlanItems[0].trainPurpose" rows="4" cols="24"
+												style="resize: none;" id="trainPurpose"></textarea></td>
+										<td><textarea class="trainPlanItems"
+												name="trainPlanItems[0].trainContent" rows="4" cols="24"
+												style="resize: none;" id="trainContent"></textarea></td>
+										<td><input type="text" class="trainPlanItems"
+											name="trainPlanItems[0].classCount" id="classCount" /></td>
+										<td><input type="text" class="trainPlanItems"
+											name="trainPlanItems[0].teacher" id="teacher" /></td>
 									</tr>
 								</tbody>
 								<tfoot>
@@ -110,7 +119,9 @@
 										<td></td>
 										<td><input type="hidden" id="itemNum" value="1" /></td>
 										<td></td>
-										<td><input type="button" class="addNewLine" value="添加"><input type="button" class="deleteLastLine" value="删除"><input type="submit" value="保 存" id="save" class="btn_class" /></td>
+										<td><input type="button" class="addNewLine" value="添加"><input
+											type="button" class="deleteLastLine" value="删除"><input
+											type="submit" value="保 存" id="save" class="btn_class" /></td>
 									</tr>
 								</tfoot>
 							</table>

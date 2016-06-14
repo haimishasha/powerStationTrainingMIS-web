@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+.ui-datepicker-title select {
+	color: black;
+	font-weight: normal;
+}
