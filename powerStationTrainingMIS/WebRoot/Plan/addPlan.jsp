@@ -61,14 +61,14 @@
 						<div class="col-lg-6 distance distance">
 							<div class="input-group">
 								<span class="input-group-addon">开始时间</span> <input type="text"
-									id="startTime" class="datepicker" class="form-control"
+									id="startTime" class="datepicker form-control"
 									name="trainPlanInfo.startTime" />
 							</div>
 						</div>
 						<div class="col-lg-6 distance distance">
 							<div class="input-group">
 								<span class="input-group-addon">结束时间</span> <input type="text"
-									id="endTime" class="datepicker" class="form-control"
+									id="endTime" class="datepicker form-control"
 									name="trainPlanInfo.endTime" />
 							</div>
 						</div>
