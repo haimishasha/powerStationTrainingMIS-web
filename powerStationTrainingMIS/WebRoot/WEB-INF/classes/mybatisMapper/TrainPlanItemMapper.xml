@@ -3,25 +3,21 @@
 
 <mapper namespace="com.thinkPro.train.db.mapper.TrainPlanItemMapper">
 
-	<!-- 根据培训明细ID查询培训计划明细 -->
+	<!-- 根据培训明细Id查询培训计划明细 -->
  	<select id="getTrainPlanItemByItemId" parameterType="String" resultType="TrainPlanItem">
  		select * from train_plan_item where trainPlanItem=#{trainItemId}
  	</select>
  	
- 	<!-- 根据培训明细ID查询培训计划明细 -->
+ 	
+ 	<!-- 根据培训计划Id查询培训计划明细 -->
  	<select id="getTrainPlanItemByInfoId" parameterType="String" resultType="TrainPlanItem">
  		select * from train_plan_item where trainPlanId=#{trainPlanId}
  	</select>
  	
- 	<!-- 根据培训计划信息ID查询培训计划明细ID -->
+ 	
+ 	<!-- 根据培训计划信息Id查询培训计划明细Id -->
  	<select id="getPlanItemIdByInfoId" parameterType="String" resultType="String">
  		select trainItemId from train_plan_item where trainPlanId = #{trainPlanId}
- 	</select>
- 	
- 	
- 	<!-- 根据培训计划信息ID查询最大的培训计划明细ID -->
- 	<select id="getNextPlanItemIdByInfoId" parameterType="String" resultType="String">
- 		select SUBSTR(max(trainItemId),3)+1 from train_plan_item where trainPlanId = #{trainPlanId}
  	</select>
  	
  	
@@ -33,7 +29,7 @@
 	</insert>
 	
 	 
-	<!-- 修改培训计划(Update) -->
+	<!-- 修改培训计划明细(Update) -->
 	<update id="updateTrainPlanItem" parameterType="TrainPlanItem">
 		update train_plan_item set
 		trainContent=#{trainContent}
@@ -42,6 +38,7 @@
 		teacher=#{teacher}
 		major=#{major} where trainItemId=#{trainItemId}
 	</update>
+	
 	
 	<!-- 删除培训计划明细(Delete) -->
 	<delete id="deleteTrainPlanItem" parameterType="String">

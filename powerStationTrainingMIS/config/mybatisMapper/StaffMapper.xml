@@ -3,7 +3,7 @@
 <mapper namespace="com.thinkPro.train.db.mapper.StaffMapper">
 
 	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
-	<resultMap type="Staff" id="staffMap">
+	<resultMap type="Staff" id="StaffMap">
 		<result property="staffName" column="name" />
 		<result property="birthPlace" column="native" />
 		<result property="jobTitle" column="title" />
@@ -11,34 +11,34 @@
 
 
 	<!-- 根据员工Id查询员工信息 -->
-	<select id="getStaffById" parameterType="String" resultMap="staffMap">
+	<select id="getStaffById" parameterType="String" resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staffId=#{staffId} and staff.unitId=unit.unitId;
 	</select>
 
 
 	<!-- 根据部门Id查询员工信息 -->
 	<select id="getStaffListByUnitId" parameterType="String"
-		resultMap="staffMap">
+		resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staff.unitId=#{unitId} and
 		staff.unitId=unit.unitId;
 	</select>
 
 
 	<!-- 查询全部员工信息 -->
-	<select id="getAllStaff" resultMap="staffMap">
+	<select id="getAllStaff" resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staff.unitId=unit.unitId;
 	</select>
 
 	<!-- 根据部门Id查询最新插入的员工信息 -->
-	<select id="getNewStaff" parameterType="String" resultType="staffMap">
+	<select id="getNewStaff" parameterType="String" resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staffId=(SELECT max(staffId) staffId FROM staff,unit WHERE
 		staff.unitId=unit.unitId) and staff.unitId=unit.unitId;
 	</select>

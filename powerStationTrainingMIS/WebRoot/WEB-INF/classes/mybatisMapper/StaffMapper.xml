@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkPro.train.db.mapper.StaffMapper">
- 
- 	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
-	<resultMap type="Staff" id="staffMap">
+
+	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+	<resultMap type="Staff" id="StaffMap">
 		<result property="staffName" column="name" />
 		<result property="birthPlace" column="native" />
 		<result property="jobTitle" column="title" />
 	</resultMap>
-	
- 	<!-- 根据员工ID查询员工信息 -->
-	<select id="getStaffById" parameterType="String" resultMap="staffMap">
+
+
+	<!-- 根据员工Id查询员工信息 -->
+	<select id="getStaffById" parameterType="String" resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staffId=#{staffId} and staff.unitId=unit.unitId;
 	</select>
 
-	<!-- 根据部门ID查询员工信息 -->
-	<select id="getStaffListByUnitId" parameterType="String" resultMap="staffMap">
+
+	<!-- 根据部门Id查询员工信息 -->
+	<select id="getStaffListByUnitId" parameterType="String"
+		resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
-		from staff,unit where staff.unitId=#{unitId} and staff.unitId=unit.unitId;
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,unit where staff.unitId=#{unitId} and
+		staff.unitId=unit.unitId;
 	</select>
-	
+
+
 	<!-- 查询全部员工信息 -->
-	<select id="getAllStaff" resultMap="staffMap">
+	<select id="getAllStaff" resultMap="StaffMap">
 		select
-		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staff.unitId=unit.unitId;
 	</select>
-	
-	<!-- 根据部门ID查询员工最大ID -->
-	<select id="getStaffNextId" parameterType="String" resultType="String">
-		SELECT CONCAT("00", max(staffId) + 1) staffId FROM staff,unit WHERE staff.unitId=unit.unitId;
+
+	<!-- 根据部门Id查询最新插入的员工信息 -->
+	<select id="getNewStaff" parameterType="String" resultMap="StaffMap">
+		select
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,unit where staffId=(SELECT max(staffId) staffId FROM staff,unit WHERE
+		staff.unitId=unit.unitId) and staff.unitId=unit.unitId;
 	</select>
 
 	<!-- 创建员工信息(Insert) -->
@@ -45,18 +53,42 @@
 
 	<!-- 修改员工信息(Update) -->
 	<update id="updateStaff" parameterType="Staff">
-		update staff set
-		name=#{name}
-		cardId=#{cardId}
-		birthday=#{birthday}
-		native=#{native}
-		job=#{job}
-		unitId=#{unitId}
-		title=#{title}
-		telephone=#{telephone}
-		joinTime=#{joinTime}
-		sex=#{sex} where staffId=#{staffId}
+		update staff
+		<set>
+			<if test="staffName!= null and staffName!='' ">
+				name=#{staffName},
+			</if>
+			<if test="cardId!= null and cardId!=''  ">
+				cardId=#{cardId},
+			</if>
+			<if test="birthday!= null and birthday!='' ">
+				birthday=#{birthday},
+			</if>
+			<if test="birthPlace!= null and birthPlace!='' ">
+				native=#{birthPlace},
+			</if>
+			<if test="job!= null and job!='' ">
+				job=#{job},
+			</if>
+			<if test="unitId!= null and unitId!='' ">
+				unitId=#{unitId},
+			</if>
+			<if test="jobTitle!= null and jobTitle!='' ">
+				title=#{jobTitle},
+			</if>
+			<if test="telephone!= null and telephone!='' ">
+				telephone=#{telephone},
+			</if>
+			<if test="joinTime!= null and joinTime!='' ">
+				joinTime=#{joinTime},
+			</if>
+			<if test="sex!= null and sex!='' ">
+				sex=#{sex}
+			</if>
+		</set>
+		where staffId=#{staffId};
 	</update>
+
 
 	<!-- 删除员工信息(Delete) -->
 	<delete id="deleteStaffByID" parameterType="String">
@@ -64,6 +96,4 @@
 		where staffId=#{staffId}
 	</delete>
 
-	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
-		
 </mapper>

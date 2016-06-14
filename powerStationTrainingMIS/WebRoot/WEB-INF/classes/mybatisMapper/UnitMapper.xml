@@ -2,16 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkPro.train.db.mapper.UnitMapper">
 
+
+	<!-- 创建部门信息(Insert) -->
 	<insert id="insertUnit" parameterType="Unit">
 		INSERT INTO
 		unit(unitId,upUnitId,unitName,header,remark)
 		VALUES(#{unitId},#{upUnitId},#{unitName},#{header},#{remark})
 	</insert>
 
+
+	<!-- 修改部门信息(Update) -->
 	<update id="updateUnit" parameterType="Unit">
 		update unit
 		<set>
-		 	<if test="upUnitId!=null">
+			<if test="upUnitId!=null">
 				upUnitId=#{upUnitId},
 			</if>
 			<if test="unitName!=null">
@@ -27,36 +31,41 @@
 		where unitId=#{unitId}
 	</update>
 
+
+	<!-- 删除部门信息(Delete) -->
 	<delete id="deleteUnit" parameterType="String">
 		delete from unit where
 		unitId=#{unitId}
 	</delete>
 
 
-	<!-- 根据unit_Id查询部门信息 -->
-
+	<!-- 根据unitId查询部门信息 -->
 	<select id="getUnitByUnitId" parameterType="String" resultType="Unit">
 		select
 		unitId,upUnitId,unitName,address,telephone,contactPerson,email,header,createDate,remark
 		from unit where unitId=#{unitId}
 	</select>
 
-	<!-- 根据up_Unit_Id查询部门信息 -->
 
+	<!-- 根据upUnitId查询部门信息 -->
 	<select id="getUnitByUpUnitId" parameterType="String"
 		resultType="Unit">
 		select unitId, upUnitId, unitName, address, telephone,
 		contactPerson, email, header, createDate, remark from
-		unit where upUnitId=#{upUnitId}
+		unit where
+		upUnitId=#{upUnitId}
 	</select>
+
 
 	<!-- 查询全部部门信息 -->
 	<select id="getAllUnits" resultType="Unit">
 		select unitId, upUnitId,
 		unitName, address, telephone,
 		contactPerson, email, header,
-		createDate, remark from unit;
+		createDate,
+		remark from unit;
 	</select>
+
 
 	<!-- 查询部门树信息 -->
 	<select id="getUnitTree" resultType="Map">
@@ -65,14 +74,12 @@
 	</select>
 
 
-	<select id="getUnitId" resultType="Map">
-	SELECT unitId,unitName,t.upUnitId,t1.maxnum maxnum FROM unit t LEFT JOIN (SELECT upUnitId,count(unitId),CONCAT("00", max(unitId) + 1) maxnum FROM unit GROUP BY
-	upUnitId) t1 ON t.unitId = t1.upUnitId;
-	</select>
-	
-	<!-- 根据部门ID查询部门最大ID -->
-	<select id="getUnitNextId" parameterType="String" resultType="String">
-		SELECT CONCAT("00", MAX(unitId) + 1) unitId FROM unit WHERE upUnitId=#{upUnitId}
+	<!-- 根据上级部门Id查询最新的一个下级部门信息 -->
+	<select id="getNewUnit" parameterType="String" resultType="Unit">
+		SELECT
+		unitId,upUnitId,unitName,address,telephone,contactPerson,email,header,createDate,remark
+		from unit where unitId = (SELECT MAX(unitId) FROM unit WHERE
+		upUnitId=#{upUnitId});
 	</select>
 
 </mapper>
