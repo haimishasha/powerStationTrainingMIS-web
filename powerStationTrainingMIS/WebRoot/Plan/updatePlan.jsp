@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -9,7 +10,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>添加计划</title>
+<title>修改计划</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/main.css" />
 <link rel="stylesheet" href="css/jquery.ui.datepicker.css">
@@ -19,9 +20,14 @@
 <script type="text/javascript" src="js/Plan/addPlan.js"></script>
 <script type="text/javascript" src="js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker.js"></script>
+
+   <script type="text/javascript" src="js/train_plan_manag/trainPlan.js" ></script>
 </head>
 <body>
-	<jsp:include page="../nav.jsp" />
+    
+     
+    
+	 <jsp:include page="../nav.jsp" />
 
 	<div class="Mycontent">
 		<div class="container">
@@ -35,25 +41,25 @@
 			</div>
 
 			<div>
-				<form id="infoForm" action="AddPlan.action" method="post">
+				<form  action="UpdateAction" method="post">
 					<div class="row">
 						<div class="col-lg-6 distance distance">
 							<div class="input-group">
 								<span class="input-group-addon">年 度</span> <select
-									class="form-control" name="trainPlanInfo.trainPlanYear">
-									<option >2016</option>
-									<option >2015</option>
-									<option >2014</option>
+									class="form-control" name="trainPlanInfo.trainPlanYear" value="${trainPlanInfo.trainPlanYear}">
+									<option value="">2016</option>
+									<option value="">2015</option>
+									<option value="">2014</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-lg-6 distance distance">
 							<div class="input-group">
 								<span class="input-group-addon">名 称</span> <select
-									class="form-control" name="trainPlanInfo.trainPlanName">
-									<option >新员工入厂培训</option>
-									<option >中层管理人员培训</option>
-									<option >班组长培训</option>
+									class="form-control" name="trainPlanInfo.trainPlanName" value="${trainPlanInfo.trainPlanName}">
+									<option value="0">新员工入厂培训</option>
+									<option value="1">中层管理人员培训</option>
+									<option value="2">班组长培训</option>
 								</select>
 							</div>
 						</div>
@@ -62,14 +68,14 @@
 							<div class="input-group">
 								<span class="input-group-addon">开始时间</span> <input type="text"
 									id="startTime" class="datepicker" class="form-control"
-									name="trainPlanInfo.startTime" />
+									name="trainPlanInfo.startTime" value="${trainPlanInfo.startTime}"/>
 							</div>
 						</div>
 						<div class="col-lg-6 distance distance">
 							<div class="input-group">
 								<span class="input-group-addon">结束时间</span> <input type="text"
 									id="endTime" class="datepicker" class="form-control"
-									name="trainPlanInfo.endTime" />
+									name="trainPlanInfo.endTime" value="${trainPlanInfo.endTime}" />
 							</div>
 						</div>
 
@@ -91,10 +97,11 @@
 										<th>授课人</th>
 									</tr>
 								</thead>
+							
 								<tbody id="itemTbody">
-									<tr>
+									 <tr>
 										<td><select class="trainPlanItems"
-											name="trainPlanItems[0].major" id="major">
+											name="trainPlanItems[0].major" value="${trainPlanItems[0].major }" id="major">
 												<option value="0" selected="selected">电气</option>
 												<option value="1">汽机</option>
 												<option value="2">锅炉</option>
@@ -102,16 +109,42 @@
 												<option value="4">燃运</option>
 										</select></td>
 										<td><textarea class="trainPlanItems"
-												name="trainPlanItems[0].trainPurpose" rows="4" cols="24"
-												style="resize: none;" id="trainPurpose"></textarea></td>
+												name="trainPlanItems[0].trainPurpose"   rows="4" cols="24"
+												style="resize: none;" id="trainPurpose">${trainPlanItems[0].trainPurpose}</textarea></td>
 										<td><textarea class="trainPlanItems"
-												name="trainPlanItems[0].trainContent" rows="4" cols="24"
-												style="resize: none;" id="trainContent"></textarea></td>
+												name="trainPlanItems[0].trainContent"   rows="4" cols="24"
+												style="resize: none;" id="trainContent">${trainPlanItems[0].trainContent}</textarea></td>
 										<td><input type="text" class="trainPlanItems"
-											name="trainPlanItems[0].classCount" id="classCount" /></td>
+											name="trainPlanItems[0].classCount" value="${trainPlanItems[0].classCount}" id="classCount" /></td>
 										<td><input type="text" class="trainPlanItems"
-											name="trainPlanItems[0].teacher" id="teacher" /></td>
+											name="trainPlanItems[0].teacher" value="${trainPlanItems[0].teacher}" id="teacher" /></td>
 									</tr>
+											
+								<%-- 	<c:forEach var="trainPlanItems" varStatus="status"  items="${trainPlanItems}">
+								<tr>
+									
+									<td><select class="trainPlanItems"
+											name="trainPlanItems.major" value="${trainPlanItems.major }" id="major">
+												<option value="0" selected="selected">电气</option>
+												<option value="1">汽机</option>
+												<option value="2">锅炉</option>
+												<option value="3">化水</option>
+												<option value="4">燃运</option>
+										</select></td>
+										<td><textarea class="trainPlanItems"
+												name="trainPlanItems[status.index].trainPurpose"   rows="4" cols="24"
+												style="resize: none;" id="trainPurpose">${trainPlanItems.trainPurpose}</textarea></td>
+										<td><textarea class="trainPlanItems"
+												name="trainPlanItems['status.index'].trainContent"   rows="4" cols="24"
+												style="resize: none;" id="trainContent">${trainPlanItems.trainContent}</textarea></td>
+										<td><input type="text" class="trainPlanItems"
+											name="trainPlanItems.classCount" value="${trainPlanItems.classCount}" id="classCount" /></td>
+										<td><input type="text" class="trainPlanItems"
+											name="trainPlanItems.teacher" value="${trainPlanItems.teacher}" id="teacher" /></td>
+								
+								</tr>
+							    </c:forEach> --%>
+
 								</tbody>
 								<tfoot>
 									<tr>
@@ -119,9 +152,10 @@
 										<td></td>
 										<td><input type="hidden" id="itemNum" value="1" /></td>
 										<td></td>
-										<td><input type="button" id="addNewLine" value="添加"><input
-											type="button" id="deleteLastLine" value="删除"><input
-											type="submit" value="保 存" id="save" class="btn_class" /></td>
+										<td>
+										<!-- <input type="button" id="addNewLine" value="添加">
+										<input type="button" id="deleteLastLine" value="删除"> --><input
+											type="submit" value="保 存"  class="btn_class" /></td>
 									</tr>
 								</tfoot>
 							</table>
@@ -132,6 +166,6 @@
 
 		</div>
 	</div>
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="../footer.jsp" /> 
 </body>
 </html>

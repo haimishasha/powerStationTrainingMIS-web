@@ -4,20 +4,25 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="p3" extends="json-default">
-		
+		 <action name="ToUpdateAction" class="com.thinkPro.train.action.plan.ToUpdateAction" method="toUpdateAction">
+			<result>/Plan/updatePlan.jsp</result>
+			
+		</action>
 		 <action name="UpdateAction" class="com.thinkPro.train.action.plan.UpdateAction" method="doUpdate">
-			<result>/Plan/update.jsp</result>
-			<result name="error">/error.jsp</result>
+			<result>/Plan/updatePlan.jsp</result>
+		
+		</action>
+		 <action name="AddPlan" class="com.thinkPro.train.action.plan.AddPlan" method="doAdd">
+			<result>/Plan/addPlan.jsp</result>
+			
 		</action>
 		<action name="SearchAction" class="com.thinkPro.train.action.plan.SearchAction" method="doSearch">
 			<result>/Plan/searchPlan.jsp</result>
 		</action>
-		<action name="doDelete" class="com.thinkPro.train.action.plan.DeleteAction" method="doDelete">
+		<action name="DeletePlanAction" class="com.thinkPro.train.action.plan.DeletePlanAction" method="doDelete">
 			<result>/Plan/searchPlan.jsp</result>
 		</action>	
-		<action name="doAdd" class="com.thinkPro.train.action.plan.AddAction" method="doAdd">
-			<result>/Plan/addPlan.jsp</result>
-		</action>	
+			
 		<action name="SearchUnit" class="com.thinkPro.train.action.unit.SearchUnit" method="SearchUnit">
 			<result type="json">
     			<param name="root">result</param>  

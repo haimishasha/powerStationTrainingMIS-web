@@ -1,196 +1,277 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
-
-<head>
-<base href="<%=basePath%>">
-<meta charset="utf-8" />
-<title>电厂职工管理系统</title>
-<script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/main.css" />
-<script type="text/javascript">
-	function update() {
-		window.location = "UpdateAction";
-	}
-	function Delete() {
-		var trainPlanId = $("input[name='choose']:checked").val();
-		window.location = "doDelete?trainPlanId="
-				+ trainPlanId;
-	}
-</script>
-</head>
-
-<body>
-	<jsp:include page="../nav.jsp"/>
-	<div class="Mycontent">
-		<div class="container">
-			<div class="content_title">
-				<!--<hr />-->
-				<ol class="breadcrumb">
-					<li><a href="#">电厂</a></li>
-					<li><a href="#">培训计划管理</a></li>
-					<li class="active">查询</li>
-				</ol>
+  <head>
+   	<meta charset="utf-8" />
+   	 <base href="<%=basePath%>">
+		<title>电厂职工管理系统</title>
+		<script type="text/javascript" src="js/jquery-2.2.2.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.js" ></script>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<script type="text/javascript" src="js/train_plan_manag/train_plan.js" ></script>
+        <script type="text/javascript" src="js/train_plan_manag/trainPlan.js" ></script>
+ 		
+ 
+ 
+  </head>
+  
+  <body>
+  <div class="bef_nav">
+			<div class="container">							
+				<div class="bef_nav_right">
+					<span style="margin-right: 20px;">欢迎 : 管理员</span>
+					<a href="#">修改密码</a>
+					<a href="#">退出系统</a>
+				</div>
 			</div>
+		</div>
 
-			<div class="content_body">
-				<form action="SearchAction"
-					method="post" style="border:1px solid">
-					<div class="sele_block">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-xs-12 distance">
-								<div class="input-group">
-									<span class="input-group-addon">培训计划年度：</span> <select
-										class="form-control" name="trainPlanYear">
-										<option>2016</option>
-										<option>2015</option>
-										<option>2014</option>
-										<option>2013</option>
-										<option>2012</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-xs-12 distance">
-								<div class="input-group">
-									<span class="input-group-addon">培训专业：</span> <select
-										class="form-control" name="major">
-										<option>电气</option>
-										<option>汽机</option>
-										<option>锅炉</option>
-										<option>化水</option>
-										<option>燃运</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-xs-12 distance">
-								<div class="input-group">
-									<span class="input-group-addon">培训计划类型：</span> <select
-										class="form-control" name="trainPlanType">
-										<option>新员工入厂培训</option>
-										<option>中层管理人员培训</option>
-										<option>班组长培训</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-xs-12 distance">
-								<div class="input-group">
-									<span class="input-group-addon">完成情况：</span> <select
-										class="form-control" name="isFinish">
-										<option>未培训</option>
-										<option>培训中</option>
-										<option>已培训</option>
-									</select>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-default"
-								style="float: right; margin-top: 7px; margin-right: 30px;">查
-								询</button>
-						</div>
-						<hr style="border:solid 1px;" />
-					</div>
-				</form>
+		<nav class="nav navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      				 	<span class="sr-only">Toggle navigation</span>
+       				 	<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="#">LOGO</a>
+				</div>
 
-				<div class="showform">
-					<div class="showform_title">
-						<nav class="navbar navbar-default"
-							style="background-color: white;border: none;">
-						<div class="container-fluid">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed"
-									data-toggle="collapse"
-									data-target="#bs-example-navbar-collapse-2"
-									aria-expanded="false">
-									<span class="glyphicon glyphicon-pencil"></span>
-								</button>
-								<p class="navbar-text">
-									共 : <span style="color: red;">10条</span> 信息
-								</p>
-
-							</div>
-
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse"
-								id="bs-example-navbar-collapse-2">
-								<ul class="nav navbar-nav navbar-left hidden-xs">
-									<button type="button" class="btn btn-default navbar-btn">导
-										出</button>
-									<button type="button" class="btn btn-default navbar-btn">打
-										印</button>
-								</ul>
-								<ul class="nav navbar-nav navbar-right">
-									<button type="button" class="btn btn-default navbar-btn"><a style="color: black" href="toAddPlan.action">添加</a></button>
-									<button type="button" class="btn btn-default navbar-btn"
-										onclick="update()">修 改</button>
-									<button type="button" class="btn btn-default navbar-btn"
-										onclick="Delete()">删 除</button>
-								</ul>
-							</div>
-							<!-- /.navbar-collapse -->
-						</div>
-						<!-- /.container-fluid --> </nav>
-					</div>
-
-					<div class="table table-responsive">
-						<table border="" cellspacing="" cellpadding=""
-							style="width:800px;height:auto;">
-
-							<tr>
-								<td>请选择</td>
-								<td>培训计划年度</td>
-								<td>培训专业</td>
-								<td>是否结束</td>
-								<td>培训计划类型</td>
-							</tr>
-							<c:forEach var="trainPlan" items="${trainPlanList}">
-								<tr>
-									<td><input type="radio" name="choose"
-										value="${trainPlan.trainPlanId}" checked="checked"></td>
-
-									<td>${trainPlan.trainPlanYear}</td>
-									<td>${trainPlan.major}</td>
-									<td>${trainPlan.isFinish}</td>
-									<td>${trainPlan.trainPlanType}</td>
-								</tr>
-							</c:forEach>
-
-
-						</table>
-					</div>
-					<nav style="text-align: center;">
-					<ul class="pagination">
-						<li><a href="#" aria-label="Previous"> <span
-								aria-hidden="true">&laquo;</span>
-						</a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" aria-label="Next"> <span
-								aria-hidden="true">&raquo;</span>
-						</a></li>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">首页</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训计划管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="Plan/addPlan.jsp">添加</a></li>
+								<li><a href="Plan/updatePlan.jsp">修改</a></li>
+								<li><a href="Plan/searchPlan.jsp">删除</a></li>
+								<li><a href="Plan/searchPlan.jsp">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训成绩管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">录入</a></li>
+								<li><a href="#">修改</a></li>
+								<li><a href="#">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">查询</a></li>
+								<li><a href="#">统计</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学员管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="dapartment.html">部门管理</a></li>
+								<li><a href="show.html" name="staff_info" onclick="">学员基本信息管理</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">指纹库管理</a></li>
+								<li><a href="#">用户管理</a></li>
+							</ul>
+						</li>
 					</ul>
-					</nav>
 				</div>
 
 			</div>
-		</div>
-	</div>
-	<!--<div class="container">
-			<ol class="breadcrumb"><li><a href="#">电厂职工管理</a></li><li><a href="#">培训计划管理</a></li><li class="active">修改</li></ol>
-		</div>-->
-	<jsp:include page="../footer.jsp"/>
-</body>
+		</nav>
 
+		<div class="Mycontent">
+			<div class="container">
+				<div class="content_title">
+					<!--<hr />-->
+					<ol class="breadcrumb">
+						<li><a href="#">电厂</a></li>
+						<li><a href="#">培训计划管理</a></li>
+						<li class="active">查询</li>
+					</ol>
+				</div>
+
+				<div class="content_body">
+					<form action="SearchAction.action" method="post" >
+						<div class="sele_block">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-xs-12 distance">
+									<div class="input-group">
+										<span class="input-group-addon">培训计划年度：</span>
+										<select class="form-control" name="trainPlanYear">
+										<option  selected="selected">2016</option>
+										<option >2015</option>
+										<option >2014</option>
+										<option >2013</option>
+										<option >2012</option>
+									</select>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-xs-12 distance">
+									<div class="input-group">
+										<span class="input-group-addon">培训专业：</span>
+										<select class="form-control" name="major">
+											<option  selected="selected">电气</option>
+											<option >汽机</option>
+											<option >锅炉</option>
+											<option >化水</option>
+											<option >燃运</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-xs-12 distance">
+									<div class="input-group">
+										<span class="input-group-addon">培训计划类型：</span>
+										<select class="form-control" name="trainPlanType">
+											<option  selected="selected">新员工入厂培训</option>
+											<option >中层管理人员培训</option>
+											<option >班组长培训</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-xs-12 distance">
+									<div class="input-group">
+										<span class="input-group-addon">完成情况：</span>
+										<select class="form-control" name="isFinish">
+											<option selected="selected">未培训</option>
+											<option>培训中</option>
+											<option>已培训</option>
+										</select>
+									</div>
+								</div>
+								<button type="submit" id="select_btn" class="btn btn-default" style="float: right; margin-top: 7px; margin-right: 30px;">  查  询  </button>
+							</div>
+							<hr style="border:solid 1px;" />
+						</div>
+					</form>
+
+					<div class="showform">
+						<div class="showform_title">
+							<nav class="navbar navbar-default" style="background-color: white;border: none;">
+								<div class="container-fluid">
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+       										<span class="glyphicon glyphicon-pencil"></span>       									
+     									</button>
+     									<p class="navbar-text">共 : <span style="color: red;">10条</span> 信息</p>
+										
+									</div>
+
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+										<ul class="nav navbar-nav navbar-left hidden-xs">
+											<a type="button" class="btn btn-default navbar-btn">导 出</a>
+											<a type="button" class="btn btn-default navbar-btn">打 印</a>
+										</ul>										
+										<ul class="nav navbar-nav navbar-right">
+											<a href="Plan/addPlan.jsp" type="button" class="btn btn-default navbar-btn">添加</a>
+											<input id="updatePlan" type="button" class="btn btn-default navbar-btn" value="修 改"/>
+											<input id="deletePlan2" type="button" class="btn btn-default navbar-btn" value="删除"/>
+										</ul>
+									</div>
+									<!-- /.navbar-collapse -->
+								</div>
+								<!-- /.container-fluid -->
+							</nav>
+						</div>					
+						<div class="show_table table-responsive">
+							<table class="table table-hover table-bordered">
+								<tr>
+									<th>序号</th>
+									<th>年度</th>
+									<th>培训计划名称</th>
+									<th>培训类型</th>
+									<th>培训专业</th>
+									<th>培训时间</th>
+									<th>培训人数</th>
+									<th>完成情况</th>
+									 <th><input type="checkbox" name=""/></th>
+								</tr>
+								
+								<!-- 实现循环读取后台传入的值 -->
+								<c:forEach var="trainPlan" varStatus="status"  items="${trainPlanList}">
+								<tr>
+								    <td> <c:out value="${status.index+1}"/></td>
+                               
+									<td>${trainPlan.trainPlanYear}</td>
+									<td>${trainPlan.trainPlanName}</td>
+									<td>${trainPlan.trainPlanType}</td>
+									<td>${trainPlan.major}</td>
+									<td>${trainPlan.trainTime}</td>
+								    <td>${trainPlan.num}</td>									
+									<td>${trainPlan.isFinish}</td>									
+									<td><input  id="myCheckBox" type="checkbox" value="${trainPlan.trainPlanId}" name="trainPlanId"/> </td>
+									
+								</tr>
+							    </c:forEach>
+								
+								<!-- <tr>
+									<td>1</td>
+									<td>2015</td>
+									<td>新员工入厂培训</td>
+									<td>新员工入厂培训</td>
+									<td>电气 汽机 锅炉</td>
+									<td>1月10日-1月20日</td>
+									<td>100</td>
+									<td>未完成</td>									
+									<td><input type="checkbox" name="plan_check"/> </td>									
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>2015</td>
+									<td>新员工入厂培训</td>
+									<td>新员工入厂培训</td>
+									<td>电气 汽机 锅炉</td>
+									<td>1月10日-1月20日</td>
+									<td>100</td>
+									<td>未完成</td>									
+									<td><input type="checkbox" name="plan_check"/> </td>									
+								</tr> -->
+								
+							</table>
+						</div>
+
+						<nav style="text-align: center;">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="hr"></div>
+		<footer style="text-align: center;margin-bottom: 30px;">
+			<p>版权信息</p>
+			<p>版权信息一般还有两行</p>
+		</footer>
+  </body>
 </html>

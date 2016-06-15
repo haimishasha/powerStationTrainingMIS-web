@@ -8,8 +8,8 @@ public class TrainPlanInfo implements Serializable{
 	private String trainPlanId;
 	private String trainPlanName;
 	private String trainPlanYear;
-	private Date startTime;
-	private Date endTime;
+	private String startTime;
+	private String endTime;
 	private String isFinish;
 	private String trainPlanType;
 	public String getTrainPlanId() {
@@ -30,18 +30,8 @@ public class TrainPlanInfo implements Serializable{
 	public void setTrainPlanYear(String trainPlanYear) {
 		this.trainPlanYear = trainPlanYear;
 	}
-	public Date getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-	public Date getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+	
+	
 	public String getIsFinish() {
 		return isFinish;
 	}
@@ -53,6 +43,26 @@ public class TrainPlanInfo implements Serializable{
 	}
 	public void setTrainPlanType(String trainPlanType) {
 		this.trainPlanType = trainPlanType;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+	@Override
+	public String toString() {
+		return "TrainPlanInfo [trainPlanId=" + trainPlanId + ", trainPlanName="
+				+ trainPlanName + ", trainPlanYear=" + trainPlanYear
+				+ ", startTime=" + startTime + ", endTime=" + endTime
+				+ ", isFinish=" + isFinish + ", trainPlanType=" + trainPlanType
+				+ "]";
 	}
 		
 }
