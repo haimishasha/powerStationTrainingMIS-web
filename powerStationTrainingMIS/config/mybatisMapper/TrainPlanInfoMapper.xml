@@ -16,8 +16,8 @@
 			<if test="trainPlanYear!=null and trainPlanYear!='' ">
 				trainPlanYear = #{trainPlanYear}
 			</if>
-			<if test="trainPlanName!= null and trainPlanName!= '' ">
-				AND trainPlanName LIKE CONCAT(CONCAT('%', #{trainPlanName}),'%')
+			<if test="major!= null and major!= '' ">
+				AND major LIKE CONCAT(CONCAT('%', #{major}),'%')
 			</if>
 			<if test="trainPlanType!=null and trainPlanType!='' ">
 				AND trainPlanType = #{trainPlanType}
@@ -33,7 +33,7 @@
 		<result property="trainPlanYear" column="trainPlanYear" />
 		<result property="trainPlanName" column="trainPlanName" />
 		<result property="trainPlanType" column="trainPlanType" />
-		<result property="mojor" column="trainMajor" />
+		<result property="major" column="major" />
 		<result property="trainTime" column="trainTime" />
 		<result property="num" column="empCount" />
 		<result property="isFinish" column="isFinish" />

@@ -1,38 +1,38 @@
 DROP TABLE IF EXISTS `train_plan_info`;
 CREATE TABLE `train_plan_info` (
-  `trainPlanId` varchar(50) NOT NULL DEFAULT '' COMMENT '÷˜º¸',
-  `trainPlanName` varchar(50) DEFAULT '' COMMENT 'º∆ªÆ√˚≥∆',
-  `trainPlanType` varchar(50) DEFAULT '' COMMENT 'º∆ªÆ¿‡–Õ',
-  `trainPlanYear` varchar(8) DEFAULT '' COMMENT 'ƒÍ∂»',
-  `startTime` date DEFAULT NULL COMMENT 'ø™ º ±º‰',
-  `endTime` date DEFAULT NULL COMMENT 'Ω· ¯ ±º‰',
-  `isFinish` varchar(10) DEFAULT '' COMMENT 'ÕÍ≥…«Èøˆ',
+  `trainPlanId` varchar(7) NOT NULL DEFAULT '' COMMENT '‰∏ªÈîÆ',
+  `trainPlanName` varchar(30) DEFAULT '' COMMENT 'ËÆ°ÂàíÂêçÁß∞',
+  `trainPlanType` varchar(20) DEFAULT '' COMMENT 'ËÆ°ÂàíÁ±ªÂûã',
+  `trainPlanYear` varchar(8) DEFAULT '' COMMENT 'Âπ¥Â∫¶',
+  `startTime` date DEFAULT NULL COMMENT 'ÂºÄÂßãÊó∂Èó¥',
+  `endTime` date DEFAULT NULL COMMENT 'ÁªìÊùüÊó∂Èó¥',
+  `isFinish` varchar(8) DEFAULT '' COMMENT 'ÂÆåÊàêÊÉÖÂÜµ',
   PRIMARY KEY (`trainPlanId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='≈‡—µº∆ªÆ±Ì';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ÂüπËÆ≠ËÆ°ÂàíË°®';
 
 DROP TABLE IF EXISTS `train_plan_item`;
 CREATE TABLE `train_plan_item` (
-  `trainItemId` varchar(50) NOT NULL DEFAULT '' COMMENT '÷˜º¸',
-  `trainPlanId` varchar(50) DEFAULT NULL COMMENT '≈‡—µº∆ªÆID',
-  `major` varchar(50) DEFAULT NULL COMMENT '◊®“µ√˚≥∆',
-  `trainPurpose` text COMMENT '≈‡—µƒøµƒ',
-  `trainContent` text COMMENT '≈‡—µƒ⁄»›',
-  `classCount` varchar(50) DEFAULT NULL COMMENT 'øŒ ±',
-  `teacher` varchar(20) DEFAULT NULL COMMENT ' ⁄øŒ»À',
+  `trainItemId` varchar(9) NOT NULL DEFAULT '' COMMENT '‰∏ªÈîÆ',
+  `trainPlanId` varchar(7) DEFAULT NULL COMMENT 'ÂüπËÆ≠ËÆ°ÂàíID',
+  `major` varchar(8) DEFAULT NULL COMMENT '‰∏ì‰∏öÂêçÁß∞',
+  `trainPurpose` text COMMENT 'ÂüπËÆ≠ÁõÆÁöÑ',
+  `trainContent` text COMMENT 'ÂüπËÆ≠ÂÜÖÂÆπ',
+  `classCount` varchar(4) DEFAULT NULL COMMENT 'ËØæÊó∂',
+  `teacher` varchar(12) DEFAULT NULL COMMENT 'ÊéàËØæ‰∫∫',
   PRIMARY KEY (`trainItemId`),
   KEY `fk_trainplanid` (`trainPlanId`),
   CONSTRAINT `fk_trainplanid` FOREIGN KEY (`trainPlanId`) REFERENCES `train_plan_info` (`trainPlanId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='≈‡—µº∆ªÆ√˜œ∏±Ì';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ÂüπËÆ≠ËÆ°ÂàíÊòéÁªÜË°®';
 
 DROP TABLE IF EXISTS `emp_attendance`;
 CREATE TABLE `emp_attendance` (
   `objectId` int(11) NOT NULL AUTO_INCREMENT,
-  `staffId` varchar(11) DEFAULT NULL,
-  `trainItemId` varchar(50) DEFAULT NULL,
+  `staffId` varchar(12) DEFAULT NULL,
+  `trainItemId` varchar(9) DEFAULT NULL,
   `recordDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `classStartTime` time DEFAULT NULL,
   `classEndTime` time DEFAULT NULL,
-  `attendanceResult` varchar(6) DEFAULT NULL COMMENT '≥ˆ«⁄°¢»±«⁄°¢≥ŸµΩ',
+  `attendanceResult` varchar(6) DEFAULT NULL COMMENT 'Âá∫Âã§„ÄÅÁº∫Âã§„ÄÅËøüÂà∞',
   `remark` text,
   PRIMARY KEY (`objectId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,26 +41,26 @@ DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `objectId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(10) DEFAULT NULL,
-  `staffId` varchar(11) NOT NULL,
+  `staffId` varchar(12) NOT NULL,
   `cardId` varchar(18) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `native` varchar(256) DEFAULT NULL COMMENT 'ºÆπ·',
+  `native` varchar(50) DEFAULT NULL COMMENT 'Á±çË¥Ø',
   `job` varchar(10) DEFAULT NULL,
-  `unitId` varchar(40) DEFAULT NULL,
-  `title` varchar(20) DEFAULT NULL COMMENT '÷∞≥∆',
+  `unitId` varchar(6) DEFAULT NULL,
+  `title` varchar(16) DEFAULT NULL COMMENT 'ËÅåÁß∞',
   `telephone` varchar(11) DEFAULT NULL,
-  `joinTime` date DEFAULT NULL COMMENT '≤Œº”π§◊˜ ±º‰',
+  `joinTime` date DEFAULT NULL COMMENT 'ÂèÇÂä†Â∑•‰ΩúÊó∂Èó¥',
   `sex` varchar(2) DEFAULT NULL,
-  `photo` blob COMMENT '’’∆¨',
-  PRIMARY KEY (`objectId`,`staffId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `photo` blob COMMENT 'ÁÖßÁâá',
+  PRIMARY KEY (`objectId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `train_emp`;
 CREATE TABLE `train_emp` (
-  `trainEmpId` int(11) NOT NULL AUTO_INCREMENT COMMENT '÷˜º¸',
-  `trainPlanId` varchar(50) DEFAULT NULL COMMENT '≈‡—µº∆ªÆID',
-  `trainItemId` varchar(50) DEFAULT NULL COMMENT '≈‡—µ√˜œ∏ID',
-  `staffId` varchar(11) DEFAULT NULL,
+  `trainEmpId` int(11) NOT NULL AUTO_INCREMENT COMMENT '‰∏ªÈîÆ',
+  `trainPlanId` varchar(7) DEFAULT NULL COMMENT 'ÂüπËÆ≠ËÆ°ÂàíID',
+  `trainItemId` varchar(9) DEFAULT NULL COMMENT 'ÂüπËÆ≠ÊòéÁªÜID',
+  `staffId` varchar(12) DEFAULT NULL,
   `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `remark` text,
   PRIMARY KEY (`trainEmpId`),
@@ -68,15 +68,15 @@ CREATE TABLE `train_emp` (
   KEY `fk_trainplanitem_id` (`trainItemId`),
   CONSTRAINT `fk_trainplaninfo_id` FOREIGN KEY (`trainPlanId`) REFERENCES `train_plan_info` (`trainPlanId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_trainplanitem_id` FOREIGN KEY (`trainItemId`) REFERENCES `train_plan_item` (`trainItemId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='≈‡—µ—ß‘±∞≤≈≈±Ì';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ÂüπËÆ≠Â≠¶ÂëòÂÆâÊéíË°®';
   
 DROP TABLE IF EXISTS `train_evaluation`;
 CREATE TABLE `train_evaluation` (
   `objectId` int(11) NOT NULL AUTO_INCREMENT,
-  `trainItemId` varchar(50) DEFAULT NULL,
-  `staffId` varchar(11) DEFAULT NULL,
-  `content` text COMMENT '∆¿π¿ƒ⁄»›',
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '∆¿π¿ ±º‰',
+  `trainItemId` varchar(9) DEFAULT NULL,
+  `staffId` varchar(12) DEFAULT NULL,
+  `content` text COMMENT 'ËØÑ‰º∞ÂÜÖÂÆπ',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ËØÑ‰º∞Êó∂Èó¥',
   `remark` text,
   PRIMARY KEY (`objectId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -84,11 +84,11 @@ CREATE TABLE `train_evaluation` (
 DROP TABLE IF EXISTS `train_result`;
 CREATE TABLE `train_result` (
   `objectId` int(11) NOT NULL AUTO_INCREMENT,
-  `trainEmpId` varchar(50) DEFAULT NULL,
-  `attendanceTimes` int(11) DEFAULT NULL COMMENT 'øº«⁄¥Œ ˝',
-  `attendanceResult` int(11) DEFAULT NULL,
-  `examResult` int(11) DEFAULT NULL,
-  `totalResult` int(11) DEFAULT NULL,
+  `trainEmpId` varchar(11) DEFAULT NULL,
+  `attendanceTimes` int(4) DEFAULT NULL COMMENT 'ËÄÉÂã§Ê¨°Êï∞',
+  `attendanceResult` int(2) DEFAULT NULL,
+  `examResult` int(2) DEFAULT NULL,
+  `totalResult` int(2) DEFAULT NULL,
   `inputTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `remark` text,
   PRIMARY KEY (`objectId`)
@@ -97,7 +97,7 @@ CREATE TABLE `train_result` (
 DROP TABLE IF EXISTS `train_result_ratio`;
 CREATE TABLE `train_result_ratio` (
   `objectId` int(11) NOT NULL AUTO_INCREMENT,
-  `trainItemId` varchar(50) DEFAULT NULL,
+  `trainItemId` varchar(9) DEFAULT NULL,
   `examRatio` float DEFAULT NULL,
   `attendanceRatio` float DEFAULT NULL,
   `setTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -108,16 +108,15 @@ CREATE TABLE `train_result_ratio` (
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
   `objectId` int(11) NOT NULL AUTO_INCREMENT,
-  `unitId` varchar(40) NOT NULL,
-  `upUnitId` varchar(40) DEFAULT '00',
-  `unitName` varchar(100) DEFAULT '',
-  `address` varchar(200) DEFAULT '‘›Œﬁ',
-  `telephone` varchar(40) DEFAULT '',
-  `contactPerson` varchar(40) DEFAULT '',
-  `email` varchar(40) DEFAULT '',
-  `header` varchar(40) DEFAULT '' COMMENT '≤ø√≈ºÚ≥∆',
+  `unitId` varchar(6) NOT NULL,
+  `upUnitId` varchar(6) DEFAULT '00',
+  `unitName` varchar(16) DEFAULT '',
+  `address` varchar(48) DEFAULT 'ÊöÇÊó†',
+  `telephone` varchar(11) DEFAULT '',
+  `contactPerson` varchar(12) DEFAULT '',
+  `email` varchar(24) DEFAULT '',
+  `header` varchar(12) DEFAULT '' COMMENT 'ÈÉ®Èó®ÁÆÄÁß∞',
   `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `remark` text,
   PRIMARY KEY (`objectId`,`unitId`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
