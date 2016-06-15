@@ -35,15 +35,15 @@
 			</div>
 
 			<div>
-				<form id="infoForm" action="doAdd" method="post">
+				<form id="infoForm" action="AddPlan.action" method="post">
 					<div class="row">
 						<div class="col-lg-6 distance distance">
 							<div class="input-group">
 								<span class="input-group-addon">年 度</span> <select
 									class="form-control" name="trainPlanInfo.trainPlanYear">
-									<option value="">2016</option>
-									<option value="">2015</option>
-									<option value="">2014</option>
+									<option >2016</option>
+									<option >2015</option>
+									<option >2014</option>
 								</select>
 							</div>
 						</div>
@@ -51,9 +51,9 @@
 							<div class="input-group">
 								<span class="input-group-addon">名 称</span> <select
 									class="form-control" name="trainPlanInfo.trainPlanName">
-									<option value="0">新员工入厂培训</option>
-									<option value="1">中层管理人员培训</option>
-									<option value="2">班组长培训</option>
+									<option >新员工入厂培训</option>
+									<option >中层管理人员培训</option>
+									<option >班组长培训</option>
 								</select>
 							</div>
 						</div>
@@ -119,8 +119,8 @@
 										<td></td>
 										<td><input type="hidden" id="itemNum" value="1" /></td>
 										<td></td>
-										<td><input type="button" class="addNewLine" value="添加"><input
-											type="button" class="deleteLastLine" value="删除"><input
+										<td><input type="button" id="addNewLine" value="添加"><input
+											type="button" id="deleteLastLine" value="删除"><input
 											type="submit" value="保 存" id="save" class="btn_class" /></td>
 									</tr>
 								</tfoot>
