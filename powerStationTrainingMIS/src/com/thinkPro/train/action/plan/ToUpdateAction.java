@@ -24,7 +24,7 @@ public class ToUpdateAction extends ActionSupport{
 	private String trainPlanId;
 	
 
-	public String toUpdateAction() throws SQLException{
+	public String toUpdateView() throws SQLException{
 		
 		TrainPlanUtil  trainPlanUtil=new TrainPlanUtil();
 		trainPlanInfo=trainPlanUtil.getTrainPlanInfoById(trainPlanId);

@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="p3" extends="json-default">
-		 <action name="ToUpdateAction" class="com.thinkPro.train.action.plan.ToUpdateAction" method="toUpdateAction">
+		 <action name="ToUpdateAction" class="com.thinkPro.train.action.plan.ToUpdateAction" method="toUpdateView">
 			<result>/Plan/updatePlan.jsp</result>
 			
 		</action>
@@ -12,7 +12,7 @@
 			<result>/Plan/updatePlan.jsp</result>
 		
 		</action>
-		 <action name="AddPlan" class="com.thinkPro.train.action.plan.AddPlan" method="doAdd">
+		 <action name="AddPlanAction" class="com.thinkPro.train.action.plan.AddPlanAction" method="doAdd">
 			<result>/Plan/addPlan.jsp</result>
 			
 		</action>
