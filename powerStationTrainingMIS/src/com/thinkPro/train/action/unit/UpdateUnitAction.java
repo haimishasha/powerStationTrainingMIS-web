@@ -11,8 +11,17 @@ import com.thinkPro.train.db.util.UnitUtil;
 public class UpdateUnitAction extends ActionSupport  implements ModelDriven<Unit>{
 	private Unit unit = new Unit();
 	private Unit result;
+	private boolean updateResult;
    
 	
+	public boolean isUpdateResult() {
+		return updateResult;
+	}
+
+	public void setUpdateResult(boolean updateResult) {
+		this.updateResult = updateResult;
+	}
+
 	public Unit getUnit() {
 		return unit;
 	}

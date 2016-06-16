@@ -105,16 +105,16 @@ $(document)
 									type : "post",
 									dataType : "json",
 									url : "SearchStaff",
-									data :{
+									data : {
 										unitId : $("#hidden_UnitId").val(),
 									},
 									success : function(result) {
-										
+
 										/* 清空表格 */
 										$("#dap_table  tr:not(:first)")
 												.html("");
 										/* 在表格中添加数据 */
-										for (var i = 0; i < result.length;i++) {
+										for (var i = 0; i < result.length; i++) {
 											var a = i + 1;
 											$("#dap_table")
 													.append(
@@ -147,25 +147,36 @@ $(document)
 					}
 
 					/* 实现员工的删除 */
-					$("#delete").click(
-							function() {
-								/* alert($("input[name='saveStaffId']:checked").val()); */
-								$.ajax({
-									type : "post",
-									dataType : "json",
-									url : "DeleteStaff",
-									data : {
-										/*unitId : $("#hidden_UnitId").val(),*/
-										staffId : $("input[name='saveStaffId']:checked").val(),
-									},
-									success : function(deleteResult) {
-										alert("删除成功");
-										$("input[name='saveStaffId']:checked")
-												.parent().parent().remove();
-										doReload();
-									},
-								});
-							});
+					$("#delete")
+							.click(
+									function() {
+										/* alert($("input[name='saveStaffId']:checked").val()); */
+										$
+												.ajax({
+													type : "post",
+													dataType : "json",
+													url : "DeleteStaff",
+													data : {
+														/*
+														 * unitId :
+														 * $("#hidden_UnitId").val(),
+														 */
+														staffId : $(
+																"input[name='saveStaffId']:checked")
+																.val(),
+													},
+													success : function(
+															deleteResult) {
+														alert("删除成功");
+														$(
+																"input[name='saveStaffId']:checked")
+																.parent()
+																.parent()
+																.remove();
+														doReload();
+													},
+												});
+									});
 
 					/* 添加按钮的监听时间 */
 					$('#dapartment_add').click(function() {
@@ -182,12 +193,18 @@ $(document)
 									function() {
 										var a = document
 												.getElementById("hidden_UnitId").value;
-										if (a == "" || a == "00") {
-											alert("部門ID為空或為根節點，不能進行保存操作");
+										if (a.length != 6) {
+											alert("请在班组下进行学员添加");
+											$(
+											"input[type=reset]")
+											.trigger(
+													"click");
+											$(".modal").modal(
+											"hide");
 										} else {
 
-											
-													$.ajax({
+											$
+													.ajax({
 														type : "post",
 														dataType : "json",
 														url : "AddStaff",
@@ -228,12 +245,11 @@ $(document)
 																addResult) {
 															alert("保存成功");
 															$(
-															"input[type=reset]")
-															.trigger(
-																	"click");
+																	"input[type=reset]")
+																	.trigger(
+																			"click");
 															$(".modal").modal(
-															"hide");
-
+																	"hide");
 															$("#dap_table")
 																	.append(
 																			"<tr> <td>"
@@ -255,16 +271,15 @@ $(document)
 																					+ addResult.staffId
 																					+ "' name='saveStaffId'>"
 																					+ " </td></tr>");
-															alert("dawoel")
-														
+
 														},
 														error : function(
 																addResult) {
 															alert("保存失败，我也想知道为什么 ");
 															$(
-															"input[type=reset]")
-															.trigger(
-																	"click");
+																	"input[type=reset]")
+																	.trigger(
+																			"click");
 														},
 													});
 
@@ -300,19 +315,15 @@ $(document)
 												"input[name='saveStaffId']:checked")
 												.parent().siblings("td:eq(6)")
 												.text();
-										
-									
-										
+
 										$("#staffId").html(b);
-									
-										document.getElementById("staffName2").value=a;
-										document.getElementById("birthday2").value=d;
-										document.getElementById("unitName2").value=e;
-										document.getElementById("job2").value=f;
+
+										document.getElementById("staffName2").value = a;
+										document.getElementById("birthday2").value = d;
+										document.getElementById("unitName2").value = e;
+										document.getElementById("job2").value = f;
 									});
 
-					
-					
 					$("#modifySave").click(function() {
 						$.ajax({
 							type : "post",
@@ -328,12 +339,38 @@ $(document)
 							success : function(result) {
 								alert("修改成功");
 								$("input[type=reset]").trigger("click");
-								$(".modal").modal(
-								"hide");
+								$(".modal").modal("hide");
 
 							},
 						});
 
 					});
+					
+					/* 目前 用不到 */
+					$("#").click(
+							function() {
+								var max_line_num = $(
+										"#staff_tabody tr:last-child")
+										.children("td").html(); //获取最大的行数
+								//判断当前处于列表的位置
+								if (max_line_num == null) {
+									max_line_num = 1;
+								} else {
+									max_line_num = parseInt(max_line_num);
+									max_line_num += 1;
+								}
+								var $html = "<tr>" + "<td>" + max_line_num
+										+ "</td>" + "<td>" + max_line_num
+										+ "</td>" + "<td>" + max_line_num
+										+ "</td>" + "<td>" + max_line_num
+										+ "</td>" + "<td>" + max_line_num
+										+ "</td>" + "<td>" + max_line_num
+										+ "</td>" + "<td>" + max_line_num
+										+ "</td>"
+										+ "<td><input type='checkbox' /></td>"
+										+ "</tr>";
+
+								$($html).appendTo("#staff_tabody");
+							})
 
 				});

@@ -34,7 +34,9 @@
     		</result>
 		</action>
 		<action name="UpdateUnitAction" class="com.thinkPro.train.action.unit.UpdateUnitAction" method="updateUnit">
-			<result>/Unit.jsp</result>
+			<result type="json">
+    			<param name="root">updateResult</param>  
+    		</result>
 		</action>
 		<action name="AddUnitAction" class="com.thinkPro.train.action.unit.AddUnitAction" method="addUnit">
 			<result type="json">

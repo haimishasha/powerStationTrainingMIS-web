@@ -28,7 +28,7 @@ public class AddStaff extends ActionSupport implements ModelDriven<Staff> {
 	public String addStaff(){
 		StaffUtil staffUtil=new StaffUtil();
 		try {
-			staffUtil.addStaff(staff);
+			addResult = staffUtil.addStaff(staff);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

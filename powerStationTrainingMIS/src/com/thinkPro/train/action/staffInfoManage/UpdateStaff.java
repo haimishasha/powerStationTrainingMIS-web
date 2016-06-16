@@ -3,12 +3,13 @@ package com.thinkPro.train.action.staffInfoManage;
 import java.sql.SQLException;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import com.thinkPro.train.bean.staff.Staff;
 import com.thinkPro.train.db.util.StaffUtil;
 
 
 @SuppressWarnings("serial")
-public class UpdateStaff extends ActionSupport {
+public class UpdateStaff extends ActionSupport implements ModelDriven<Staff>{
 	
 	private Staff staff=new Staff();
 	private boolean result;
@@ -23,5 +24,10 @@ public class UpdateStaff extends ActionSupport {
 		System.out.println("result"+result);
 		//数据库和staff不一样
 		return SUCCESS;
+	}
+
+	@Override
+	public Staff getModel() {
+		return staff;
 	}
 }
