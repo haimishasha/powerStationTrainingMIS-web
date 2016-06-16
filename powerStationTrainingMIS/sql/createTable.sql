@@ -13,7 +13,7 @@ CREATE TABLE `train_plan_info` (
 DROP TABLE IF EXISTS `train_plan_item`;
 CREATE TABLE `train_plan_item` (
   `trainItemId` varchar(9) NOT NULL DEFAULT '' COMMENT '主键',
-  `trainPlanId` varchar(7) DEFAULT NULL COMMENT '培训计划ID',
+  `trainPlanId` varchar(7) NOT NULL COMMENT '培训计划ID',
   `major` varchar(8) DEFAULT NULL COMMENT '专业名称',
   `trainPurpose` text COMMENT '培训目的',
   `trainContent` text COMMENT '培训内容',
