@@ -99,7 +99,7 @@
 								</thead>
 							
 								<tbody id="itemTbody">
-									 <tr>
+									<%--   <tr>
 										<td><select class="trainPlanItems"
 											name="trainPlanItems[0].major" value="${trainPlanItems[0].major }" id="major">
 												<option value="0" selected="selected">电气</option>
@@ -118,13 +118,13 @@
 											name="trainPlanItems[0].classCount" value="${trainPlanItems[0].classCount}" id="classCount" /></td>
 										<td><input type="text" class="trainPlanItems"
 											name="trainPlanItems[0].teacher" value="${trainPlanItems[0].teacher}" id="teacher" /></td>
-									</tr>
+									</tr>  --%>
 											
-								<%-- 	<c:forEach var="trainPlanItems" varStatus="status"  items="${trainPlanItems}">
+								 <c:forEach var="trainPlanItems" varStatus="status"  items="${trainPlanItems}">
 								<tr>
 									
 									<td><select class="trainPlanItems"
-											name="trainPlanItems.major" value="${trainPlanItems.major }" id="major">
+											name="trainPlanItems[${status.index} }].major" value="${trainPlanItems.major }" id="major">
 												<option value="0" selected="selected">电气</option>
 												<option value="1">汽机</option>
 												<option value="2">锅炉</option>
@@ -132,18 +132,18 @@
 												<option value="4">燃运</option>
 										</select></td>
 										<td><textarea class="trainPlanItems"
-												name="trainPlanItems[status.index].trainPurpose"   rows="4" cols="24"
+												name="trainPlanItems[${status.index}].trainPurpose"   rows="4" cols="24"
 												style="resize: none;" id="trainPurpose">${trainPlanItems.trainPurpose}</textarea></td>
 										<td><textarea class="trainPlanItems"
-												name="trainPlanItems['status.index'].trainContent"   rows="4" cols="24"
+												name="trainPlanItems[${status.index}].trainContent"   rows="4" cols="24"
 												style="resize: none;" id="trainContent">${trainPlanItems.trainContent}</textarea></td>
 										<td><input type="text" class="trainPlanItems"
-											name="trainPlanItems.classCount" value="${trainPlanItems.classCount}" id="classCount" /></td>
+											name="trainPlanItems[${status.index}].classCount" value="${trainPlanItems.classCount}" id="classCount" /></td>
 										<td><input type="text" class="trainPlanItems"
-											name="trainPlanItems.teacher" value="${trainPlanItems.teacher}" id="teacher" /></td>
+											name="trainPlanItems[${status.index}].teacher" value="${trainPlanItems.teacher}" id="teacher" /></td>
 								
 								</tr>
-							    </c:forEach> --%>
+							    </c:forEach>  
 
 								</tbody>
 								<tfoot>
