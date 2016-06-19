@@ -3,54 +3,54 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `train_plan_info`;
 CREATE TABLE `train_plan_info` (
-  `trainPlanId` varchar(7) NOT NULL DEFAULT '' COMMENT 'Ö÷¼ü',
-  `trainPlanName` varchar(30) NOT NULL DEFAULT '' COMMENT '¼Æ»®Ãû³Æ',
-  `trainPlanType` varchar(20) NOT NULL DEFAULT 'ĞÂÔ±¹¤Èë³§ÅàÑµ',
-  `trainPlanYear` varchar(8) NOT NULL DEFAULT '' COMMENT 'Äê¶È',
-  `startTime` date NOT NULL COMMENT '¿ªÊ¼Ê±¼ä',
-  `endTime` date NOT NULL COMMENT '½áÊøÊ±¼ä',
-  `isFinish` varchar(8) NOT NULL DEFAULT 'Î´Íê³É' COMMENT 'Íê³ÉÇé¿ö',
+  `trainPlanId` varchar(7) NOT NULL DEFAULT '' COMMENT 'ä¸»é”®',
+  `trainPlanName` varchar(30) NOT NULL DEFAULT '' COMMENT 'è®¡åˆ’åç§°',
+  `trainPlanType` varchar(20) NOT NULL DEFAULT 'æ–°å‘˜å·¥å…¥å‚åŸ¹è®­',
+  `trainPlanYear` varchar(8) NOT NULL DEFAULT '' COMMENT 'å¹´åº¦',
+  `startTime` date NOT NULL COMMENT 'å¼€å§‹æ—¶é—´',
+  `endTime` date NOT NULL COMMENT 'ç»“æŸæ—¶é—´',
+  `isFinish` varchar(8) NOT NULL DEFAULT 'æœªå®Œæˆ' COMMENT 'å®Œæˆæƒ…å†µ',
   PRIMARY KEY (`trainPlanId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ÅàÑµ¼Æ»®±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='åŸ¹è®­è®¡åˆ’è¡¨';
 
 -- ----------------------------
 -- Records of train_plan_info
 -- ----------------------------
-INSERT INTO `train_plan_info` VALUES ('tp10001', 'µçÆøÅàÑµ¼Æ»®', 'ĞÂÔ±¹¤Èë³¡ÅàÑµ', '2016', '2016-05-09', '2016-06-09', 'ÅàÑµÖĞ');
-INSERT INTO `train_plan_info` VALUES ('tp10002', 'È¼ÔËÅàÑµ¼Æ»®', 'ĞÂÔ±¹¤Èë³¡ÅàÑµ', '2016', '2016-04-01', '2016-05-29', 'ÅàÑµÖĞ');
-INSERT INTO `train_plan_info` VALUES ('tp10003', 'Æû»úÅàÑµ¼Æ»®', 'ĞÂÔ±¹¤Èë³¡ÅàÑµ', '2016', '2016-03-02', '2016-04-09', 'ÒÑÍê³É');
-INSERT INTO `train_plan_info` VALUES ('tp10004', '¹ÜÀí²ãÅàÑµ¼Æ»®', 'ÖĞ²ã¹ÜÀíÈËÔ±ÅàÑµ', '2015', '2015-12-09', '2015-12-27', 'ÒÑÍê³É');
-INSERT INTO `train_plan_info` VALUES ('tp10005', '°à×é³¤ÅàÑµ¼Æ»®', '°à×é³¤ÅàÑµ', '2016', '2016-06-10', '2016-06-19', 'Î´ÅàÑµ');
+INSERT INTO `train_plan_info` VALUES ('tp10001', 'ç”µæ°”åŸ¹è®­è®¡åˆ’', 'æ–°å‘˜å·¥å…¥åœºåŸ¹è®­', '2016', '2016-05-09', '2016-06-09', 'åŸ¹è®­ä¸­');
+INSERT INTO `train_plan_info` VALUES ('tp10002', 'ç‡ƒè¿åŸ¹è®­è®¡åˆ’', 'æ–°å‘˜å·¥å…¥åœºåŸ¹è®­', '2016', '2016-04-01', '2016-05-29', 'åŸ¹è®­ä¸­');
+INSERT INTO `train_plan_info` VALUES ('tp10003', 'æ±½æœºåŸ¹è®­è®¡åˆ’', 'æ–°å‘˜å·¥å…¥åœºåŸ¹è®­', '2016', '2016-03-02', '2016-04-09', 'å·²å®Œæˆ');
+INSERT INTO `train_plan_info` VALUES ('tp10004', 'ç®¡ç†å±‚åŸ¹è®­è®¡åˆ’', 'ä¸­å±‚ç®¡ç†äººå‘˜åŸ¹è®­', '2015', '2015-12-09', '2015-12-27', 'å·²å®Œæˆ');
+INSERT INTO `train_plan_info` VALUES ('tp10005', 'ç­ç»„é•¿åŸ¹è®­è®¡åˆ’', 'ç­ç»„é•¿åŸ¹è®­', '2016', '2016-06-10', '2016-06-19', 'æœªåŸ¹è®­');
 
 -- ----------------------------
 -- Table structure for train_plan_item
 -- ----------------------------
 DROP TABLE IF EXISTS `train_plan_item`;
 CREATE TABLE `train_plan_item` (
-  `trainItemId` varchar(9) NOT NULL DEFAULT '' COMMENT 'Ö÷¼ü',
-  `trainPlanId` varchar(7) NOT NULL COMMENT 'ÅàÑµ¼Æ»®ID',
-  `major` varchar(8) NOT NULL COMMENT '×¨ÒµÃû³Æ',
-  `trainPurpose` text COMMENT 'ÅàÑµÄ¿µÄ',
-  `trainContent` text COMMENT 'ÅàÑµÄÚÈİ',
-  `classCount` varchar(4) DEFAULT NULL COMMENT '¿ÎÊ±',
-  `teacher` varchar(12) DEFAULT NULL COMMENT 'ÊÚ¿ÎÈË',
+  `trainItemId` varchar(9) NOT NULL DEFAULT '' COMMENT 'ä¸»é”®',
+  `trainPlanId` varchar(7) NOT NULL COMMENT 'åŸ¹è®­è®¡åˆ’ID',
+  `major` varchar(8) NOT NULL COMMENT 'ä¸“ä¸šåç§°',
+  `trainPurpose` text COMMENT 'åŸ¹è®­ç›®çš„',
+  `trainContent` text COMMENT 'åŸ¹è®­å†…å®¹',
+  `classCount` varchar(4) DEFAULT NULL COMMENT 'è¯¾æ—¶',
+  `teacher` varchar(12) DEFAULT NULL COMMENT 'æˆè¯¾äºº',
   `startTime` varchar(8) DEFAULT NULL,
   `endTime` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`trainItemId`),
   KEY `fk_trainplanid` (`trainPlanId`),
   CONSTRAINT `fk_trainplanid` FOREIGN KEY (`trainPlanId`) REFERENCES `train_plan_info` (`trainPlanId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ÅàÑµ¼Æ»®Ã÷Ï¸±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='åŸ¹è®­è®¡åˆ’æ˜ç»†è¡¨';
 
 -- ----------------------------
 -- Records of train_plan_item
 -- ----------------------------
-INSERT INTO `train_plan_item` VALUES ('tp1000101', 'tp10001', 'µçÆø', 'ÕÆÎÕµçÆø»ù±¾ÖªÊ¶', 'µçÆø³õ¼¶', '32', 'Â½ÏşĞù', '8:00', '10:00');
-INSERT INTO `train_plan_item` VALUES ('tp1000102', 'tp10001', 'È¼ÔË', 'ÕÆÎÕÈ¼ÔË½ÚÄÜ½ø½×ÖªÊ¶', 'È¼ÔË½ÚÄÜ½ø½×Æª', '31', 'º«Ğ¡ÑÅ', '8:30', '10:30');
-INSERT INTO `train_plan_item` VALUES ('tp1000201', 'tp10002', 'µçÆø', 'ÕÆÎÕµçÆøÖĞ¼¶ÖªÊ¶', 'µçÆøÖĞ¼¶', '32', 'Â½ÏşĞù', '9:00', '11:30');
-INSERT INTO `train_plan_item` VALUES ('tp1000202', 'tp10002', 'È¼ÔË', 'ÕÆÎÕÈ¼ÔË½ÚÄÜ»ù±¾ÖªÊ¶', 'È¼ÔË½ÚÄÜ»ù´¡Æª', '32', 'º«Ğ¡ÑÅ', '14:30', '16:30');
-INSERT INTO `train_plan_item` VALUES ('tp1000203', 'tp10002', 'È¼ÔË', 'ÕÆÎÕÈ¼ÔË½ÚÄÜ¸ß¼¶ÖªÊ¶', 'È¼ÔË½ÚÄÜ¸ß¼¶Æª', '30', 'º«Ğ¡ÑÅ', '15:00', '18:00');
-INSERT INTO `train_plan_item` VALUES ('tp1000301', 'tp10003', 'µçÆø', 'ÕÆÎÕµçÆø¸ß¼¶ÖªÊ¶', 'µçÆø¸ß¼¶', '32', 'Â½ÏşĞù', '9:00', '11:00');
-INSERT INTO `train_plan_item` VALUES ('tp1000302', 'tp10003', 'Æû»ú', 'ÕÆÎÕÆû»úÏµÍ³µÄ»ù±¾ÖªÊ¶', 'Æû»úÏµÍ³¸ÅÊö', '20', 'Â½ÏşĞù', '8:00', '11:00');
+INSERT INTO `train_plan_item` VALUES ('tp1000101', 'tp10001', 'ç”µæ°”', 'æŒæ¡ç”µæ°”åŸºæœ¬çŸ¥è¯†', 'ç”µæ°”åˆçº§', '32', 'é™†æ™“è½©', '8:00', '10:00');
+INSERT INTO `train_plan_item` VALUES ('tp1000102', 'tp10001', 'ç‡ƒè¿', 'æŒæ¡ç‡ƒè¿èŠ‚èƒ½è¿›é˜¶çŸ¥è¯†', 'ç‡ƒè¿èŠ‚èƒ½è¿›é˜¶ç¯‡', '31', 'éŸ©å°é›…', '8:30', '10:30');
+INSERT INTO `train_plan_item` VALUES ('tp1000201', 'tp10002', 'ç”µæ°”', 'æŒæ¡ç”µæ°”ä¸­çº§çŸ¥è¯†', 'ç”µæ°”ä¸­çº§', '32', 'é™†æ™“è½©', '9:00', '11:30');
+INSERT INTO `train_plan_item` VALUES ('tp1000202', 'tp10002', 'ç‡ƒè¿', 'æŒæ¡ç‡ƒè¿èŠ‚èƒ½åŸºæœ¬çŸ¥è¯†', 'ç‡ƒè¿èŠ‚èƒ½åŸºç¡€ç¯‡', '32', 'éŸ©å°é›…', '14:30', '16:30');
+INSERT INTO `train_plan_item` VALUES ('tp1000203', 'tp10002', 'ç‡ƒè¿', 'æŒæ¡ç‡ƒè¿èŠ‚èƒ½é«˜çº§çŸ¥è¯†', 'ç‡ƒè¿èŠ‚èƒ½é«˜çº§ç¯‡', '30', 'éŸ©å°é›…', '15:00', '18:00');
+INSERT INTO `train_plan_item` VALUES ('tp1000301', 'tp10003', 'ç”µæ°”', 'æŒæ¡ç”µæ°”é«˜çº§çŸ¥è¯†', 'ç”µæ°”é«˜çº§', '32', 'é™†æ™“è½©', '9:00', '11:00');
+INSERT INTO `train_plan_item` VALUES ('tp1000302', 'tp10003', 'æ±½æœº', 'æŒæ¡æ±½æœºç³»ç»Ÿçš„åŸºæœ¬çŸ¥è¯†', 'æ±½æœºç³»ç»Ÿæ¦‚è¿°', '20', 'é™†æ™“è½©', '8:00', '11:00');
 -- ----------------------------
 -- Table structure for emp_attendance
 -- ----------------------------
@@ -62,7 +62,7 @@ CREATE TABLE `emp_attendance` (
   `recordDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `startTime` varchar(20) DEFAULT NULL,
   `arriveTime` varchar(20) DEFAULT NULL,
-  `attendance` varchar(6) NOT NULL COMMENT '³öÇÚ¡¢È±ÇÚ¡¢³Ùµ½',
+  `attendance` varchar(6) NOT NULL COMMENT 'å‡ºå‹¤ã€ç¼ºå‹¤ã€è¿Ÿåˆ°',
   `remark` text,
   PRIMARY KEY (`objectId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -70,12 +70,12 @@ CREATE TABLE `emp_attendance` (
 -- ----------------------------
 -- Records of emp_attendance
 -- ----------------------------
-INSERT INTO `emp_attendance` VALUES ('1', '201600100201', 'tp1000102', '2016-06-19 18:21:16', '2016-6-19 8:00', '2016-6-19 8:00', '³öÇÚ', null);
-INSERT INTO `emp_attendance` VALUES ('2', '201600100202', 'tp1000102', '2016-06-19 18:22:31', '', '', 'È±ÇÚ', null);
-INSERT INTO `emp_attendance` VALUES ('3', '201600100203', 'tp1000102', '2016-06-19 18:23:11', '2016-6-19 8:00', '2016-6-19 8:30', '³Ùµ½', null);
-INSERT INTO `emp_attendance` VALUES ('4', '201600100101', 'tp1000101', '2016-06-19 18:23:52', '2016-6-19 8:00', '2016-6-19 8:00', '³öÇÚ', null);
-INSERT INTO `emp_attendance` VALUES ('5', '201600100102', 'tp1000101', '2016-06-19 18:24:13', '2016-6-19 8:00', '2016-6-19 8:00', '³öÇÚ', null);
-INSERT INTO `emp_attendance` VALUES ('6', '201600100103', 'tp1000101', '2016-06-19 18:24:38', '2016-6-19 8:00', '2016-6-19 8:00', '³öÇÚ', null);
+INSERT INTO `emp_attendance` VALUES ('1', '201600100201', 'tp1000102', '2016-06-19 18:21:16', '2016-6-19 8:00', '2016-6-19 8:00', 'å‡ºå‹¤', null);
+INSERT INTO `emp_attendance` VALUES ('2', '201600100202', 'tp1000102', '2016-06-19 18:22:31', '', '', 'ç¼ºå‹¤', null);
+INSERT INTO `emp_attendance` VALUES ('3', '201600100203', 'tp1000102', '2016-06-19 18:23:11', '2016-6-19 8:00', '2016-6-19 8:30', 'è¿Ÿåˆ°', null);
+INSERT INTO `emp_attendance` VALUES ('4', '201600100101', 'tp1000101', '2016-06-19 18:23:52', '2016-6-19 8:00', '2016-6-19 8:00', 'å‡ºå‹¤', null);
+INSERT INTO `emp_attendance` VALUES ('5', '201600100102', 'tp1000101', '2016-06-19 18:24:13', '2016-6-19 8:00', '2016-6-19 8:00', 'å‡ºå‹¤', null);
+INSERT INTO `emp_attendance` VALUES ('6', '201600100103', 'tp1000101', '2016-06-19 18:24:38', '2016-6-19 8:00', '2016-6-19 8:00', 'å‡ºå‹¤', null);
 
 -- ----------------------------
 -- Table structure for staff
@@ -87,38 +87,38 @@ CREATE TABLE `staff` (
   `staffId` varchar(12) NOT NULL,
   `cardId` varchar(18) NOT NULL,
   `birthday` date DEFAULT NULL,
-  `native` varchar(50) DEFAULT NULL COMMENT '¼®¹á',
+  `native` varchar(50) DEFAULT NULL COMMENT 'ç±è´¯',
   `job` varchar(10) DEFAULT NULL,
   `unitId` varchar(6) NOT NULL,
-  `title` varchar(16) DEFAULT NULL COMMENT 'Ö°³Æ',
+  `title` varchar(16) DEFAULT NULL COMMENT 'èŒç§°',
   `telephone` varchar(11) DEFAULT NULL,
-  `joinTime` date DEFAULT NULL COMMENT '²Î¼Ó¹¤×÷Ê±¼ä',
+  `joinTime` date DEFAULT NULL COMMENT 'å‚åŠ å·¥ä½œæ—¶é—´',
   `sex` varchar(2) DEFAULT NULL,
-  `photo` blob COMMENT 'ÕÕÆ¬',
+  `photo` blob COMMENT 'ç…§ç‰‡',
   PRIMARY KEY (`objectId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of staff
 -- ----------------------------
-INSERT INTO `staff` VALUES ('1', 'º«Ğ¡Ğù', '210600100101', '12345678909876543', '2016-06-08', 'É½Î÷Ê¡', '¼ìĞŞ¹¤', '001001', '¸ß¼¶', '1234567', '2016-06-08', null, null);
-INSERT INTO `staff` VALUES ('2', 'º«Ğ¡Ğù', '201600100102', '12345678909876543', '2016-06-08', 'É½Î÷Ê¡', '¼ìĞŞ¹¤', '001001', '¸ß¼¶', '1234567', '2016-06-08', null, null);
-INSERT INTO `staff` VALUES ('3', 'º«Ğ¡Ğù', '201600100103', '12345678909876543', '2016-06-08', 'É½Î÷Ê¡', '¼ìĞŞ¹¤', '001001', '¸ß¼¶', '1234567', '2016-06-08', null, null);
-INSERT INTO `staff` VALUES ('4', 'Â½ÏşÊæ', '201600100201', '12345678909876543', '2015-12-17', 'É½Î÷Ê¡', 'ÔËÊä¹¤', '001002', '³õ¼¶', '1234567', '2016-06-08', null, null);
-INSERT INTO `staff` VALUES ('5', 'Â½ÏşÊæ', '201600100202', '12345678909876543', '2015-11-04', 'É½Î÷Ê¡', 'ÔËÊä¹¤', '001002', '³õ¼¶', '1234567', '2016-06-08', null, null);
-INSERT INTO `staff` VALUES ('6', 'Â½ÏşÊæ', '201600100203', '12345678909876543', '2016-01-01', 'É½Î÷Ê¡', 'ÔËÊä¹¤', '001002', '³õ¼¶', '1234565', '2016-06-03', null, null);
+INSERT INTO `staff` VALUES ('1', 'éŸ©å°è½©', '210600100101', '12345678909876543', '2016-06-08', 'å±±è¥¿çœ', 'æ£€ä¿®å·¥', '001001', 'é«˜çº§', '1234567', '2016-06-08', null, null);
+INSERT INTO `staff` VALUES ('2', 'éŸ©å°è½©', '201600100102', '12345678909876543', '2016-06-08', 'å±±è¥¿çœ', 'æ£€ä¿®å·¥', '001001', 'é«˜çº§', '1234567', '2016-06-08', null, null);
+INSERT INTO `staff` VALUES ('3', 'éŸ©å°è½©', '201600100103', '12345678909876543', '2016-06-08', 'å±±è¥¿çœ', 'æ£€ä¿®å·¥', '001001', 'é«˜çº§', '1234567', '2016-06-08', null, null);
+INSERT INTO `staff` VALUES ('4', 'é™†æ™“èˆ’', '201600100201', '12345678909876543', '2015-12-17', 'å±±è¥¿çœ', 'è¿è¾“å·¥', '001002', 'åˆçº§', '1234567', '2016-06-08', null, null);
+INSERT INTO `staff` VALUES ('5', 'é™†æ™“èˆ’', '201600100202', '12345678909876543', '2015-11-04', 'å±±è¥¿çœ', 'è¿è¾“å·¥', '001002', 'åˆçº§', '1234567', '2016-06-08', null, null);
+INSERT INTO `staff` VALUES ('6', 'é™†æ™“èˆ’', '201600100203', '12345678909876543', '2016-01-01', 'å±±è¥¿çœ', 'è¿è¾“å·¥', '001002', 'åˆçº§', '1234565', '2016-06-03', null, null);
 
 -- ----------------------------
 -- Table structure for train_emp
 -- ----------------------------
 DROP TABLE IF EXISTS `train_emp`;
 CREATE TABLE `train_emp` (
-  `objectId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Ö÷¼ü',
-  `trainItemId` varchar(9) NOT NULL COMMENT 'ÅàÑµÃ÷Ï¸ID',
+  `objectId` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ä¸»é”®',
+  `trainItemId` varchar(9) NOT NULL COMMENT 'åŸ¹è®­æ˜ç»†ID',
   `staffId` varchar(12) NOT NULL,
   PRIMARY KEY (`objectId`),
   KEY `fk_trainplanitem_id` (`trainItemId`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='ÅàÑµÑ§Ô±°²ÅÅ±í';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='åŸ¹è®­å­¦å‘˜å®‰æ’è¡¨';
 
 -- ----------------------------
 -- Records of train_emp
@@ -139,11 +139,11 @@ CREATE TABLE `unit` (
   `unitId` varchar(6) NOT NULL,
   `upUnitId` varchar(6) DEFAULT '00',
   `unitName` varchar(16) NOT NULL DEFAULT '',
-  `address` varchar(48) DEFAULT 'ÔİÎŞ',
+  `address` varchar(48) DEFAULT 'æš‚æ— ',
   `telephone` varchar(11) DEFAULT '',
   `contactPerson` varchar(12) DEFAULT '',
   `email` varchar(24) DEFAULT '',
-  `header` varchar(12) DEFAULT '' COMMENT '²¿ÃÅ¼ò³Æ',
+  `header` varchar(12) DEFAULT '' COMMENT 'éƒ¨é—¨ç®€ç§°',
   `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `remark` text,
   PRIMARY KEY (`objectId`,`unitId`)
@@ -152,15 +152,15 @@ CREATE TABLE `unit` (
 -- ----------------------------
 -- Records of unit
 -- ----------------------------
-INSERT INTO `unit` VALUES ('1', '00', '0', 'Ì«Ô­µÚ¶şÈÈµç³§', 'ÔİÎŞ', '1234567', 'ÀîÀî', '', 'µÚ¶şÈÈµç³§', '2016-05-29 11:19:48', null);
-INSERT INTO `unit` VALUES ('2', '001', '00', '·¢µçÒ»²¿', 'ÔİÎŞ', '', '', '', 'µçÒ»', '2016-05-29 17:57:19', null);
-INSERT INTO `unit` VALUES ('3', '001001', '001', 'µçÆøÒ»°à', 'ÔİÎŞ', '', '', '', 'µçÆø1', '2016-06-01 21:13:35', null);
-INSERT INTO `unit` VALUES ('4', '002', '00', '·¢µç¶ş²¿', 'ÔİÎŞ', '', '', '', 'µç¶ş', '2016-05-31 17:11:23', null);
-INSERT INTO `unit` VALUES ('5', '003', '00', '·¢µçÈı²¿', 'ÔİÎŞ', '', '', '', 'µçÈı', '2016-06-01 21:12:37', null);
-INSERT INTO `unit` VALUES ('6', '001002', '001', 'È¼ÔËÒ»°à', 'ÔİÎŞ', '', '', '', 'È¼ÔË1', '2016-06-08 10:12:37', null);
-INSERT INTO `unit` VALUES ('7', '002001', '002', 'µçÆøÒ»°à', 'ÔİÎŞ', '', '', '', 'µçÆø1', '2016-06-08 10:13:38', null);
-INSERT INTO `unit` VALUES ('8', '002002', '002', 'È¼ÔËÒ»°à', 'ÔİÎŞ', '', '', '', 'È¼ÔË1', '2016-06-08 10:14:29', null);
-INSERT INTO `unit` VALUES ('9', '003001', '003', 'µçÆøÒ»°à', 'ÔİÎŞ', '', '', '', 'µçÆø1', '2016-06-08 10:15:12', null);
-INSERT INTO `unit` VALUES ('10', '003002', '003', 'È¼ÔËÒ»°à', 'ÔİÎŞ', '', '', '', 'È¼ÔË1', '2016-06-08 10:15:40', null);
-INSERT INTO `unit` VALUES ('11', '004', '00', '¼ìĞŞ³µ¼ä', 'ÔİÎŞ', '', '', '', '¼ìĞŞ', '2016-06-08 11:06:48', null);
-INSERT INTO `unit` VALUES ('12', '005', '00', '¹øÂ¯³µ¼ä', 'ÔİÎŞ', '', '', '', '¹øÂ¯·¿', '2016-06-08 11:13:50', null);
+INSERT INTO `unit` VALUES ('1', '00', '0', 'å¤ªåŸç¬¬äºŒçƒ­ç”µå‚', 'æš‚æ— ', '1234567', 'ææ', '', 'ç¬¬äºŒçƒ­ç”µå‚', '2016-05-29 11:19:48', null);
+INSERT INTO `unit` VALUES ('2', '001', '00', 'å‘ç”µä¸€éƒ¨', 'æš‚æ— ', '', '', '', 'ç”µä¸€', '2016-05-29 17:57:19', null);
+INSERT INTO `unit` VALUES ('3', '001001', '001', 'ç”µæ°”ä¸€ç­', 'æš‚æ— ', '', '', '', 'ç”µæ°”1', '2016-06-01 21:13:35', null);
+INSERT INTO `unit` VALUES ('4', '002', '00', 'å‘ç”µäºŒéƒ¨', 'æš‚æ— ', '', '', '', 'ç”µäºŒ', '2016-05-31 17:11:23', null);
+INSERT INTO `unit` VALUES ('5', '003', '00', 'å‘ç”µä¸‰éƒ¨', 'æš‚æ— ', '', '', '', 'ç”µä¸‰', '2016-06-01 21:12:37', null);
+INSERT INTO `unit` VALUES ('6', '001002', '001', 'ç‡ƒè¿ä¸€ç­', 'æš‚æ— ', '', '', '', 'ç‡ƒè¿1', '2016-06-08 10:12:37', null);
+INSERT INTO `unit` VALUES ('7', '002001', '002', 'ç”µæ°”ä¸€ç­', 'æš‚æ— ', '', '', '', 'ç”µæ°”1', '2016-06-08 10:13:38', null);
+INSERT INTO `unit` VALUES ('8', '002002', '002', 'ç‡ƒè¿ä¸€ç­', 'æš‚æ— ', '', '', '', 'ç‡ƒè¿1', '2016-06-08 10:14:29', null);
+INSERT INTO `unit` VALUES ('9', '003001', '003', 'ç”µæ°”ä¸€ç­', 'æš‚æ— ', '', '', '', 'ç”µæ°”1', '2016-06-08 10:15:12', null);
+INSERT INTO `unit` VALUES ('10', '003002', '003', 'ç‡ƒè¿ä¸€ç­', 'æš‚æ— ', '', '', '', 'ç‡ƒè¿1', '2016-06-08 10:15:40', null);
+INSERT INTO `unit` VALUES ('11', '004', '00', 'æ£€ä¿®è½¦é—´', 'æš‚æ— ', '', '', '', 'æ£€ä¿®', '2016-06-08 11:06:48', null);
+INSERT INTO `unit` VALUES ('12', '005', '00', 'é”…ç‚‰è½¦é—´', 'æš‚æ— ', '', '', '', 'é”…ç‚‰æˆ¿', '2016-06-08 11:13:50', null);
