@@ -1,3 +1,5 @@
+DROP TRIGGER IF EXISTS `tri_create_staff_id`;
+
 DELIMITER $
 CREATE TRIGGER tri_create_staff_id 
 BEFORE INSERT ON staff
@@ -7,6 +9,8 @@ CALL pro_create_staff_id(new.unitId,@staff_id);
 SET new.staffId = @staff_id;
 END $
 DELIMITER ;
+
+DROP TRIGGER IF EXISTS `tri_create_train_item_id `;
 
 DELIMITER $
 CREATE TRIGGER tri_create_train_item_id 
@@ -18,6 +22,7 @@ SET new.trainItemId = @train_plan_item_id;
 END $
 DELIMITER ;
 
+DROP TRIGGER IF EXISTS `tri_create_train_plan_id `;
 DELIMITER $
 CREATE TRIGGER tri_create_train_plan_id 
 BEFORE INSERT ON train_plan_info
@@ -27,6 +32,8 @@ CALL pro_create_train_plan_id(@train_plan_id);
 SET new.trainPlanId = @train_plan_id;
 END $
 DELIMITER ;
+
+DROP TRIGGER IF EXISTS `tri_create_unit_id `;
 
 DELIMITER $
 CREATE TRIGGER tri_create_unit_id 

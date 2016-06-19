@@ -13,7 +13,7 @@
 	<!-- 根据员工Id查询员工信息 -->
 	<select id="getStaffById" parameterType="String" resultMap="StaffMap">
 		select
-		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staffId=#{staffId} and staff.unitId=unit.unitId;
 	</select>
 
@@ -22,7 +22,7 @@
 	<select id="getStaffListByUnitId" parameterType="String"
 		resultMap="StaffMap">
 		select
-		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staff.unitId=#{unitId} and
 		staff.unitId=unit.unitId;
 	</select>
@@ -31,14 +31,14 @@
 	<!-- 查询全部员工信息 -->
 	<select id="getAllStaff" resultMap="StaffMap">
 		select
-		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staff.unitId=unit.unitId;
 	</select>
 
 	<!-- 根据部门Id查询最新插入的员工信息 -->
 	<select id="getNewStaff" parameterType="String" resultMap="StaffMap">
 		select
-		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		unitName,name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
 		from staff,unit where staffId=(SELECT max(staffId) staffId FROM staff,unit WHERE
 		staff.unitId=unit.unitId) and staff.unitId=unit.unitId;
 	</select>
