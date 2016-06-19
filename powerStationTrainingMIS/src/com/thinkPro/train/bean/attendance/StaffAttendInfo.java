@@ -1,9 +1,9 @@
 package com.thinkPro.train.bean.attendance;
 
 public class StaffAttendInfo {
-      private String arriveTime;
-      private String startTime;
-      private String attendStatus;
+      private String arriveTime;//到课时间
+      private String startTime;//上课时间
+      private String attendStatus;//考勤情况
 	public String getArriveTime() {
 		return arriveTime;
 	}

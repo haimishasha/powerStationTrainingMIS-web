@@ -2,12 +2,12 @@ package com.thinkPro.train.bean.attendance;
 
 
 public class AttendCount {
-	private String staffId;
-	private String stuName;
-	private String departmentName;
-	private int attendNum;
-	private int absenceNum;
-	private int lateCount;
+	private String staffId;//员工id
+	private String stuName;//员工名字
+	private String departmentName;//部门名称
+	private int attendNum;//正常到勤次数
+	private int absenceNum;//缺勤次数
+	private int lateCount;//迟到次数
 	public String getStaffId() {
 		return staffId;
 	}

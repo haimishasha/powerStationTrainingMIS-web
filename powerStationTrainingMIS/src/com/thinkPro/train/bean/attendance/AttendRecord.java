@@ -1,10 +1,10 @@
 package com.thinkPro.train.bean.attendance;
 
 public class AttendRecord {
-     private String staffId;
-     private String trainPlanItemId;
-     private String arriveTime;
-     private String attendStatus;
+     private String staffId;//员工ID
+     private String trainPlanItemId;//培训专业id   
+     private String arriveTime;//到课时间
+     private String attendStatus;//考勤情况
 	public String getStaffId() {
 		return staffId;
 	}
