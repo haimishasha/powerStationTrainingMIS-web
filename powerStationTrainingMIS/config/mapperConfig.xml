@@ -12,5 +12,6 @@
 		<mapper resource="mybatisMapper/TrainPlanItemMapper.xml"/>
 		<mapper resource="mybatisMapper/UnitMapper.xml"/>
 		<mapper resource="mybatisMapper/AttendanceMapper.xml"/>
+		<mapper resource="mybatisMapper/ArrangementMapper.xml"/>
 	</mappers>
 </configuration>
