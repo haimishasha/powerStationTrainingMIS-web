@@ -65,15 +65,28 @@
 	</select>
 
 	<!-- 根据条件获得学员的考勤统计信息 -->
-	<select id="getAttendCountListByCondition" parameterType="com.thinkPro.train.bean.attendance.AllStaffAttendCondition" resultType="com.thinkPro.train.bean.attendance.AttendCount">
-		select
-		attend_count.staffId,staff.`name` stuName,unit.unitName
-		departmentName,attendNum,absenceNum,lateCount
-		from
-		attend_count,staff,unit
-		where attend_count.staffId = staff.staffId and
-		staff.unitId = unit.unitId
-		;
+	<select id="getAttendCountListByCondition"
+		parameterType="com.thinkPro.train.bean.attendance.AllStaffAttendCondition"
+		resultType="com.thinkPro.train.bean.attendance.AttendCount">
+		SELECT attend_count.staffId,staff.`name` stuName,unit.unitName departmentName,attendNum,absenceNum,lateCount
+		FROM attend_info
+		<where>
+			<if test="trainPlanYear!=null and trainPlanYear!='' ">
+				trainPlanYear = #{trainPlanYear}
+			</if>
+			<if test="trainPlanName!=null and trainPlanName!='' ">
+				AND trainPlanName = #{trainPlanName}
+			</if>
+			<if test="major!=null and major!='' ">
+				AND major = #{major}
+			</if>
+			<if test="trainPlanType!=null and trainPlanType!='' ">
+				AND trainPlanType = #{trainPlanType}
+			</if>
+			<if test="staffName!=null and staffName!='' ">
+				AND staffName = #{staffName}
+			</if>
+		</where>
 	</select>
 
 	<!-- 根据学员Id查询学员的具体考勤信息 -->
