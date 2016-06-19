@@ -6,6 +6,7 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 import com.thinkPro.train.bean.attendance.AllStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.AttendCount;
+import com.thinkPro.train.db.util.AttendanceUtil;
 /**
  * @author GuoFei
  * 日期：2016-6-17
@@ -19,7 +20,9 @@ public class SearchAllStaffAttend extends ActionSupport {
 	List<AttendCount> attendCountList=new ArrayList<AttendCount>(); 
 	
 	public String  execute(){
-		System.out.println("进入SearchAttendance查询");
+		
+		AttendanceUtil attendanceUtil=new AttendanceUtil();
+		attendCountList=attendanceUtil.getAttendCountListByCondition(allStaffAttendCondition);
 		
 		return SUCCESS;
 	}

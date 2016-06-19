@@ -99,7 +99,8 @@ $(function(){
             }
 
         },
-        errorPlacement:function(error,element){　　//第一个参数是错误的提示文字，第二个参数是当前输入框
+        errorPlacement:function(error,element){　　
+        	//第一个参数是错误的提示文字，第二个参数是当前输入框
                error.appendTo(element.closest("tr"));　　//用的是jQuery，这里设置的是，错误提示文本显示在当前文本框的兄弟span中
         }
    })
