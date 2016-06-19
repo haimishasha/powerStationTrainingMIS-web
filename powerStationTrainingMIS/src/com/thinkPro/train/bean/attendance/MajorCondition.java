@@ -5,13 +5,14 @@ package com.thinkPro.train.bean.attendance;
  * 描述：进入考勤录入界面的条件类
  * */
 public class MajorCondition {
-      private String trainPlanItemId;
-      private String trainPlanId;
-	public String getTrainPlanItemId() {
-		return trainPlanItemId;
+    private String major;
+    private String trainPlanId;
+	
+	public String getMajor() {
+		return major;
 	}
-	public void setTrainPlanItemId(String trainPlanItemId) {
-		this.trainPlanItemId = trainPlanItemId;
+	public void setMajor(String major) {
+		this.major = major;
 	}
 	public String getTrainPlanId() {
 		return trainPlanId;
