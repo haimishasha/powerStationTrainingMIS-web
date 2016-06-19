@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>电厂职工管理系统</title>
+		<script type="text/javascript" src="../../js/jquery-2.2.2.min.js" ></script>
+		<script type="text/javascript" src="../../js/bootstrap.js" ></script>
+		<link rel="stylesheet" href="../../css/bootstrap.css" />
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" href="../../css/student_assign/student_assign.css" />
+	</head>
+
+	<body>
+		<div class="bef_nav">
+			<div class="container">							
+				<div class="bef_nav_right">
+					<span style="margin-right: 20px;">欢迎 : 管理员</span>
+					<a href="#">修改密码</a>
+					<a href="#">退出系统</a>
+				</div>
+			</div>
+		</div>
+
+		<nav class="nav navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      				 	<span class="sr-only">Toggle navigation</span>
+       				 	<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="#">LOGO</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">首页</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训计划管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="ADD.html">添加</a></li>
+								<li><a href="ADD.html">修改</a></li>
+								<li><a href="select.html">删除</a></li>
+								<li><a href="select.html">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训成绩管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">录入</a></li>
+								<li><a href="#">修改</a></li>
+								<li><a href="#">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">查询</a></li>
+								<li><a href="#">统计</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学员管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="dapartment.html">部门管理</a></li>
+								<li><a href="show.html" name="staff_info" onclick="">学员基本信息管理</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">指纹库管理</a></li>
+								<li><a href="#">用户管理</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+
+		<div class="Mycontent">
+			<div class="container">
+				<div class="">
+					<div class="content_top">
+						<div class="content_top_left fl">z-tree</div>
+						<div class="content_top_right fr">
+							<div class="top_pormpt">
+								<div class="fl">
+									部门:
+									<span>-发电一部-</span>
+									<span>-电气一班-</span>
+								</div>
+								<div class="fr">
+									<button id="student_choice">选择</button>
+								</div>
+							</div>
+							<div>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>姓名</th>
+											<th>职务</th>
+											<th>入厂时间</th>
+											<th>职位</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>张志刚</td>
+											<td>班长</td>
+											<td>1999.8</td>
+											<td></td>
+											<td><input type="checkbox" name="student_check"/> </td>
+										</tr>
+										<tr>
+											<td>张志刚</td>
+											<td>班长</td>
+											<td>1999.8</td>
+											<td></td>
+											<td><input type="checkbox" name="student_check"/> </td>
+										</tr>
+										<tr>
+											<td>张志刚</td>
+											<td>班长</td>
+											<td>1999.8</td>
+											<td></td>
+											<td><input type="checkbox" name="student_check"/> </td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="content_bottom">
+						<div class="content_bottom_title">
+							<div class="fl">
+								已安排的学员<span> 10 </span>人
+							</div>
+							<div class="fr">
+								<button>返回</button>
+								<button>删除</button>
+								<button>保存</button>
+							</div>
+						</div>
+						<div>
+							<table class="table" id="student_save_table">
+								<thead>
+									<tr>
+										<th>员工编号</th>
+										<th>姓名</th>
+										<th>部门</th>
+										<th>职务</th>
+										<th>入厂时间</th>
+										<th>职位</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>001001</td>
+										<td>张志刚</td>
+										<td>发电一部 电气一班</td>
+										<td>班长</td>
+										<td>1999.8</td>
+										<td></td>										
+									</tr>
+									<tr>
+										<td>001001</td>
+										<td>张志刚</td>
+										<td>发电一部 电气一班</td>
+										<td>班长</td>
+										<td>1999.8</td>
+										<td></td>										
+									</tr>
+									<tr>
+										<td>001001</td>
+										<td>张志刚</td>
+										<td>发电一部 电气一班</td>
+										<td>班长</td>
+										<td>1999.8</td>
+										<td></td>										
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hr"></div>
+		<footer style="text-align: center;margin-bottom: 30px;">
+			<p>版权信息</p>
+			<p>版权信息一般还有两行</p>
+		</footer>
+	</body>
+
+</html>
