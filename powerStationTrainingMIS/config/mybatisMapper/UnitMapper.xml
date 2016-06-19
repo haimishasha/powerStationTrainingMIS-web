@@ -6,8 +6,8 @@
 	<!-- 创建部门信息(Insert) -->
 	<insert id="insertUnit" parameterType="Unit">
 		INSERT INTO
-		unit(unitId,upUnitId,unitName,header,remark)
-		VALUES(#{unitId},#{upUnitId},#{unitName},#{header},#{remark})
+		unit(unitId,upUnitId,unitName,address,telephone,contactPerson,email,header,createDate,remark,unitClass)
+		VALUES(#{unitId},#{upUnitId},#{unitName},#{address},#{telephone},#{contactPerson},#{email},#{header},#{createDate},#{remark},#{unitClass})
 	</insert>
 
 
