@@ -16,5 +16,8 @@
 		 <action name="SearchOneStaffAttend" class="com.thinkPro.train.action.attendance.SaveAttendance" method="execute">
 			<result>/Attendance/search.jsp</result>			
 		</action>
+		 <action name="ToSaveAttendView" class="com.thinkPro.train.action.attendance.ToSaveAttendView" method="execute">
+			<result>/Attendance/search.jsp</result>			
+		</action>
 	</package>
 </struts>
