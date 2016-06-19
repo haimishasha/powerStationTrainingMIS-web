@@ -4,19 +4,19 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="attendance" extends="json-default">
-		 <action name="SearchAllStaffAttend" class="com.thinkPro.train.action.attendance.SearchAttendance" method="execute">
+		 <action name="SearchAllStaffAttend" class="com.thinkPro.train.action.attendance.SearchAllStaffAttend" >
 			<result>/Attendance/search.jsp</result>			
 		</action>
-		 <action name="SearchTrainPlan" class="com.thinkPro.train.action.attendance.SearchTrainPlan" method="execute">
+		 <action name="SearchTrainPlan" class="com.thinkPro.train.action.attendance.SearchTrainPlan" >
 			<result>/Attendance/search.jsp</result>			
 		</action>
-		 <action name="SaveAttendRecord" class="com.thinkPro.train.action.attendance.SaveAttendance" method="execute">
+		 <action name="SaveAttendRecord" class="com.thinkPro.train.action.attendance.SaveAttendRecord" >
 			<result>/Attendance/search.jsp</result>			
 		</action>
-		 <action name="SearchOneStaffAttend" class="com.thinkPro.train.action.attendance.SaveAttendance" method="execute">
+		 <action name="SearchOneStaffAttend" class="com.thinkPro.train.action.attendance.SearchOneStaffAttend" >
 			<result>/Attendance/search.jsp</result>			
 		</action>
-		 <action name="ToSaveAttendView" class="com.thinkPro.train.action.attendance.ToSaveAttendView" method="execute">
+		 <action name="ToSaveAttendView" class="com.thinkPro.train.action.attendance.ToSaveAttendView" >
 			<result>/Attendance/search.jsp</result>			
 		</action>
 	</package>
