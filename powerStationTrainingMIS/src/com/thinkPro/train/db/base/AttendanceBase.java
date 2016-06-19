@@ -1,6 +1,7 @@
 package com.thinkPro.train.db.base;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -47,7 +48,7 @@ public class AttendanceBase {
 		return attendanceMapper.getTrainPlanItemByInfo(condition);
 	}
 	
-	public List<String> getStaffNameListByItemId(String trainItemId){
+	public List<Map<String,String>> getStaffNameListByItemId(String trainItemId){
 		return attendanceMapper.getStaffNameListByItemId(trainItemId);
 	}
 	

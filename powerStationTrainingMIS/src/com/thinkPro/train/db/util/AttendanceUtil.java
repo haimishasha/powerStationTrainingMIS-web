@@ -1,6 +1,7 @@
 package com.thinkPro.train.db.util;
 
 import java.util.List;
+import java.util.Map;
 
 import com.thinkPro.train.bean.attendance.AllStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.AttendCount;
@@ -64,7 +65,7 @@ public class AttendanceUtil {
 	 * @param trainItemId
 	 * @return 学员姓名链表
 	 */
-	public List<String> getStaffNameListByItemId(String trainItemId){
+	public List<Map<String,String>> getStaffNameListByItemId(String trainItemId){
 		return attendanceBase.getStaffNameListByItemId(trainItemId);
 	}
 	/**

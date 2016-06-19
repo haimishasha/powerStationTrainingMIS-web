@@ -47,8 +47,8 @@
 
 	<!-- 根据培训明细ID查询培训学员姓名 -->
 	<select id="getStaffNameListByItemId" parameterType="String"
-		resultType="String">
-		select staff.`name`
+		resultType="Map">
+		select train_emp.staffId,staff.`name`
 		from train_emp,staff
 		where train_emp.staffId = staff.staffId
 		and train_emp.trainItemId = #{trainItemId}

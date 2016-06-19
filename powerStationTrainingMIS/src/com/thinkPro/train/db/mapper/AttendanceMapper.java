@@ -1,6 +1,7 @@
 package com.thinkPro.train.db.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.thinkPro.train.bean.attendance.AllStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.AttendCount;
@@ -16,7 +17,7 @@ public interface AttendanceMapper {
 	public List<TrainPlanInfo> getAllTrainPlanInfoList();
 	public List<TrainPlanInfo> getTrainPlanInfoListByCondition(TrainPlanCondition trainPlanCondition);
 	public TrainPlanItem getTrainPlanItemByInfo(MajorCondition condition);
-	public List<String> getStaffNameListByItemId(String trainItemId);
+	public List<Map<String,String>> getStaffNameListByItemId(String trainItemId);
 	public List<AttendCount> getAllAttendCountList();
 	public List<AttendCount> getAttendCountListByCondition(AllStaffAttendCondition condition);
 	public List<StaffAttendInfo> getStaffAttendInfoListByStaffId(String staffId,String trainItemId);
