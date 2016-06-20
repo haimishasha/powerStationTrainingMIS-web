@@ -1,0 +1,12 @@
+.hr{
+	height:2px;
+	width:100%;
+	margin:20px auto;
+	background:gray;
+	}
+	td a{
+		color:black;
+	}
+	td a:hover{
+		text-decoration: none;
+	}

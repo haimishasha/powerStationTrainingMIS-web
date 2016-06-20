@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<script src="../js/datetimepicker/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/datetimepicker/jquery.datetimepicker.css"/>
+		
+  <style>
+  .row{
+
+    margin-bottom:30px;
+  }
+  .row .input-group{
+    margin-bottom:5px;
+  }
+  </style>
+ 
+  <script src="../js/datetimepicker/jquery.datetimepicker.js"></script>
+  <script src="../js/datetimepicker/jquery.datetimepicker.full.js"></script>
+  <script>
+  $(function(){
+  $('#datetimepicker').datetimepicker({
+    dayOfWeekStart : 1,
+    lang:'en',
+    disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
+    startDate:  '2016/01/05'
+    });
+  $('#datetimepicker').datetimepicker({value:'2015/04/15 05:03',step:10});
+  });
+  </script>
+</head>
+<body>
+    <nav class="nav navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+          <a class="navbar-brand" href="#">LOGO</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">首页</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训计划管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="ADD.html">添加</a></li>
+                <li><a href="ADD.html">修改</a></li>
+                <li><a href="select.html">删除</a></li>
+                <li><a href="select.html">查询</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训成绩管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">录入</a></li>
+                <li><a href="#">修改</a></li>
+                <li><a href="#">查询</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">录入</a></li>
+                <li><a href="#">查询</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学员管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="dapartment.html">部门管理</a></li>
+                <li><a href="show.html" name="staff_info" onclick="">学员基本信息管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">指纹库管理</a></li>
+                <li><a href="#">用户管理</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <div class="container">
+      <form>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                  <label for="year" class="input-group-addon">年度</label>
+                  <select class="form-control" name="year">
+                      <option value="" selected="selected">2015</option>
+                      <option value="0">2014</option>
+                      <option value="1">2013</option>
+                      <option value="2">2012</option>
+                      <option value="3">2011</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                  <label for="Planyear" class="input-group-addon">培训计划名称</label>
+                  <select class="form-control" name="Plantype">
+                      <option value="" selected="selected">新员工入厂培训</option>
+                      <option value="0">中层管理人员培训</option>
+                      <option value="1">班组长培训</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                  <label for="" class="input-group-addon">时间</label>
+                  <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                  <label for="major" class="input-group-addon">&nbsp;培&nbsp;训&nbsp;专&nbsp;业&nbsp;&nbsp;&nbsp;</label>
+                  <select class="form-control" name="major" class="form-control">
+                    <option value="" selected="selected">电气</option>
+                    <option value="0">汽机</option>
+                    <option value="1">锅炉</option>
+                    <option value="2">化水</option>
+                    <option value="3">燃运</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                  <label for="coursetime" class="input-group-addon">课时</label>
+                  <input type="text" name="coursetime" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                  <label for="teacher" class="input-group-addon">&nbsp;&nbsp;授&nbsp;&nbsp;课&nbsp;&nbsp;人&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  <input type="text" name="teacher" class="form-control">
+                </div>
+            </div>
+        </div>
+          <table  class="table table-bordered table-hover table-responsive">
+            <tr>
+              <th>序号</th>
+              <th>学员姓名</th>
+              <th>上课时间</th>
+              <th>到课时间</th>
+              <th>考勤情况</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style="text-align:center"><input type="text" id="datetimepicker" name=""></td>
+              <td>
+                <select name="" id="myselect">
+                  <option value="">出勤</option>
+                  <option value="">缺勤</option>
+                  <option value="">迟到</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <input type="submit" value="保存" class="btn btn-info">
+    </form>
+</div>
+<footer style="margin-top:300px;text-align:center">
+      <p>版权信息</p>
+      <p>版权信息一般还有两行</p>
+</footer>
+</body>
+</html>

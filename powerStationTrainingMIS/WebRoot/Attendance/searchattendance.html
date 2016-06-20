@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../css/attendance/attendrecord.css">
+	<script>
+		$(function(){
+
+				$("#selectinfo").click(function(){
+
+					$("#main").attr("src","attendinfo.html");
+
+				});
+
+		});
+	</script>
+	<style>
+			#main{
+			margin-left:0px;
+			}
+	</style>
+</head>
+<body>
+	<nav class="nav navbar-inverse">
+		<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	      				 	<span class="sr-only">Toggle navigation</span>
+	       				 	<span class="icon-bar"></span>
+	        				<span class="icon-bar"></span>
+	        				<span class="icon-bar"></span>
+	      				</button>
+						<a class="navbar-brand" href="#">LOGO</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">首页</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训计划管理<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="ADD.html">添加</a></li>
+									<li><a href="ADD.html">修改</a></li>
+									<li><a href="select.html">删除</a></li>
+									<li><a href="select.html">查询</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训成绩管理<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">录入</a></li>
+									<li><a href="#">修改</a></li>
+									<li><a href="#">查询</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">录入</a></li>
+									<li><a href="recordselect.html">查询</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学员管理<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="dapartment.html">部门管理</a></li>
+									<li><a href="show.html" name="staff_info" onclick="">学员基本信息管理</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">指纹库管理</a></li>
+									<li><a href="#">用户管理</a></li>
+								</ul>
+							</li>
+						</ul>
+			    </div>
+		</div>
+	</nav>
+	<div class="container" style="margin-top:10px">
+			<form action="#" method="post" id="form1">
+					<div class="row">
+							<div class="col-lg-6 col-md-6 col-xs-12">
+								<div class="input-group">
+									<label for="" class="input-group-addon">培训计划年度</label>
+									<select class="form-control" name="">
+										<option value="" selected="selected">2015</option>
+										<option value="0">2014</option>
+										<option value="1">2013</option>
+										<option value="2">2012</option>
+										<option value="3">2011</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xs-12">
+								<div class="input-group">
+									<label for="" class="input-group-addon">&nbsp;培&nbsp;训&nbsp;专&nbsp;业&nbsp;&nbsp;&nbsp;</label>
+									<select class="form-control" name="">
+										<option value="" selected="selected">电气</option>
+										<option value="0">汽机</option>
+										<option value="1">锅炉</option>
+										<option value="2">化水</option>
+										<option value="3">燃运</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xs-12">
+								<div class="input-group">
+									<label for="" class="input-group-addon">培训计划名称</label>
+									<input type="text" class="form-control">						
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xs-12">
+								<div class="input-group">
+									<label for class="input-group-addon">培训计划类型</label>
+									<select class="form-control" name="">
+										<option value="" selected="selected">新员工入厂培训</option>
+										<option value="0">中层管理人员培训</option>
+										<option value="1">班组长培训</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xs-12">
+								<div class="input-group">
+									<label for="" class="input-group-addon">&nbsp;学&nbsp;员&nbsp;姓&nbsp;名&nbsp;&nbsp;&nbsp;</label>
+									<input type="text" class="form-control">
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xs-12">
+								<button type="button" id="selectinfo" class="btn btn-info">查询</button>
+							</div>
+					</div>										
+			</form>
+			<div class="hr"></div>
+			<iframe src="" id="main" height="500px" width="100%" frameborder="0">
+		</iframe>
+	</div>
+</body>
+</html>
