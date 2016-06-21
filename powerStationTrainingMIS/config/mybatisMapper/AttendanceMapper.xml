@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thinkPro.train.db.mapper.AttendanceMapper">
-	
-	<resultMap type="com.thinkPro.train.bean.attendance.TrainPlanInfo" id="TrainPlanInfoMap">
+
+	<resultMap type="com.thinkPro.train.bean.attendance.TrainPlanInfo"
+		id="TrainPlanInfoMap">
 		<id property="trainPlanId" column="trainPlanId" />
 		<result property="trainPlanYear" column="trainPlanYear" />
 		<result property="trainPlanName" column="trainPlanName" />
@@ -15,15 +16,16 @@
 	<select id="getAllTrainPlanInfoList" resultMap="TrainPlanInfoMap">
 		select
 		trainPlanId,trainPlanYear,trainPlanName,trainTime,major,trainPlanType,empCount
-		from train_plan;
+		from attend_train_plan;
 	</select>
 
 	<!-- 根据条件查询培训计划信息 -->
-	<select id="getTrainPlanInfoListByCondition" parameterType="com.thinkPro.train.bean.attendance.TrainPlanCondition"
+	<select id="getTrainPlanInfoListByCondition"
+		parameterType="com.thinkPro.train.bean.attendance.TrainPlanCondition"
 		resultMap="TrainPlanInfoMap">
 		select
 		trainPlanId,trainPlanYear,trainPlanName,trainTime,major,trainPlanType,empCount
-		from train_plan
+		from attend_train_plan
 		<where>
 			<if test="trainPlanYear!=null and trainPlanYear!='' ">
 				trainPlanYear = #{trainPlanYear}
@@ -38,11 +40,12 @@
 	</select>
 
 	<!-- 根据培训计划信息Id和专业名称查找培训明细信息 -->
-	<select id="getTrainPlanItemByInfo" parameterType="String"
+	<select id="getTrainPlanItemByInfo" parameterType="com.thinkPro.train.bean.attendance.MajorCondition"
 		resultType="com.thinkPro.train.bean.attendance.TrainPlanItem">
 		select major,classCount,trainItemId trainPlanItemId,teacher
 		from train_plan_item
-		where trainPlanId = #{trainPlanPlanId} and major = #{major};
+		where trainPlanId = #{trainPlanId} and major =
+		#{major};
 	</select>
 
 	<!-- 根据培训明细ID查询培训学员姓名 -->
@@ -51,7 +54,8 @@
 		select train_emp.staffId,staff.`name`
 		from train_emp,staff
 		where train_emp.staffId = staff.staffId
-		and train_emp.trainItemId = #{trainItemId}
+		and train_emp.trainItemId =
+		#{trainItemId}
 	</select>
 	<!-- 获得所有学员的考勤统计信息 -->
 	<select id="getAllAttendCountList" resultType="com.thinkPro.train.bean.attendance.AttendCount">
@@ -68,8 +72,10 @@
 	<select id="getAttendCountListByCondition"
 		parameterType="com.thinkPro.train.bean.attendance.AllStaffAttendCondition"
 		resultType="com.thinkPro.train.bean.attendance.AttendCount">
-		SELECT attend_count.staffId,staff.`name` stuName,unit.unitName departmentName,attendNum,absenceNum,lateCount
-		FROM attend_info
+		select
+		staffId,stuName,departmentName,attendNum,absenceNum,lateCount
+		from
+		attend_info
 		<where>
 			<if test="trainPlanYear!=null and trainPlanYear!='' ">
 				trainPlanYear = #{trainPlanYear}
@@ -84,7 +90,7 @@
 				AND trainPlanType = #{trainPlanType}
 			</if>
 			<if test="staffName!=null and staffName!='' ">
-				AND staffName = #{staffName}
+				AND stuName = #{staffName}
 			</if>
 		</where>
 	</select>
@@ -92,19 +98,16 @@
 	<!-- 根据学员Id查询学员的具体考勤信息 -->
 	<select id="getStaffAttendInfoListByStaffId" parameterType="String"
 		resultType="com.thinkPro.train.bean.attendance.StaffAttendInfo">
-		select train_plan_item.startTime
-		startTime,arriveTime,attendance attendStatus
-		from
-		emp_attendance,train_plan_item
-		where emp_attendance.trainItemId =
-		train_plan_item.trainItemId
-		and emp_attendance.staffId = #{staffId};
+		SELECT startTime,arriveTime,attendance attendStatus
+		FROM emp_attendance
+		WHERE staffId = #{staffId}
+		and trainItemId = #{trainItemId};
 	</select>
 
 	<!-- 插入学员考勤信息 -->
 	<insert id="addAttendRecord" parameterType="com.thinkPro.train.bean.attendance.AttendRecord">
 		insert into
 		emp_attendance(staffId,trainItemId,startTime,arriveTime,attendance)
-		values(staffId,trainItemId,startTime,arriveTime,attendStatus);
+		values(#{staffId},#{trainItemId},#{startTime},#{arriveTime},#{attendStatus});
 	</insert>
 </mapper>

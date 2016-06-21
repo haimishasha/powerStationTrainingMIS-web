@@ -7,7 +7,6 @@ package com.thinkPro.train.bean.attendance;
 public class MajorCondition {
     private String major;
     private String trainPlanId;
-	
 	public String getMajor() {
 		return major;
 	}
@@ -20,5 +19,5 @@ public class MajorCondition {
 	public void setTrainPlanId(String trainPlanId) {
 		this.trainPlanId = trainPlanId;
 	}
-      
+	  
 }

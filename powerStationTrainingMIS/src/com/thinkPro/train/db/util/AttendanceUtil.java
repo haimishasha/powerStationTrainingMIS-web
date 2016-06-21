@@ -7,6 +7,7 @@ import com.thinkPro.train.bean.attendance.AllStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.AttendCount;
 import com.thinkPro.train.bean.attendance.AttendRecord;
 import com.thinkPro.train.bean.attendance.MajorCondition;
+import com.thinkPro.train.bean.attendance.OneStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.StaffAttendInfo;
 import com.thinkPro.train.bean.attendance.TrainPlanCondition;
 import com.thinkPro.train.bean.attendance.TrainPlanInfo;
@@ -83,8 +84,8 @@ public class AttendanceUtil {
 	 * @param trainItemId 培训明细Id
 	 * @return 学员考勤信息
 	 */
-	public List<StaffAttendInfo> getStaffAttendInfoListByStaffId(String staffId,String trainItemId){
-		return attendanceBase.getStaffAttendInfoListByStaffId(staffId, trainItemId);
+	public List<StaffAttendInfo> getStaffAttendInfoListByStaffId(OneStaffAttendCondition condition){
+		return attendanceBase.getStaffAttendInfoListByStaffId(condition);
 	}
 	
 	/**

@@ -7,6 +7,7 @@ import com.thinkPro.train.bean.attendance.AllStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.AttendCount;
 import com.thinkPro.train.bean.attendance.AttendRecord;
 import com.thinkPro.train.bean.attendance.MajorCondition;
+import com.thinkPro.train.bean.attendance.OneStaffAttendCondition;
 import com.thinkPro.train.bean.attendance.StaffAttendInfo;
 import com.thinkPro.train.bean.attendance.TrainPlanCondition;
 import com.thinkPro.train.bean.attendance.TrainPlanInfo;
@@ -20,6 +21,6 @@ public interface AttendanceMapper {
 	public List<Map<String,String>> getStaffNameListByItemId(String trainItemId);
 	public List<AttendCount> getAllAttendCountList();
 	public List<AttendCount> getAttendCountListByCondition(AllStaffAttendCondition condition);
-	public List<StaffAttendInfo> getStaffAttendInfoListByStaffId(String staffId,String trainItemId);
+	public List<StaffAttendInfo> getStaffAttendInfoListByStaffId(OneStaffAttendCondition condition);
 	public int addAttendRecord(AttendRecord attendRecord);
 }
