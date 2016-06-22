@@ -3,6 +3,7 @@ package com.thinkPro.train.bean.attendance;
 
 public class AttendCount {
 	private String staffId;//员工id
+	private String trainItemId; //培训明细Id
 	private String stuName;//员工名字
 	private String departmentName;//部门名称
 	private int attendNum;//正常到勤次数
@@ -13,6 +14,12 @@ public class AttendCount {
 	}
 	public void setStaffId(String staffId) {
 		this.staffId = staffId;
+	}
+	public String getTrainItemId() {
+		return trainItemId;
+	}
+	public void setTrainItemId(String trainItemId) {
+		this.trainItemId = trainItemId;
 	}
 	public String getStuName() {
 		return stuName;

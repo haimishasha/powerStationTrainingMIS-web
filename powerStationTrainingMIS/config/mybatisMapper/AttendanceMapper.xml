@@ -42,7 +42,7 @@
 	<!-- 根据培训计划信息Id和专业名称查找培训明细信息 -->
 	<select id="getTrainPlanItemByInfo" parameterType="com.thinkPro.train.bean.attendance.MajorCondition"
 		resultType="com.thinkPro.train.bean.attendance.TrainPlanItem">
-		select major,classCount,trainItemId trainPlanItemId,teacher
+		select major,classCount,trainItemId ,teacher
 		from train_plan_item
 		where trainPlanId = #{trainPlanId} and major =
 		#{major};
@@ -51,7 +51,7 @@
 	<!-- 根据培训明细ID查询培训学员姓名 -->
 	<select id="getStaffNameListByItemId" parameterType="String"
 		resultType="Map">
-		select train_emp.staffId ,staff.`name`
+		select train_emp.staffId staffId,staff.`name` staffName
 		from train_emp,staff
 		where train_emp.staffId = staff.staffId
 		and train_emp.trainItemId =
@@ -60,7 +60,7 @@
 	<!-- 获得所有学员的考勤统计信息 -->
 	<select id="getAllAttendCountList" resultType="com.thinkPro.train.bean.attendance.AttendCount">
 		select
-		attend_count.staffId,staff.`name` stuName,unit.unitName
+		attend_count.staffId,attend_count.trainItemId,staff.`name` stuName,unit.unitName
 		departmentName,attendNum,absenceNum,lateCount
 		from
 		attend_count,staff,unit
@@ -73,7 +73,7 @@
 		parameterType="com.thinkPro.train.bean.attendance.AllStaffAttendCondition"
 		resultType="com.thinkPro.train.bean.attendance.AttendCount">
 		select
-		staffId,stuName,departmentName,attendNum,absenceNum,lateCount
+		staffId,trainItemId,stuName,departmentName,attendNum,absenceNum,lateCount
 		from
 		attend_info
 		<where>

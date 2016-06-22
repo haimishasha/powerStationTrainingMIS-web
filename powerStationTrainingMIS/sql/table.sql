@@ -16,9 +16,9 @@ CREATE TABLE `train_plan_info` (
 -- ----------------------------
 -- Records of train_plan_info
 -- ----------------------------
-INSERT INTO `train_plan_info` VALUES ('tp10001', '电气培训计划', '新员工入场培训', '2016', '2016-05-09', '2016-06-09', '培训中');
-INSERT INTO `train_plan_info` VALUES ('tp10002', '燃运培训计划', '新员工入场培训', '2016', '2016-04-01', '2016-05-29', '培训中');
-INSERT INTO `train_plan_info` VALUES ('tp10003', '汽机培训计划', '新员工入场培训', '2016', '2016-03-02', '2016-04-09', '已完成');
+INSERT INTO `train_plan_info` VALUES ('tp10001', '电气培训计划', '新员工入厂培训', '2016', '2016-05-09', '2016-06-09', '培训中');
+INSERT INTO `train_plan_info` VALUES ('tp10002', '燃运培训计划', '新员工入厂培训', '2016', '2016-04-01', '2016-05-29', '培训中');
+INSERT INTO `train_plan_info` VALUES ('tp10003', '汽机培训计划', '新员工入厂培训', '2016', '2016-03-02', '2016-04-09', '已完成');
 INSERT INTO `train_plan_info` VALUES ('tp10004', '管理层培训计划', '中层管理人员培训', '2015', '2015-12-09', '2015-12-27', '已完成');
 INSERT INTO `train_plan_info` VALUES ('tp10005', '班组长培训计划', '班组长培训', '2016', '2016-06-10', '2016-06-19', '未培训');
 

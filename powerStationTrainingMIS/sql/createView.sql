@@ -1,97 +1,4 @@
 -- ----------------------------
--- View structure for attend_count
--- ----------------------------
-DROP VIEW IF EXISTS `attend_count`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `attend_count` AS SELECT
-	staffId,
-	sum(
-		emp_attendance.attendance = '出勤'
-	) attendNum,
-	sum(
-		emp_attendance.attendance = '缺勤'
-	) absenceNum,
-	sum(
-		emp_attendance.attendance = '迟到'
-	) lateCount
-from emp_attendance
-group by staffId,trainItemId ;
-
--- ----------------------------
--- View structure for attend_emp_count
--- ----------------------------
-DROP VIEW IF EXISTS `attend_emp_count`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `attend_emp_count` AS SELECT
-`train_plan_info`.`trainPlanId` AS trainPlanId,
-Count(train_emp.objectId) AS empCount
-from (`train_plan_info` join `train_plan_item` on((`train_plan_info`.`trainPlanId` = `train_plan_item`.`trainPlanId`)))
-	JOIN train_emp on train_plan_item.trainItemId = train_emp.trainItemId
-group by `train_plan_info`.`trainPlanId` ;
-
--- ----------------------------
--- View structure for attend_info
--- ----------------------------
-DROP VIEW IF EXISTS `attend_info`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `attend_info` AS SELECT
-	attend_count.staffId,
-	staff.`name` stuName,
-	unit.unitName departmentName,
-	attendNum,
-	absenceNum,
-	lateCount,
-	trainPlanYear,
-  trainPlanName,
-	major,
-	trainPlanType
-FROM
-	emp_attendance,
-	attend_count,
-	staff,
-	unit,
-	train_plan_item,
-	train_plan_info
-WHERE
-	attend_count.staffId = emp_attendance.staffId
-AND emp_attendance.staffId = staff.staffId	
-AND staff.unitId = unit.unitId
-AND emp_attendance.trainItemId = train_plan_item.trainItemId
-and train_plan_item.trainPlanId = train_plan_info.trainPlanId ;
-
--- ----------------------------
--- View structure for attend_train_plan
--- ----------------------------
-DROP VIEW IF EXISTS `attend_train_plan`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `attend_train_plan` AS SELECT
-	`train_plan_info`.`trainPlanId` AS `trainPlanId`,
-	`train_plan_info`.`trainPlanYear` AS `trainPlanYear`,
-	`train_plan_info`.`trainPlanName` AS `trainPlanName`,
-	`train_plan_info`.`trainPlanType` AS `trainPlanType`,
-	`train_major`.`major` AS `major`,
-	concat(
-		`train_plan_info`.`startTime`,
-		'-',
-		`train_plan_info`.`endTime`
-	) AS `trainTime`,
-	`attend_emp_count`.`empCount` AS `empCount`,
-	`train_plan_info`.`isFinish` AS `isFinish`
-FROM
-	(
-		(
-			`train_plan_info`
-			JOIN `train_major`
-		)
-		JOIN `attend_emp_count`
-	)
-WHERE
-	(
-		(
-			`train_plan_info`.`trainPlanId` = `train_major`.`trainPlanId`
-		)
-		AND (
-			`train_plan_info`.`trainPlanId` = `attend_emp_count`.`trainPlanId`
-		)
-	) ;
-
--- ----------------------------
 -- View structure for emp_count
 -- ----------------------------
 DROP VIEW IF EXISTS `emp_count`;
@@ -155,5 +62,99 @@ WHERE
 		)
 		AND (
 			`train_plan_info`.`trainPlanId` = `emp_count`.`trainPlanId`
+		)
+	) ;
+-- ----------------------------
+-- View structure for attend_count
+-- ----------------------------
+DROP VIEW IF EXISTS `attend_count`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `attend_count` AS SELECT
+	staffId,
+	trainItemId,
+	sum(
+		emp_attendance.attendance = '出勤'
+	) attendNum,
+	sum(
+		emp_attendance.attendance = '缺勤'
+	) absenceNum,
+	sum(
+		emp_attendance.attendance = '迟到'
+	) lateCount
+from emp_attendance
+group by staffId,trainItemId ;
+
+-- ----------------------------
+-- View structure for attend_emp_count
+-- ----------------------------
+DROP VIEW IF EXISTS `attend_emp_count`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `attend_emp_count` AS SELECT
+`train_plan_info`.`trainPlanId` AS trainPlanId,
+Count(train_emp.objectId) AS empCount
+from (`train_plan_info` join `train_plan_item` on((`train_plan_info`.`trainPlanId` = `train_plan_item`.`trainPlanId`)))
+	JOIN train_emp on train_plan_item.trainItemId = train_emp.trainItemId
+group by `train_plan_info`.`trainPlanId` ;
+
+-- ----------------------------
+-- View structure for attend_info
+-- ----------------------------
+DROP VIEW IF EXISTS `attend_info`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `attend_info` AS SELECT
+	attend_count.staffId,
+	attend_count.trainItemId,
+	staff.`name` stuName,
+	unit.unitName departmentName,
+	attendNum,
+	absenceNum,
+	lateCount,
+	trainPlanYear,
+  trainPlanName,
+	major,
+	trainPlanType
+FROM
+	emp_attendance,
+	attend_count,
+	staff,
+	unit,
+	train_plan_item,
+	train_plan_info
+WHERE
+	attend_count.staffId = emp_attendance.staffId
+AND emp_attendance.staffId = staff.staffId	
+AND staff.unitId = unit.unitId
+AND emp_attendance.trainItemId = train_plan_item.trainItemId
+and train_plan_item.trainPlanId = train_plan_info.trainPlanId ;
+
+-- ----------------------------
+-- View structure for attend_train_plan
+-- ----------------------------
+DROP VIEW IF EXISTS `attend_train_plan`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `attend_train_plan` AS SELECT
+	`train_plan_info`.`trainPlanId` AS `trainPlanId`,
+	`train_plan_info`.`trainPlanYear` AS `trainPlanYear`,
+	`train_plan_info`.`trainPlanName` AS `trainPlanName`,
+	`train_plan_info`.`trainPlanType` AS `trainPlanType`,
+	`train_major`.`major` AS `major`,
+	concat(
+		`train_plan_info`.`startTime`,
+		'-',
+		`train_plan_info`.`endTime`
+	) AS `trainTime`,
+	`attend_emp_count`.`empCount` AS `empCount`,
+	`train_plan_info`.`isFinish` AS `isFinish`
+FROM
+	(
+		(
+			`train_plan_info`
+			JOIN `train_major`
+		)
+		JOIN `attend_emp_count`
+	)
+WHERE
+	(
+		(
+			`train_plan_info`.`trainPlanId` = `train_major`.`trainPlanId`
+		)
+		AND (
+			`train_plan_info`.`trainPlanId` = `attend_emp_count`.`trainPlanId`
 		)
 	) ;
