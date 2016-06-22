@@ -18,12 +18,11 @@ public class SearchTrainPlan extends ActionSupport {
      List<TrainPlanInfo> trainPlanInfoList=new ArrayList<TrainPlanInfo>();
 	
 	public String execute(){
+	//	System.out.println("陪讯专业名字"+trainPlanCondition.getTrainPlanName());
 		AttendanceUtil attendanceUtil=new AttendanceUtil();
-		trainPlanCondition.setTrainPlanName("汽机培训计划");
-		trainPlanCondition.setTrainPlanType("新员工入厂培训");
-		trainPlanCondition.setTrainPlanYear("2016");
+		
 		trainPlanInfoList=attendanceUtil.getTrainPlanInfoListByCondition(trainPlanCondition);
-	    System.out.println(trainPlanInfoList.get(0).getTrainPlanId());
+	    System.out.println("进入啊vtion"+trainPlanInfoList.get(0).getTrainPlanType());
 		return SUCCESS;
     }
 	
@@ -34,6 +33,16 @@ public class SearchTrainPlan extends ActionSupport {
 
 	public void setTrainPlanCondition(TrainPlanCondition trainPlanCondition) {
 		this.trainPlanCondition = trainPlanCondition;
+	}
+
+
+	public List<TrainPlanInfo> getTrainPlanInfoList() {
+		return trainPlanInfoList;
+	}
+
+
+	public void setTrainPlanInfoList(List<TrainPlanInfo> trainPlanInfoList) {
+		this.trainPlanInfoList = trainPlanInfoList;
 	}
 	
 }

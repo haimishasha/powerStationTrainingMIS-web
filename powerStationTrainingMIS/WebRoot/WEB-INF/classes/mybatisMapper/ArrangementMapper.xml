@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkPro.train.db.mapper.ArrangementMapper">
+	
+	<!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+	<resultMap type="Staff" id="StaffMap">
+		<result property="staffName" column="name" />
+		<result property="birthPlace" column="native" />
+		<result property="jobTitle" column="title" />
+	</resultMap>
+
+	<!-- 根据培训明细Id查询学员信息 -->
+	<select id="getStudentsByItemId" parameterType="String"
+		resultMap="StaffMap">
+		select
+		unitName name,cardId,staffId,birthday,native,job,staff.unitId,title,staff.telephone,joinTime,sex
+		from staff,train_emp where train_emp.trainItemId=#{trainItemId} and
+		staff.staffId=train_emp.staffId;
+	</select>
+	
+	<!-- 根据培训明细Id查询学员人数 -->
+	<select id="getStudentNumByItemId" parameterType="String"
+		resultType="Integer">
+		select
+		count(*)
+		from train_emp where train_emp.trainItemId=#{trainItemId};
+	</select>
+	
+	
+	<!-- 根据员工Id查询员工选课信息 -->
+	<select id="getItemsByStaffId" parameterType="String" resultType="TrainPlanItem">
+		select
+		trainItemId,trainPlanId,major,trainContent,trainPurpose,classCount,teacher
+		from train_emp,train_plan_item where train_emp.staffId=#{staffId} and train_emp.trainItemId=train_plan_item.trainItemId;
+	</select>
+	
+	<!-- 安排插入学员信息(Insert) -->
+	<insert id="addStudent" parameterType="map">
+		insert
+		train_emp(trainItemId,staffId)
+		values(#{trainItemId},#{staffId});
+	</insert>
+
+	<!-- 删除学员信息(Delete) -->
+	<delete id="deleteStudentByID" parameterType="map">
+		delete from train_emp
+		where staffId=#{staffId} and trainItemId=#{trainItemId};
+	</delete>
+	
+</mapper>

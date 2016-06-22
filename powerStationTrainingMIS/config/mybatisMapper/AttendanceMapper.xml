@@ -42,7 +42,7 @@
 	<!-- 根据培训计划信息Id和专业名称查找培训明细信息 -->
 	<select id="getTrainPlanItemByInfo" parameterType="com.thinkPro.train.bean.attendance.MajorCondition"
 		resultType="com.thinkPro.train.bean.attendance.TrainPlanItem">
-		select major,classCount,trainItemId ,teacher
+		select major,classCount,trainItemId,teacher
 		from train_plan_item
 		where trainPlanId = #{trainPlanId} and major =
 		#{major};

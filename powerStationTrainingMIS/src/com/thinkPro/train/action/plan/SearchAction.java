@@ -22,7 +22,7 @@ public class SearchAction extends ActionSupport implements ModelDriven<TrainPlan
 		
 		TrainPlanUtil  trainPlanUtil=new TrainPlanUtil();
 	    trainPlanList = trainPlanUtil.getInfoByIf(trainPlan);
-	  
+	   
 	    return SUCCESS;
 	}
 	

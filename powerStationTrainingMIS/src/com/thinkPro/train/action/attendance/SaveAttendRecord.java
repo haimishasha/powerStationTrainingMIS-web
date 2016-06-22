@@ -7,8 +7,10 @@ import com.thinkPro.train.bean.attendance.AttendRecord;
 import com.thinkPro.train.db.util.AttendanceUtil;
 public class SaveAttendRecord extends ActionSupport {
 	AttendRecord attendRecord=new AttendRecord();
-	List<AttendRecord> attendRecordList=new ArrayList<AttendRecord>();
+	List<AttendRecord> attendRecordList;
 	public String execute(){
+		System.out.println("进入保存action");
+		System.out.println("员工id"+attendRecordList.toString());
 		AttendanceUtil attendanceUtil=new AttendanceUtil();
 		attendanceUtil.addAttendRecord(attendRecordList);
 		return SUCCESS;

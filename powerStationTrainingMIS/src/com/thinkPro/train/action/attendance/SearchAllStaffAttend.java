@@ -23,7 +23,8 @@ public class SearchAllStaffAttend extends ActionSupport {
 		
 		AttendanceUtil attendanceUtil=new AttendanceUtil();
 		attendCountList=attendanceUtil.getAttendCountListByCondition(allStaffAttendCondition);
-		
+		System.out.println(attendCountList);
+		System.out.println("所有学员"+allStaffAttendCondition.getMajor());
 		return SUCCESS;
 	}
 	 

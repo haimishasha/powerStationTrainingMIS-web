@@ -68,8 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">查询</a></li>
-								<li><a href="#">统计</a></li>
+								<li><a href="Attendance/searchTrainplan.jsp">录入</a></li>
+								<li><a href="Attendance/searchAttendance.jsp">查询</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
