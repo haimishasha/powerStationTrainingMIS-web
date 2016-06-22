@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../../css/bootstrap.css" />
 		<link rel="stylesheet" href="../../css/main.css" />
 		<link rel="stylesheet" href="../../css/student_assign/student_assign.css" />
+		<script type="text/javascript" src="../../js/student_info/student_assign.js" ></script>
 	</head>
 
 	<body>
@@ -89,42 +90,50 @@
 						<div class="content_top_right fr">
 							<div class="top_pormpt">
 								<div class="fl">
-									部门:
+									<strong>部门:</strong>
 									<span>-发电一部-</span>
 									<span>-电气一班-</span>
 								</div>
 								<div class="fr">
-									<button id="student_choice">选择</button>
+									<button id="student_save_choice">选择</button>
 								</div>
 							</div>
 							<div>
-								<table class="table">
+								<table class="table table-hover table-bordered"  id="student_resave_table">
 									<thead>
 										<tr>
+											<th class="row_hide td_mark">员工编号</th>
 											<th>姓名</th>
+											<th class="row_hide td_mark">部门</th>
 											<th>职务</th>
 											<th>入厂时间</th>
-											<th>职位</th>
+											<th>岗位</th>
 											<th></th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
+											<td class="row_hide td_mark">001001</td>
 											<td>张志刚</td>
+											<td class="row_hide td_mark">发电一部 电气一班</td>
 											<td>班长</td>
 											<td>1999.8</td>
 											<td></td>
 											<td><input type="checkbox" name="student_check"/> </td>
 										</tr>
 										<tr>
+											<td class="row_hide td_mark">001002</td>
 											<td>张志刚</td>
+											<td class="row_hide td_mark">发电一部 电气一班</td>
 											<td>班长</td>
 											<td>1999.8</td>
 											<td></td>
 											<td><input type="checkbox" name="student_check"/> </td>
 										</tr>
 										<tr>
+											<td class="row_hide td_mark">001002</td>
 											<td>张志刚</td>
+											<td class="row_hide td_mark">发电一部 电气一班</td>
 											<td>班长</td>
 											<td>1999.8</td>
 											<td></td>
@@ -138,16 +147,16 @@
 					<div class="content_bottom">
 						<div class="content_bottom_title">
 							<div class="fl">
-								已安排的学员<span> 10 </span>人
+								已安排的学员<strong> 10 </strong>人
 							</div>
 							<div class="fr">
-								<button>返回</button>
-								<button>删除</button>
-								<button>保存</button>
+								<button><a href="#">返回</a></button>
+								<button id="student_delect_choice">删除</button>
+								<button id="save_to_db">保存</button>
 							</div>
 						</div>
-						<div>
-							<table class="table" id="student_save_table">
+						<div class="content_bottom_table fl">
+							<table class="table table-hover table-bordered" id="student_save_table">
 								<thead>
 									<tr>
 										<th>员工编号</th>
@@ -155,33 +164,64 @@
 										<th>部门</th>
 										<th>职务</th>
 										<th>入厂时间</th>
-										<th>职位</th>
+										<th>岗位</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>001001</td>
+									<tr class="gaoliang">
+										<td class="td_mark">001001</td>
 										<td>张志刚</td>
-										<td>发电一部 电气一班</td>
+										<td class="td_mark">发电一部 电气一班</td>
 										<td>班长</td>
 										<td>1999.8</td>
-										<td></td>										
+										<td></td>
+										<td><input type="checkbox" name="student_check"/> </td>
 									</tr>
-									<tr>
-										<td>001001</td>
+									<tr class="gaoliang">
+										<td class="td_mark">001001</td>
 										<td>张志刚</td>
-										<td>发电一部 电气一班</td>
+										<td class="td_mark">发电一部 电气一班</td>
 										<td>班长</td>
 										<td>1999.8</td>
-										<td></td>										
+										<td></td>
+										<td><input type="checkbox" name="student_check"/> </td>
 									</tr>
-									<tr>
-										<td>001001</td>
+									<tr class="gaoliang">
+										<td class="td_mark">001001</td>
 										<td>张志刚</td>
-										<td>发电一部 电气一班</td>
+										<td class="td_mark">发电一部 电气一班</td>
 										<td>班长</td>
 										<td>1999.8</td>
-										<td></td>										
+										<td></td>
+										<td><input type="checkbox" name="student_check"/> </td>
+									</tr>
+									<tr class="gaoliang">
+										<td class="td_mark">001001</td>
+										<td>张志刚</td>
+										<td class="td_mark">发电一部 电气一班</td>
+										<td>班长</td>
+										<td>1999.8</td>
+										<td></td>
+										<td><input type="checkbox" name="student_check"/> </td>
+									</tr>
+									<tr class="gaoliang">
+										<td class="td_mark">001001</td>
+										<td>张志刚</td>
+										<td class="td_mark">发电一部 电气一班</td>
+										<td>班长</td>
+										<td>1999.8</td>
+										<td></td>
+										<td><input type="checkbox" name="student_check"/> </td>
+									</tr>
+									<tr class="gaoliang">
+										<td class="td_mark">001001</td>
+										<td>张志刚</td>
+										<td class="td_mark">发电一部 电气一班</td>
+										<td>班长</td>
+										<td>1999.8</td>
+										<td></td>
+										<td><input type="checkbox" name="student_check"/> </td>
 									</tr>
 									
 								</tbody>
