@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>电厂职工管理系统</title>
+		<script type="text/javascript" src="../../js/jquery-2.2.2.min.js" ></script>
+		<script type="text/javascript" src="../../js/bootstrap.js" ></script>
+		<link rel="stylesheet" href="../../css/bootstrap.css" />
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" href="../../css/train_plan_base_info/train_plan_base_info.css" />
+		
+	</head>
+
+	<body>
+		<div class="bef_nav">
+			<div class="container">							
+				<div class="bef_nav_right">
+					<span style="margin-right: 20px;">欢迎 : 管理员</span>
+					<a href="#">修改密码</a>
+					<a href="#">退出系统</a>
+				</div>
+			</div>
+		</div>
+
+		<nav class="nav navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      				 	<span class="sr-only">Toggle navigation</span>
+       				 	<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+      				</button>
+					<a class="navbar-brand" href="#">LOGO</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">首页</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训计划管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="ADD.html">添加</a></li>
+								<li><a href="ADD.html">修改</a></li>
+								<li><a href="select.html">删除</a></li>
+								<li><a href="select.html">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训成绩管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">录入</a></li>
+								<li><a href="#">修改</a></li>
+								<li><a href="#">查询</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">培训考勤管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">查询</a></li>
+								<li><a href="#">统计</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学员管理<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="dapartment.html">部门管理</a></li>
+								<li><a href="show.html" name="staff_info" onclick="">学员基本信息管理</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">其他<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">指纹库管理</a></li>
+								<li><a href="#">用户管理</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+
+		<div class="Mycontent">
+			<div class="container">
+				<div class="content_title">
+					<!--<hr />-->
+					<ol class="breadcrumb">
+						<li><a href="#">电厂</a></li>
+						<li><a href="#">培训计划管理</a></li>
+						<li class="active">学员人数</li>
+					</ol>
+					
+					<form>
+						<div class="base_info_div fl">
+							<div class="base_info">
+								<label><strong>年度:</strong></label>
+								<label>2015</label>
+							</div>
+							<div class="base_info">
+								<label><strong>名称:</strong></label>
+								<label>新员工入厂培训</label>
+							</div>
+							<div class="base_info">
+								<label><strong>时间:</strong></label>
+								<label>1月10日-1月20日</label>
+							</div>
+							
+							<!--这个没有可能还好一点-->
+							<div class="fr">
+								<a href="#" data-toggle="modal" data-target="#assigned_student_modal">合计:<strong>100</strong>人</a>
+							</div>
+						</div>
+						
+						<table id="train_plan_base_table" class="table table-bordered">
+							<thead>
+								<tr>
+									<th style="width:10%">专业</th>
+									<th style="width:30%">培训目的</th>
+									<th style="width:30%">培训内容</th>
+									<th style="width:5%">课时</th>
+									<th style="width:10%">授课人</th>
+									<th style="width:15%">学员人数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>电气</td>
+									<td>电工基础知识:电工基础知识:电工基础知识:电工基础知识:电工基础知识:</td>
+									<td>1:掌握直流电路的组成及作用1:掌握直流电路的组成及作用1:掌握直流电路的组成及作用 </td>
+									<td>3</td>
+									<td>吴浩</td>
+									<td><a href="student_assign_copy.html">未安排</a></td>
+								</tr>
+								<tr>
+									<td>电气</td>
+									<td>电工基础知识:电工基础知识:电工基础知识:电工基础知识:电工基础知识:</td>
+									<td>1:掌握直流电路的组成及作用1:掌握直流电路的组成及作用1:掌握直流电路的组成及作用 </td>
+									<td>3</td>
+									<td>吴浩</td>
+									<td><a href="#" data-toggle="modal" data-target="#assigned_student_modal">30</a></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						
+						<div class="modal fade" id="assigned_student_modal">
+						    <div class="modal-dialog">
+						    	<div class="modal-content">
+						       		<div class="modal-header">
+							        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        	<h4 class="modal-title">学员安排</h4>
+						      		</div>
+							        <div class="modal-body">
+							        	<table class="table table-bordered">
+							        		<thead>
+												<tr>
+													<th>员工编号</th>
+													<th>姓名</th>
+													<th>部门</th>
+													<th>职务</th>
+													<th>入厂时间</th>
+													<th>岗位</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="gaoliang">
+													<td class="td_mark">001001</td>
+													<td>张志刚</td>
+													<td class="td_mark">发电一部 电气一班</td>
+													<td>班长</td>
+													<td>1999.8</td>
+													<td></td>						
+												</tr>
+												<tr class="gaoliang">
+													<td class="td_mark">001001</td>
+													<td>张志刚</td>
+													<td class="td_mark">发电一部 电气一班</td>
+													<td>班长</td>
+													<td>1999.8</td>
+													<td></td>						
+												</tr>
+												<tr class="gaoliang">
+													<td class="td_mark">001001</td>
+													<td>张志刚</td>
+													<td class="td_mark">发电一部 电气一班</td>
+													<td>班长</td>
+													<td>1999.8</td>
+													<td></td>						
+												</tr>
+											</tbody>
+							        	</table>
+							        </div>
+							      	<div class="modal-footer">
+							      		<div class="fl">
+							      			<span>已经安排学员<strong>30</strong>人</span>
+							      		</div>
+							      		<button type="button" class="btn btn-primary">导出</button>
+							        	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> 	
+							      	</div>
+						    	</div><!-- /.modal-content -->
+						    </div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+					</form>
+					
+				</div>
+			</div>
+		</div>
+		<div class="hr"></div>
+		<footer style="text-align: center;margin-bottom: 30px;">
+			<p>版权信息</p>
+			<p>版权信息一般还有两行</p>
+		</footer>
+	</body>
+
+</html>

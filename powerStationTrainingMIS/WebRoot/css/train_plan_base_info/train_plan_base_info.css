@@ -1,0 +1,18 @@
+.base_info{
+	float: left;
+	width: 25%;
+	margin-left: 2%;
+}
+.base_info_div{
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #EEEEEE;
+}
+.base_info_div strong{
+	font-size: 16px;
+}
+
+#train_plan_base_table tbody td{
+	display:table-cell;
+	vertical-align:middle;
+}
