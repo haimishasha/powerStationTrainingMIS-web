@@ -28,7 +28,7 @@ public class ArrangementBase {
 				"applicationContext.xml");
 
 		arrangementMapper = (ArrangementMapper) applicationContext
-				.getBean("attendanceMapper");
+				.getBean("arrangementMapper");
 	}
 	
 	/**
