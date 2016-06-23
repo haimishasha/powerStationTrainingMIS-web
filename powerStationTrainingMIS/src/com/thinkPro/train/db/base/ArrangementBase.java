@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.base;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
@@ -35,7 +36,7 @@ public class ArrangementBase {
 	 * @param trainItemId
 	 * @return
 	 */
-	public Staff getStudentsByItemId(String trainItemId) {
+	public List<Staff> getStudentsByItemId(String trainItemId) {
 
 		return arrangementMapper.getStudentsByItemId(trainItemId);
 	}
@@ -53,7 +54,7 @@ public class ArrangementBase {
 	 * @param staffId
 	 * @return
 	 */
-	public TrainPlanItem getItemsByStaffId(String staffId) {
+	public List<TrainPlanItem> getItemsByStaffId(String staffId) {
 
 		return arrangementMapper.getItemsByStaffId(staffId);
 	}

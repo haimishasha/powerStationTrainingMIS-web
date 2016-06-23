@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.util;
 
+import java.util.List;
 import java.util.Map;
 
 import com.thinkPro.train.bean.attendance.TrainPlanItem;
@@ -23,7 +24,7 @@ public class ArrangementUtil {
 	 * @param trainItemId
 	 * @return
 	 */
-	public Staff getStudentsByItemId(String trainItemId) {
+	public List<Staff> getStudentsByItemId(String trainItemId) {
 
 		return arrangementBase.getStudentsByItemId(trainItemId);
 	}
@@ -41,7 +42,7 @@ public class ArrangementUtil {
 	 * @param staffId
 	 * @return
 	 */
-	public TrainPlanItem getItemsByStaffId(String staffId) {
+	public List<TrainPlanItem> getItemsByStaffId(String staffId) {
 
 		return arrangementBase.getItemsByStaffId(staffId);
 	}
