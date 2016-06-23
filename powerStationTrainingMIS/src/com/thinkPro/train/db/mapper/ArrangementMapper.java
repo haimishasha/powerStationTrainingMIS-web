@@ -1,5 +1,6 @@
 package com.thinkPro.train.db.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import com.thinkPro.train.bean.attendance.TrainPlanItem;
@@ -16,7 +17,7 @@ public interface ArrangementMapper {
 	 * @param trainItemId
 	 * @return
 	 */
-	public abstract Staff getStudentsByItemId(String trainItemId);
+	public abstract List<Staff> getStudentsByItemId(String trainItemId);
 	/**
 	 * 根据培训明细Id查询学员人数
 	 * @param trainItemId
@@ -28,7 +29,7 @@ public interface ArrangementMapper {
 	 * @param staffId
 	 * @return
 	 */
-	public abstract TrainPlanItem getItemsByStaffId(String staffId);
+	public abstract List<TrainPlanItem> getItemsByStaffId(String staffId);
 	/**
 	 * 安排插入学员信息
 	 * @param train_emp
