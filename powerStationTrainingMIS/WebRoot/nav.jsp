@@ -52,9 +52,9 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">培训成绩管理<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">录入</a></li>
-						<li><a href="#">修改</a></li>
-						<li><a href="#">查询</a></li>
+						<li><a href="Result/entryMark.jsp">录入</a></li>
+						<li><a href="Result/updateMark.jsp">修改</a></li>
+						<li><a href="Result/searchMark.jsp">查询</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"

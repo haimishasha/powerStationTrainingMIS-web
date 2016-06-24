@@ -5,6 +5,10 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class URLController extends ActionSupport {
 	
+	public String toHome() {
+		return SUCCESS;
+	}
+	
 	public String toAddPlanPage(){
 		System.out.println("yunxingdaowole");
 		return SUCCESS;

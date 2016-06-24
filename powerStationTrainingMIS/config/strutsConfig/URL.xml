@@ -4,6 +4,9 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="url" extends="struts-default">
+		<action name="toHome" class="com.thinkPro.train.URLController" method="toHome">
+			<result>/index.jsp</result>
+		</action>
 		<action name="toAddPlan" class="com.thinkPro.train.URLController" method="toAddPlanPage">
 			<result>/Plan/addPlan.jsp</result>
 		</action>
