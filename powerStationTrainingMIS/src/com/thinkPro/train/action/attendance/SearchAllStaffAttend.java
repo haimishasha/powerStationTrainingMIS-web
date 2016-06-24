@@ -13,6 +13,7 @@ import com.thinkPro.train.db.util.AttendanceUtil;
  * 功能：查询所有学员出勤信息
  * */
 
+@SuppressWarnings("serial")
 public class SearchAllStaffAttend extends ActionSupport {
 	
 	AllStaffAttendCondition allStaffAttendCondition=new AllStaffAttendCondition();

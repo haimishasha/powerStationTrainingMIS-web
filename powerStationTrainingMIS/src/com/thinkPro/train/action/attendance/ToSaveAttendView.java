@@ -14,6 +14,7 @@ import com.thinkPro.train.db.util.AttendanceUtil;
  * 日期:2016-6-19
  * 功能:点击链接跳转到考勤录入界面的action
  * */
+@SuppressWarnings("serial")
 public class ToSaveAttendView extends ActionSupport {
 	MajorCondition majorCondition=new MajorCondition();
 	List<Map<String,String>> nameList=new ArrayList<Map<String,String>>();

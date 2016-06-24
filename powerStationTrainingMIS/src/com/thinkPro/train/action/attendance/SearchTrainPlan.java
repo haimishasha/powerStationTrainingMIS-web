@@ -12,6 +12,7 @@ import com.thinkPro.train.db.util.AttendanceUtil;
  * 日期：2016-6-17
  * 功能：查询培训计划信息
  * */
+@SuppressWarnings("serial")
 public class SearchTrainPlan extends ActionSupport {
 	 TrainPlanCondition trainPlanCondition=new TrainPlanCondition();
 	 

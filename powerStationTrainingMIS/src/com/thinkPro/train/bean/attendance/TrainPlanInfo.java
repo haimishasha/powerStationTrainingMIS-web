@@ -1,6 +1,5 @@
 package com.thinkPro.train.bean.attendance;
 
-import java.util.Map;
 
 public class TrainPlanInfo {
 	private String trainPlanId;//培训计划id
