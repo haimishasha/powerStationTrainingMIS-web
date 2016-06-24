@@ -41,8 +41,10 @@ public class AddStudent extends ActionSupport{
 			for (int i = 0; i < student_check.length; i++){
 				addStudent.put("trainItemId", trainItemId);
 				addStudent.put("staffId", student_check[i]);
+				arrangementUtil.addStudent(addStudent);
 				saveNum = saveNum + 1;
 			}
+			return SUCCESS;
 		}
 		/* 数据库与页面表格都不为空 */
 		boolean isSame = true;
@@ -60,16 +62,17 @@ public class AddStudent extends ActionSupport{
 			if (isSame) {
 				addStudent.put("trainItemId", trainItemId);
 				addStudent.put("staffId", student_check[i]);
+				arrangementUtil.addStudent(addStudent);
 				isSame = true;
 				saveNum = saveNum + 1;
 			}
 		}
 		/* 判断是否需要进行数据库操作 */
-		if (saveNum != 0) {
+		/*if (saveNum != 0) {
 			if (!arrangementUtil.addStudent(addStudent)) {
 				return ERROR; 
 			}
-		}
+		}*/
 		
 		return SUCCESS;
 	}

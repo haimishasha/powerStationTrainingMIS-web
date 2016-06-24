@@ -73,6 +73,8 @@ $(function(){
 				/* 在页面显示树 */
 				$.fn.zTree.init($("#treeDemo"), setting,
 						zNodes);
+				var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+				treeObj.expandAll(true); 
 				searchStudent()
 
 			}
