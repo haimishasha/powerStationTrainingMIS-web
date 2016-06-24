@@ -1,0 +1,135 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*body ,input {
+	background: #FFFFCC;
+}*/
+
+.nav-wrapper {
+	float: left;
+}
+
+.container {
+	margin-top: 100px;
+}
+
+.vertical-nav {
+	align: left;
+	position: relative;
+	top: 90px;
+	width: 60px;
+}
+
+.vertical-nav li {
+	list-style: none;
+	line-height: 42px;
+	height: 42px;
+	margin-left: 10px;
+}
+
+.vertical-nav li a {
+	font-size: 24px;
+}
+
+#planBaseInfo_table,
+#resultInfo_table {
+	text-align: center;
+	/*width: 80%;*/
+	/*margin: 20px auto;*/
+}
+
+#planBaseInfo_table tr td:nth-child(2n+1) {
+	background: #CCC;
+}
+
+#planBaseInfo_table tr td input {
+	border: none;
+	text-align: center;
+}
+
+#resultInfo_table thead tr th {
+	background: #ccc;
+}
+
+#resultInfo_table th {
+	text-align: center;
+}
+
+#resultInfo_table tr td:last-child input {
+	border: none;
+	text-align: center;
+}
+
+.operate_info {
+	margin-top: 10px;
+	height: 35px;
+	line-height: 35px;
+}
+
+.operate_info p {
+	float: left;
+	height: 100%;
+}
+
+.operate_info p#setBtn {
+	margin-left: 30px;
+}
+
+#setBtn label {
+	color: red;
+}
+
+.operate_info p#operateBtns {
+	float: right;
+}
+
+.operate_info p button {
+	margin-left: 10px;
+}
+
+#plan_content {
+	margin-bottom: 10px;
+}
+
+#result_content {
+	margin-top: 10px;
+}
+
+.modal-header {
+	background: #169ADA;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.modal-header button {
+	float: right;
+}
+
+.modal-header p {
+	text-align: center;
+}
+
+.modal-header p span {
+	font-size: 16px;
+	font-style: normal;
+	color: white;
+	font-weight: bold;
+}
+
+.red {
+	color: red;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.modal-body p {
+	height: 24px;
+	line-height: 24px;
+	font-size: 16px;
+}
+
+.modal-body p input {
+	width: 25%;
+}
