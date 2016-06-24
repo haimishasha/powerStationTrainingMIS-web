@@ -6,7 +6,7 @@
 	<constant name="devMode" value="true"></constant>
 	<include file="strutsConfig/plan.xml"></include>
 	<include file="strutsConfig/staffInfoManage.xml"></include>
-	<include file="strutsConfig/staffManage.xml"></include>
+	<include file="strutsConfig/studentManage.xml"></include>
 	<include file="strutsConfig/URL.xml"></include>
 	<include file="strutsConfig/attendance.xml"></include>
 </struts>    

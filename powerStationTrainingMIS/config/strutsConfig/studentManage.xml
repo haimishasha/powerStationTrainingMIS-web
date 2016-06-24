@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="student" extends="json-default">
+		<action name="addStudent" class="com.thinkPro.train.action.studentManage.AddStudent">
+			<result>/Manage/studentManage.jsp</result>
+			<result name="error">/Manage/studentManage.jsp</result>
+		</action>	
+		<action name="searchStudent" class="com.thinkPro.train.action.studentManage.SearchStudent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="deleteStudent" class="com.thinkPro.train.action.studentManage.DeleteStudent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>
