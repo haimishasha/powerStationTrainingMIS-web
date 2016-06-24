@@ -29,22 +29,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
   <script>
   $(function(){
-  $('#datetimepicker1').datetimepicker({
+  $('.datetimepicker').datetimepicker({
     dayOfWeekStart : 1,
     lang:'en',
     disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
     startDate:  '2016/01/05'
     });
-  $('#datetimepicker1').datetimepicker({value:'2015/04/15 05:03',step:10});
-  
+  $('.datetimepicker').datetimepicker({value:'2015/04/15 05:03',step:10});
+ /*  
   $('#datetimepicker2').datetimepicker({
 	    dayOfWeekStart : 1,
 	    lang:'en',
 	    disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
 	    startDate:  '2016/01/05'
 	    });
-	  $('#datetimepicker2').datetimepicker({value:'2015/04/15 05:03',step:10});
-  });
+	  $('#datetimepicker2').datetimepicker({value:'2015/04/15 05:03',step:10});*/
+  }); 
   </script>
 </head>
 <body>
@@ -126,9 +126,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 						</td>
 						<td style="text-align:center"><input type="text"
-							id="datetimepicker1" name="attendRecordList[${status.index}].startTime"></td>
+							class="datetimepicker" name="attendRecordList[${status.index}].startTime"></td>
 						<td style="text-align:center"><input type="text"
-							id="datetimepicker2" name="attendRecordList[${status.index}].arriveTime"></td>
+							class="datetimepicker" name="attendRecordList[${status.index}].arriveTime"></td>
 						<td><select name="attendRecordList[${status.index}].attendStatus" id="myselect">
 								<option>出勤</option>
 								<option>缺勤</option>

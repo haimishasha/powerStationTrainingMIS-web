@@ -121,44 +121,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 			
 						 			<!-- 循环读取后台传入的数据 -->
 						 			<c:forEach var="trainPlanInfo" varStatus="status"  items="${trainPlanInfoList}">
-								   
-								 <tr>
-								    <td> <c:out value="${status.index+1}"/></td>                                
+								<form action="ToSaveAttendView.action" method="post">
+								
+								<tr>
+									<td><c:out value="${status.index+1}" /></td>
 									<td>${trainPlanInfo.trainPlanYear}</td>
 									<td>${trainPlanInfo.trainPlanName}</td>
 									<td>${trainPlanInfo.trainPlanType}</td>
-									<td>
-									<c:forEach var="str" varStatus="status"  items="${fn:split(trainPlanInfo.major,' ')}">
-									
-									 <a href="ToSaveAttendView.action?trainPlanId=${trainPlanInfo.trainPlanId}&major=${str}
-									 &trainPlanYear=${trainPlanInfo.trainPlanYear}&trainPlanName=${trainPlanInfo.trainPlanName}
-									 &trainPlanType=${trainPlanInfo.trainPlanType}
-									 &trainTime=${trainPlanInfo.trainTime}">${str}</a>&nbsp;
-									 </c:forEach>
-									</td>
+									<td><input type="hidden" name="trainPlanYear" value="${trainPlanInfo.trainPlanYear}" />
+									    <input type="hidden" name="trainPlanId" value="${trainPlanInfo.trainPlanId}" />
+										<input type="hidden" name="trainPlanName" value="${trainPlanInfo.trainPlanName}" />
+										<input type="hidden" name="trainPlanType" value="${trainPlanInfo.trainPlanType}" />
+										<input type="hidden" name="trainTime" value="${trainPlanInfo.trainTime}" />
+										 <c:forEach var="str" varStatus="status"
+											items="${fn:split(trainPlanInfo.major,' ')}">
+
+											<input type="submit" name="major" value="${str}" />
+													<%--  <a href="ToSaveAttendView.action?trainPlanId=${trainPlanInfo.trainPlanId}&major=${str}
+											 &trainPlanYear=${trainPlanInfo.trainPlanYear}&trainPlanName=${trainPlanInfo.trainPlanName}
+											 &trainPlanType=${trainPlanInfo.trainPlanType}
+											 &trainTime=${trainPlanInfo.trainTime}">${str}</a>&nbsp; --%>
+										</c:forEach>	
+										</td>
 									<td>${trainPlanInfo.trainTime}</td>
-								    <td>${trainPlanInfo.staffNum}</td>									
-									
+									<td>${trainPlanInfo.staffNum}</td>
+
 								</tr>
+								</form>
 							    </c:forEach>
-						 			<!-- <tr>
-										<td>1</td>
-							 			<td>2014</td>
-							 			<td>锅炉</td>
-							 			<td>新人</td>/
-							 			<td class="information"><a href="recorddetail.html">锅炉专业</a></td>
-							 			<td>2014</td>
-							 			<td>20</td>
-						 			</tr>
-						 			<tr>
-						 				<td>2</td>
-							 			<td>2014</td>
-							 			<td>锅炉</td>
-							 			<td>新人</td>
-							 			<td class="information">锅炉专业</td>
-							 			<td>2014</td>
-							 			<td>20</td>
-						 			</tr>			 -->					
+						 						
 							</table>
 						</div>
 

@@ -27,7 +27,7 @@ public class ToSaveAttendView extends ActionSupport {
 	TrainPlanItem trainPlanItem=new TrainPlanItem();
 	
     public String execute(){
-   
+      System.out.println("培训计划年度"+trainPlanYear);
 //    	System.out.println("参数"+trainPlanId+major);
     	majorCondition.setMajor(major);
     	majorCondition.setTrainPlanId(trainPlanId);
