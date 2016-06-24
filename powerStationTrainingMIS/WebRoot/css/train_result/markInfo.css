@@ -1,0 +1,136 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.nav-wrapper {
+	float: left;
+}
+
+.container {
+	margin-top: 100px;
+}
+
+.vertical-nav {
+	align: left;
+	position: relative;
+	top: 90px;
+	width: 60px;
+}
+
+.vertical-nav li {
+	list-style: none;
+	line-height: 42px;
+	height: 42px;
+	margin-left: 10px;
+}
+
+.vertical-nav li a {
+	font-size: 24px;
+}
+
+#baseInfo {
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	padding-bottom: 10px;
+	position: relative;
+}
+
+#baseInfo p {
+	margin-top: -12px;
+	margin-left: 35px;
+}
+
+#baseInfo p span {
+	font-family: "arial, helvetica, sans-serif";
+	font-size: 20px;
+	background: #fff;
+}
+
+#baseInfo_table {
+	width: 85%;
+	margin-left: 85px;
+}
+
+#baseInfo_table tr td {
+	text-align: center;
+	font-size: 16px;
+	font-family: "arial, helvetica, sans-serif";
+}
+
+#baseInfo_table tr td:nth-child(2n+1) {
+	background: #ccc;
+}
+
+#baseInfo_table tr td input {
+	border: none;
+	text-align: center;
+}
+
+#resultInfo {
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	margin-top: 15px;
+	position: relative;
+}
+
+#resultInfo p {
+	margin-top: -12px;
+	margin-left: 35px;
+}
+
+#resultInfo > p span {
+	font-family: "arial, helvetica, sans-serif";
+	font-size: 20px;
+	background: #FFF;
+}
+
+#operateInfo {
+	width: 85%;
+	margin-left: 85px;
+}
+
+#operateInfo > p {
+	float: left;
+	height: 40px;
+}
+
+.red {
+	color: red;
+}
+
+#operateInfo p:nth-child(2) {
+	font-weight: bold;
+}
+
+#operateInfo p:last-child {
+	float: right;
+}
+
+#operateInfo p span {
+	font-size: 15px;
+	height: 40px;
+	line-height: 40px;
+}
+
+#operateInfo p:last-child button {
+	margin-right: 10px;
+}
+
+#resultInfo_table {
+	width: 85%;
+	margin-left: 85px;
+}
+
+#resultInfo_table thead th {
+	background: #ccc;
+	text-align: center;
+	font-size: 16px;
+	font-family: "arial, helvetica, sans-serif";
+}
+
+#resultInfo_table tbody tr td {
+	text-align: center;
+	font-size: 15px;
+	font-family: "arial, helvetica, sans-serif";
+}
