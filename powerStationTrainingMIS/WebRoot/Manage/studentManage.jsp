@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>-电气一班-</span>
 									<input type="hidden" id="hidden_UnitId" value="">
 									<input type="hidden" id="hidden_UnitName" value="">
-									<input type="hidden" id="hidden_PlanItemId" value="tp1000101">
+									<input type="hidden" id="hidden_PlanItemId" value="${trainItemId}">
 								</div>
 								<div class="fr">
 									<button id="student_save_choice">选择</button>
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="content_bottom_table ">
 							<form action="addStudent" method="post">
-							<input type="hidden" id="hidden_PlanItemId" name="trainItemId" value="tp1000101">
+							<input type="hidden" id="hidden_PlanItemId" name="trainItemId" value="${trainItemId}">
 								<table class="table table-hover table-bordered" id="student_save_table">
 									<thead>
 										<tr>

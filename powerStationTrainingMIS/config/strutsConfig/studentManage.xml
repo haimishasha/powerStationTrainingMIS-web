@@ -18,5 +18,11 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		<action name="toManageStudent" class="com.thinkPro.train.action.studentManage.ToManageStudent">
+			<result>/Manage/studentManage.jsp</result>
+		</action>
+		<action name="toCheckManage" class="com.thinkPro.train.action.studentManage.ToCheckManage">
+			<result>/Manage/planTrainInfo.jsp</result>
+		</action>
 	</package>
 </struts>

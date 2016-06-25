@@ -138,12 +138,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<tr>
 								    <td> <c:out value="${status.index+1}"/></td>
                                
-									<td>${trainPlan.trainPlanYear}</td>
+									<td id="${trainPlan.trainPlanId}">${trainPlan.trainPlanYear}</td>
 									<td>${trainPlan.trainPlanName}</td>
 									<td>${trainPlan.trainPlanType}</td>
 									<td>${trainPlan.major}</td>
 									<td>${trainPlan.trainTime}</td>
-								    <td>${trainPlan.num}</td>									
+								    <td class="planNum"><span>${trainPlan.num}</span></td>								
 									<td>${trainPlan.isFinish}</td>									
 									<td><input  id="myCheckBox" type="checkbox" value="${trainPlan.trainPlanId}" name="trainPlanId"/> </td>
 									

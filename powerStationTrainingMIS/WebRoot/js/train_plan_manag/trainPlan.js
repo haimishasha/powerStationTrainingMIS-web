@@ -26,6 +26,22 @@ $(document).ready(function () {
 	
 	$("input[type=reset]").trigger("click");
 	
+	
+	/* ---------------------------------丁------------6.25----------------------------- */
+	
+	$('.planNum').click(function () {
+		
+		var isFinish = $(this).siblings("td:eq(6)").text();
+		var trainPlanId = $(this).siblings("td:eq(1)").attr("id");
+		window.location.href="toCheckManage?trainPlanId="+trainPlanId+"&isFinish="+isFinish+"";
+		
+		
+		
+	});
+	
+	
+	/* ---------------------------------丁------------6.25----------------------------- */
+	
 });
 
 
