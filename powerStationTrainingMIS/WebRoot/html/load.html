@@ -6,6 +6,9 @@
 		<script type="text/javascript" src="../js/bootstrap.js" ></script>
 		<link rel="stylesheet" href="../css/bootstrap.css" />
 		<link rel="stylesheet" href="../css/load/load.css" />
+		<script type="text/javascript" src="../js/jquery-2.2.2.min.js" ></script>
+		<script type="text/javascript" src="../js/jquery.validate-1.13.1.js" ></script>
+		<script type="text/javascript" src="../js/load/load.js" ></script>
 	</head>
 	<body>
 		<div class="load_title">
@@ -23,47 +26,51 @@
 				<div class="load_pic">
 				</div>
 			</div>
-			<div class="load_body_right">
-				<div class="right_title">
-					<h1 class="text-center">登录</h1>
-					<div class="load_hr"></div>
-				</div>
+			<div class="load_body_right">			
+				<form id="load_form">
+					<div class="right_title">
+						<h1 class="text-center">登录</h1>
+						<div class="load_hr"></div>
+					</div>
+					
+					<div class="right_body">
+						<div class="box">
+							<div class="input-group">
+								<label class="input-group-addon label_item" for="username">用户</label>
+								<input type="text" class="form-control" id="username" name="username"/>			
+								<span class="input-group-addon text_info"></span>
+							</div>
+						</div>
+						<div class="box">
+							<div class="input-group">
+								<label class="input-group-addon label_item" for="password">密码</label>
+								<input type="password" class="form-control" id="password" name="password"/>			
+								<span class="input-group-addon text_info"></span>
+							</div>
+						</div>
+						<div class="box text_center">
+							<img src="#" style=""/>
+							<a href="#" style="color: black;">看不清楚,换一张</a>
+						</div>
+						<div class="box">
+							<div class="input-group">
+								<label class="input-group-addon label_item">验证码</label>
+								<input type="text" class="form-control" />			
+								
+							</div>
+						</div>
+					</div>
+					<div class="right_bottom">
+						<div class="load_hr"></div>
+						<div class="text-center">
+							<input type="submit" value="登录" id="load_save" class="btn btn-default" />
+							<input type="button" value="注册" class="btn btn-default" />
+						</div>
+					</div>
+				</form>
 				
-				<div class="right_body">
-					<div class="box">
-						<div class="input-group">
-							<label class="input-group-addon label_item" for="username">用户</label>
-							<input type="text" class="form-control" id="username"/>			
-							<label class="input-group-addon text_info"></label>
-						</div>
-					</div>
-					<div class="box">
-						<div class="input-group">
-							<label class="input-group-addon label_item" for="password">密码</label>
-							<input type="password" class="form-control" id="password"/>			
-							<label class="input-group-addon text_info"></label>
-						</div>
-					</div>
-					<div class="box text_center">
-						<img src="#" style=""/>
-						<a href="#" style="color: black;">看不清楚,换一张</a>
-					</div>
-					<div class="box">
-						<div class="input-group">
-							<label class="input-group-addon label_item">验证码</label>
-							<input type="text" class="form-control" />			
-							
-						</div>
-					</div>
-				</div>
 				
-				<div class="right_bottom">
-					<div class="load_hr"></div>
-					<div class="text-center">
-						<button class="btn btn-default">登录</button>
-						<button class="btn btn-default">注册</button>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 		<div class="load_hr"></div>

@@ -52,10 +52,11 @@
 .right_body{
 	height: 300px;
 }
+
 .right_bottom{
 	height: 110px;
 }
-.right_bottom button{
+.right_bottom input{
 	margin: 10px;
 	color: #4397D5;
 }
