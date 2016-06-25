@@ -16,3 +16,8 @@
 	display:table-cell;
 	vertical-align:middle;
 }
+#train_plan_base_table span:hover{
+	cursor:pointer;
+	text-decoration:underline;
+	color:red;
+}

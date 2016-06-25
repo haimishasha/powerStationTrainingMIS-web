@@ -19,7 +19,7 @@ $(function(){
 				maxlength:"用户名小于16位"
 			},
 			password:{
-				required:"请输入用户名",
+				required:"请输入密码",
 				minlength:"密码大于6位",
 				maxlength:"密码小于16位"
 			}
