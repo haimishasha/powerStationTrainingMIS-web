@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="login" extends="json-default">
+	   		
+		 <action name="LoginAction" class="com.thinkPro.train.action.login.LoginAction" method="execute">
+			<result>/Plan/searchPlan.jsp</result>	
+			<result name="error">/Login/login.jsp</result>		
+		</action>
+		<action name="registerAction" class="com.thinkPro.train.action.login.LoginAction" method="register">
+			<result type="json">
+    			<param name="root">status</param>  
+    		</result>	
+				
+		</action>
+		<action name="quitSystem" class="com.thinkPro.train.action.login.LoginAction" method="quitSystem">
+			<result>/Plan/searchPlan.jsp</result>	
+				
+		</action>
+	</package>
+</struts>

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
+	<%@ taglib uri="/struts-tags" prefix="s" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -16,8 +17,8 @@
 <div class="bef_nav">
 	<div class="container">
 		<div class="bef_nav_right">
-			<span style="margin-right: 20px;">欢迎 : 管理员</span><a href="#">修改密码</a><a
-				href="#">退出系统</a>
+			<span style="margin-right: 20px;">欢迎 :<s:property value="#session.userName"/></span><a href="#">修改密码</a><a
+				href="quitSystem.action">退出系统</a>
 		</div>
 	</div>
 </div>
