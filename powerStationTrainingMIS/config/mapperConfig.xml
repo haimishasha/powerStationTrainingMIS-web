@@ -5,6 +5,7 @@
 		<package name="com.thinkPro.train.bean.plan"/>
 		<package name="com.thinkPro.train.bean.unit"/>
 		<package name="com.thinkPro.train.bean.staff"/>
+		<package name="com.thinkPro.train.bean.result"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatisMapper/StaffMapper.xml"/>
@@ -13,5 +14,6 @@
 		<mapper resource="mybatisMapper/UnitMapper.xml"/>
 		<mapper resource="mybatisMapper/AttendanceMapper.xml"/>
 		<mapper resource="mybatisMapper/ArrangementMapper.xml"/>
+		<mapper resource="mybatisMapper/ResultRatioMapper.xml"/>
 	</mappers>
 </configuration>

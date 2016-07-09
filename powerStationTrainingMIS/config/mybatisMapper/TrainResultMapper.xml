@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkPro.train.db.mapper.TrainResultMapper">
+	
+	<!-- 批量插入培训成绩List集合 -->
+	<insert id="insertTrainResultList" parameterType="java.util.List">
+		insert into train_result(trainResultId, examResult, attendanceResult, totalResult) values
+		<foreach collection="list" item="result" index="index" separator=",">
+			(#{result.trainResultId}, #{result.examResult}, #{result.attendanceResult}, #{result.totalResult})
+		</foreach>
+	</insert>
+	
+	<!-- 批量修改培训成绩List集合 -->
+	<update id="updateTrainResultList" parameterType="java.util.List">
+		<foreach collection="list" item="result" index="index" separator=",">
+			update train_result set	examResult=#{result.examResult}, attendanceResult=#{result.attendanceResult},
+			totalResult=#{result.totalResult} where trainResultId=#{trainResultId}
+		</foreach>
+	</update>
+	
+	<!-- 查询培训成绩List集合（员工表&成绩路由表&成绩表联合查询 -->
+	<select id="selectTrainResultList" parameterType="TrainResultCondition" resultType="TrainResultReport">
+		select * from name, unitName, attend_count, attendanceResult, examResult, totalResult
+		from staff, unit, emp_attendance, train_result_url, train_result
+		<!-- where staff. （未写完）-->
+	</select>
+</mapper>
