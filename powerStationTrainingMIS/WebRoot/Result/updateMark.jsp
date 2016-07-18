@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -55,13 +56,13 @@
 			<div id="result_content">
 				<div class="operate_info">
 					<p><label>参加培训人数:</label><label id="person_num">30</label><label>人</label></p>
-					<p id="setBtn"><label><strong>总成绩 = 出勤成绩*</strong><strong id="attendance_ratio">20</strong><strong>% + 考试成绩*</strong><strong>80</strong><strong>%</strong></label><button class="btn btn-default" data-toggle="modal" data-target="#result_ratio">设置</button></p>
+					<p id="setBtn"><label><strong>总成绩 = 出勤成绩*</strong><strong id="attendance_ratio">20</strong><strong>% + 考试成绩*</strong><strong id="exam_ratio">80</strong><strong>%</strong></label><button class="btn btn-default setRatio" data-toggle="modal" data-target="#result_ratio">设置</button></p>
 					<p id="operateBtns"><button class="btn btn-default save">保存</button><button class="btn btn-default commit">提交</button></p>
 				</div>
 				<div id="result_ratio" class="modal fade">
-					<form id="resultRation_form" action="" method="post">
-						<div class="modal-dialog">
-							<div class="modal-content">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<form id="resultRatio_form" method="post">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
@@ -69,14 +70,16 @@
 									<p><span>成绩比例设置</span></p>
 								</div>
 								<div class="modal-body">
-									<p>总成绩=出勤情况<span class="red">x</span><input type="text" value="20" />%<span class="red">+</span>考试成绩<span class="red">x</span><input type="text" value="80" />%</p>
+									<p><input type="hidden" value="tp1000101" id="trainItemId" name="trainResultRatio.trainItemId"/></p>
+									<p>总成绩=出勤情况<span class="red">x</span><input type="text" value="30" id="attendanceRatio" name="trainResultRatio.attendanceRatio" />%<span class="red">+</span>考试成绩<span class="red">x</span><input type="text" value="70" id="examRatio" name="trainResultRatio.examRatio"/>%</p>
+									<p><input type="hidden" value="<%= new Timestamp(new Date().getTime()) %>" id="setTime" name="trainResultRatio.setTime" /></p>										
 								</div>
 								<div class="modal-footer">
 									<button class="btn btn-default saveRatio">保存</button>
 								</div>
-							</div>
+							</form>
 						</div>
-					</form>
+					</div>
 				</div>
 				<div class="result_info">
 					<form id="resultInfo_form">

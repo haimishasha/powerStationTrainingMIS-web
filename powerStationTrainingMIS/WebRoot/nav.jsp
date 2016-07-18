@@ -47,7 +47,7 @@
 						<li><a href="toAddPlan.action">添加</a></li>
 						<li><a href="#">修改</a></li>
 						<li><a href="#">删除</a></li>
-						<li><a href="#">查询</a></li>
+						<li><a href="Plan/searchPlan.jsp">查询</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"

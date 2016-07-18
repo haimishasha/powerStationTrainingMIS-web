@@ -143,8 +143,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<td>${trainPlan.trainPlanType}</td>
 									<td>${trainPlan.major}</td>
 									<td>${trainPlan.trainTime}</td>
-								    <td class="planNum"><span>${trainPlan.num}</span></td>								
-									<td>${trainPlan.isFinish}</td>									
+								    <td class="planNum"><span>${trainPlan.num}</span></td>
+								    <c:choose>
+								    	<c:when test="${trainPlan.isFinish == '已培训'}">
+								    		<td><a id="toEntryMark" style="font-weight: bold">${trainPlan.isFinish}</a></td>
+								    	</c:when>
+								    	<c:otherwise>
+								    		<td>${trainPlan.isFinish }</td>
+								    	</c:otherwise>
+								    </c:choose>								
 									<td><input  id="myCheckBox" type="checkbox" value="${trainPlan.trainPlanId}" name="trainPlanId"/> </td>
 									
 								</tr>
